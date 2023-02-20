@@ -1,3 +1,4 @@
 export type User = {
-        adressse: string;
+  adressse: string;
+  pseudo: string;
 };
