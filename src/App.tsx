@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
+const baseUrl = 'http://localhost:3000/users/users';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        const [data, setData]: any = useState([]);
+
+        useEffect(() => {
+                fetch(baseUrl)
+                        .then((response) => response.json())
+                        .then((donnee) => setData(donnee))
+                        .catch((erreur) => `${erreur}`);
+        }, []);
+
+        console.log(data[0]);
+
+        const affichage = data.map((data: any) => <div>{data.adresse}</div>);
+
+        return <div className='text-center'>{affichage}</div>;
 }
 
 export default App;
