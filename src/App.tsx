@@ -4,9 +4,12 @@ import { FormulaireAnimal } from "./components/formulaire_animal/formulaire";
 import { User } from "./types/user.type";
 
 const baseUrl = "http://localhost:3000/animal";
+import "./App.css";
+import Navbar from "./components/navbar/navbar";
 function App() {
   const [data, setData]: any = useState([]);
 
+  const [token, setToken] = useState();
   useEffect(() => {
     fetch(baseUrl)
       .then((response) => response.json())
@@ -14,7 +17,7 @@ function App() {
       .catch((erreur) => `${erreur}`);
   }, []);
 
-  console.log(data);
+  console.log(token);
 
   const affichage = data.map((data: User) => (
     <div>
@@ -40,6 +43,7 @@ function App() {
   return (
     <div>
       <div className="text-center">{affichage}</div>;
+      <Navbar setToken={setToken} />
       <FormulaireAnimal />
     </div>
   );
