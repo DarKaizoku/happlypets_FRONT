@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import Navbar from './components/navbar/navbar';
 import Login from './components/Login';
 import { Token } from './types/token.type';
 import { User } from './types/user.type';
@@ -41,9 +42,9 @@ function App() {
 
         return (
                 <div>
-                        <Login setToken={setToken} />
+                        <Navbar setToken={setToken} />
 
-                        <div className='text-center'>{affichage}</div>
+                        <div className=' text-center'>{affichage}</div>
                 </div>
         );
 }

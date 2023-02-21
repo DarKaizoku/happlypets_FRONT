@@ -37,37 +37,13 @@ export default function Login({ setToken }: any) {
 
         return (
                 <div>
-                        {/* <div hidden={show}>
-                                <div className='container'>
-                                        <label>
-                                                Email:
-                                                <input
-                                                        type='email'
-                                                        name='email'
-                                                />
-                                        </label>
-                                </div>
-                                <div>
-                                        <label>
-                                                Password:
-                                                <input
-                                                        type='password'
-                                                        name='password'
-                                                />
-                                        </label>
-                                </div>
-                                <div>
-                                        <input type='submit' value='Log in' />
-                                </div>
-                        </div> */}
-
                         <button
                                 type='button'
                                 className='btn btn-info'
                                 data-bs-toggle='modal'
                                 data-bs-target='#exampleModal'
                         >
-                                LOGIN
+                                Connexion
                         </button>
                         <form>
                                 <div
@@ -84,9 +60,7 @@ export default function Login({ setToken }: any) {
                                                                         className='modal-title'
                                                                         id='exampleModalLabel'
                                                                 >
-                                                                        !!
-                                                                        Connexion
-                                                                        !!
+                                                                        CONNEXION
                                                                 </h1>
                                                                 <button
                                                                         type='button'
