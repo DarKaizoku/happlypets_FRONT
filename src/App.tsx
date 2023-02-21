@@ -3,12 +3,14 @@ import './App.css';
 import CarnetId from './Components/carnet_sante';
 
 import Navbar from './Components/navbar/navbar';
+import { Token } from './types/token.type';
 import { User } from './types/user.type';
 
-const baseUrl = 'http://localhost:3000/animal';
+const baseUrl = 'http://localhost:3000/users/users';
 function App() {
         const [data, setData]: any = useState([]);
 
+        const [token, setToken] = useState();
         useEffect(() => {
                 fetch(baseUrl)
                         .then((response) => response.json())
@@ -16,7 +18,7 @@ function App() {
                         .catch((erreur) => `${erreur}`);
         }, []);
 
-        console.log(data);
+        console.log(token);
 
         const affichage = data.map((data: User) => (
                 <div>
@@ -39,16 +41,12 @@ function App() {
                 </div>
         ));
 
-        return (<div> <div className='text-center'>{affichage}</div>
-                <Navbar />
+        return (
+                <div>
+                        <Navbar setToken={setToken} />
 
-                <CarnetId />
-
-
-
-
-                <div className=" text-center">{affichage}</div>
-        </div>
+                        <div className=' text-center'>{affichage}</div>
+                </div>
         );
 }
 
