@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import CarteId from './Components/carte.identite';
+import CarnetId from './Components/carnet_sante';
+
+import Navbar from './Components/navbar/navbar';
 import { User } from './types/user.type';
 
 const baseUrl = 'http://localhost:3000/animal';
@@ -37,9 +39,17 @@ function App() {
                 </div>
         ));
 
-        return <div> <div className='text-center'>{affichage}</div>;
-                <CarteId></CarteId>
+        return (<div> <div className='text-center'>{affichage}</div>
+                <Navbar />
+
+                <CarnetId />
+
+
+
+
+                <div className=" text-center">{affichage}</div>
         </div>
+        );
 }
 
 export default App;
