@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import CarteId from './Components/carte.identite';
 import { User } from './types/user.type';
 
 const baseUrl = 'http://localhost:3000/animal';
@@ -36,7 +37,9 @@ function App() {
                 </div>
         ));
 
-        return <div className='text-center'>{affichage}</div>;
+        return <div> <div className='text-center'>{affichage}</div>;
+                <CarteId></CarteId>
+        </div>
 }
 
 export default App;
