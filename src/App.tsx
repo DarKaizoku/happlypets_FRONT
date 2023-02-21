@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import Login from './components/Login';
+import { Token } from './types/token.type';
 import { User } from './types/user.type';
 
 const baseUrl = 'http://localhost:3000/users/users';
 function App() {
         const [data, setData]: any = useState([]);
 
+        const [token, setToken] = useState();
         useEffect(() => {
                 fetch(baseUrl)
                         .then((response) => response.json())
@@ -13,7 +16,7 @@ function App() {
                         .catch((erreur) => `${erreur}`);
         }, []);
 
-        console.log(data);
+        console.log(token);
 
         const affichage = data.map((data: User) => (
                 <div>
@@ -36,7 +39,13 @@ function App() {
                 </div>
         ));
 
-        return <div className='text-center'>{affichage}</div>;
+        return (
+                <div>
+                        <Login setToken={setToken} />
+
+                        <div className='text-center'>{affichage}</div>
+                </div>
+        );
 }
 
 export default App;
