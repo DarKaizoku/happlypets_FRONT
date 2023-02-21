@@ -44,7 +44,7 @@ function App() {
         return (
                 <div>
                         <Navbar setToken={setToken} />
-
+                        <CarnetId />
                         <div className=' text-center'>{affichage}</div>
                 </div>
         );
