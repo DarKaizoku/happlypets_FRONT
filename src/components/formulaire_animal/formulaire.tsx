@@ -1,4 +1,6 @@
 import { useState } from "react";
+import CarnetId from "./carnet_sante";
+import { Habitat } from "./habitat";
 import { InputAnimal } from "./input_animal";
 
 export function FormulaireAnimal() {
@@ -20,6 +22,8 @@ export function FormulaireAnimal() {
             .
           </div>
           {fiche === "animal" && <InputAnimal></InputAnimal>}
+          {fiche === "carnetDeSante" && <CarnetId></CarnetId>}
+          {fiche === "habitat" && <Habitat></Habitat>}
           <div className="col-12 mt-3">
             <div className="form-check">
               <input
@@ -98,7 +102,7 @@ export function FormulaireAnimal() {
           </div>
           <div className="container text-center mt-3">
             <button className="btn btn-primary" type="submit">
-              Envoyer
+              Enregistrer
             </button>
           </div>
         </div>
