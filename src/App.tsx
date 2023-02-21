@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import { User } from './types/user.type';
 
-const baseUrl = 'http://localhost:3000/users/users';
+const baseUrl = 'http://localhost:3000/animal';
 function App() {
         const [data, setData]: any = useState([]);
 
