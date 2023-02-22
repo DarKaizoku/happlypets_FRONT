@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Token } from '../types/token.type';
-import './navbar/navbar.css';
+import './Login.css';
 const urlLogin = 'http://localhost:3000/auth/login';
 
 //export default function Login({ setToken }) {
@@ -54,7 +53,7 @@ export default function Login({ setToken }: any) {
                     aria-hidden="true"
                 >
                     <div className="modal-dialog modal-dialog-centered">
-                        <div className="modal-content">
+                        <div className="modal-content bleu">
                             <div className="modal-header">
                                 <h1
                                     className="modal-title"
