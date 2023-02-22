@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import CarnetId from './Components/carnet_sante';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import { User } from "./types/user.type";
+import "./App.css";
+import Navbar from "./Components/navbar/navbar";
+import { FormulaireAnimal } from "./Components/formulaire_animal/formulaire";
 
-import Navbar from './Components/navbar/navbar';
-import { Token } from './types/token.type';
-import { User } from './types/user.type';
-
-const baseUrl = 'http://localhost:3000/users/users';
+const baseUrl = "http://localhost:3000/animal";
 function App() {
         const [data, setData]: any = useState([]);
 
@@ -44,8 +43,8 @@ function App() {
         return (
                 <div>
                         <Navbar setToken={setToken} />
-                        <CarnetId />
-                        <div className=' text-center'>{affichage}</div>
+                        <FormulaireAnimal />
+                        <div className="text-center">{affichage}</div>;
                 </div>
         );
 }
