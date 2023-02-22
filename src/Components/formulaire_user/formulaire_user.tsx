@@ -34,7 +34,14 @@ export function FormulaireUser({ token }: any) {
                         });
 
                         const responseJson = await response.json();
-                        console.log(responseJson);
+                        if (responseJson.statusCode !== 201) {
+                                return alert(
+                                        responseJson.message.map(
+                                                (data: any) => data + `\n`
+                                        )
+                                );
+                        }
+                        alert(responseJson.message);
                 }
                 fetchData();
         };
