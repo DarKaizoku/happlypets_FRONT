@@ -10,6 +10,7 @@ export function InputAnimal() {
             type="text"
             className="form-control"
             id="validationCustomNom"
+            name="nom"
             required
           />
           <div className="valid-feedback">Looks good!</div>
@@ -22,6 +23,7 @@ export function InputAnimal() {
             type="text"
             className="form-control"
             id="validationCustomEspece"
+            name="espece"
             required
           />
           <div className="valid-feedback">Looks good!</div>
@@ -36,6 +38,7 @@ export function InputAnimal() {
               className="form-control"
               id="validationCustomRace"
               aria-describedby="inputGroupPrepend"
+              name="race"
               required
             />
             <div className="invalid-feedback">Choisissez une race svp.</div>
@@ -50,6 +53,7 @@ export function InputAnimal() {
             type="date"
             className="form-control"
             id="validationCustomAnniversaire"
+            name="date_de_naissance"
             required
           />
           <div className="invalid-feedback">
@@ -60,7 +64,12 @@ export function InputAnimal() {
           <label form="validationCustomGenre" className="form-label">
             Genre
           </label>
-          <select className="form-select" id="validationCustomGenre" required>
+          <select
+            className="form-select"
+            id="validationCustomGenre"
+            name="genre"
+            required
+          >
             <option defaultValue="choix...">Choix...</option>
             <option value="Femelle">Femelle</option>
             <option value="Mâle">Mâle</option>
@@ -79,6 +88,7 @@ export function InputAnimal() {
               type="checkbox"
               value=""
               id="invalidCheck"
+              name="lof"
               required
             />{" "}
           </div>

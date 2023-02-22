@@ -2,6 +2,7 @@ import { useState } from "react";
 import CarnetId from "./carnet_sante";
 import { Habitat } from "./habitat";
 import { InputAnimal } from "./input_animal";
+import "./formulaire_animal.css";
 
 export function FormulaireAnimal() {
   const [fiche, setFiche] = useState("animal");
@@ -24,6 +25,7 @@ export function FormulaireAnimal() {
                 className="btn btn-warning"
                 data-bs-toggle="modal"
                 data-bs-target="#ajoutPhoto"
+                name="addPhoto"
               >
                 <img src="addphoto32.png" alt="" />
               </button>
@@ -35,10 +37,13 @@ export function FormulaireAnimal() {
               aria-labelledby="photoProfilLabel"
               aria-hidden="true"
             >
-              <div className="modal-dialog modal-dialog-centered">
+              <div className="modal-dialog modal-dialog-centered bleu">
                 <div className="modal-content">
-                  <div className="modal-header">
-                    <h1 className="modal-title fs-5" id="photoProfilLabel">
+                  <div className="modal-header bg-warning">
+                    <h1
+                      className="modal-title fs-5"
+                      id="photoProfilLabel bg-warning"
+                    >
                       Photo de profil de votre animal
                     </h1>
                     <button
@@ -48,7 +53,7 @@ export function FormulaireAnimal() {
                       aria-label="Close"
                     ></button>
                   </div>
-                  <div className="modal-body">
+                  <div className="modal-body shadow bg-warning">
                     <ul>
                       <li>
                         Rendez vous sur le site{" "}
@@ -74,11 +79,12 @@ export function FormulaireAnimal() {
                           type="text"
                           className="form-control"
                           id="urlPhoto"
+                          name="photoUrl"
                         />
                       </div>
                     </form>
                   </div>
-                  <div className="modal-footer">
+                  <div className="modal-footer bg-warning">
                     <button
                       type="button"
                       className="btn btn-secondary"
@@ -86,7 +92,7 @@ export function FormulaireAnimal() {
                     >
                       Fermer
                     </button>
-                    <button type="button" className="btn btn-primary">
+                    <button type="button" className="btn bleu text-light">
                       Sauvegarder photo
                     </button>
                   </div>
@@ -132,6 +138,7 @@ export function FormulaireAnimal() {
                 type="checkbox"
                 value=""
                 id="invalidCheck"
+                name="profil_public"
                 required
               />
               <label className="form-check-label" htmlFor="invalidCheck">
@@ -158,7 +165,7 @@ export function FormulaireAnimal() {
             </div>
           </div>
           <div
-            className="btn-group container-fluid mt-3"
+            className="btn-group container-fluid mt-3 p-1 mb-1 bleu"
             role="group"
             aria-label="Basic radio toggle button group"
           >
@@ -171,7 +178,7 @@ export function FormulaireAnimal() {
               onClick={() => setFiche("animal")}
               defaultChecked={fiche === "animal"}
             />
-            <label className="btn btn-outline-primary" htmlFor="btnradio1">
+            <label className="btn btn-outline-warning" htmlFor="btnradio1">
               Fiche animal
             </label>
 
@@ -184,7 +191,7 @@ export function FormulaireAnimal() {
               onClick={() => setFiche("carnetDeSante")}
               defaultChecked={fiche === "carnetDeSante"}
             />
-            <label className="btn btn-outline-primary" htmlFor="btnradio2">
+            <label className="btn btn-outline-warning" htmlFor="btnradio2">
               Carnet de santé
             </label>
 
@@ -197,12 +204,15 @@ export function FormulaireAnimal() {
               onClick={() => setFiche("habitat")}
               defaultChecked={fiche === "habitat"}
             />
-            <label className="btn btn-outline-primary" htmlFor="btnradio3">
+            <label className="btn btn-outline-warning" htmlFor="btnradio3">
               Habitat
             </label>
           </div>
           <div className="container text-center mt-3">
-            <button className="btn btn-primary" type="submit">
+            <button
+              className="btn bleu text-light btn-outline-primary"
+              type="submit"
+            >
               Enregistrer
             </button>
           </div>
