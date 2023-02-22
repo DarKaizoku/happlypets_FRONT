@@ -1,6 +1,6 @@
 export default function CarnetSante() {
   return (
-    <div>
+    <div className="container-fluid">
       <form className="row g-3 needs-validation" noValidate>
         <div className="col-md-4">
           <label htmlFor="validationCustom01" className="form-label">
@@ -10,8 +10,8 @@ export default function CarnetSante() {
             type="text"
             className="form-control"
             id="validationCustom01"
-            placeholder="Rage"
-            required
+            placeholder="Nom..."
+
           />
           <div className="valid-feedback">Looks good!</div>
         </div>
@@ -24,8 +24,8 @@ export default function CarnetSante() {
             type="text"
             className="form-control"
             id="validationCustom02"
-            placeholder="12kg"
-            required
+            placeholder="Kg..."
+
           />
           <div className="valid-feedback">Looks good!</div>
         </div>
@@ -35,11 +35,9 @@ export default function CarnetSante() {
             Stérilisé
           </label>
           <select className="form-select" id="validationCustom04" required>
-            <option selected disabled value="">
-              Choix...
-            </option>
-            <option>oui</option>
-            <option>non</option>
+            <option defaultValue="choix">Choix...</option>
+            <option value="oui">oui</option>
+            <option value="non">non</option>
           </select>
           <div className="invalid-feedback">Selectionner la valeur.</div>
         </div>
@@ -52,7 +50,7 @@ export default function CarnetSante() {
             type="text"
             className="form-control"
             id="validationCustom05"
-            required
+
           />
         </div>
       </form>

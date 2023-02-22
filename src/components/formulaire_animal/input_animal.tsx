@@ -1,7 +1,7 @@
 export function InputAnimal() {
   return (
-    <div>
-      <form className="row g-3 needs-validation" noValidate>
+    <div className="container-fluid">
+      <form className="container-fluid row g-3 needs-validation" noValidate>
         <div className="col-md-4">
           <label form="validationCustomNom" className="form-label">
             Nom
@@ -61,11 +61,9 @@ export function InputAnimal() {
             Genre
           </label>
           <select className="form-select" id="validationCustomGenre" required>
-            <option selected disabled value="">
-              Choix...
-            </option>
-            <option>Femelle</option>
-            <option>Mâle</option>
+            <option defaultValue="choix...">Choix...</option>
+            <option value="Femelle">Femelle</option>
+            <option value="Mâle">Mâle</option>
           </select>
           <div className="invalid-feedback">
             Selectionnez un genre valide svp.
