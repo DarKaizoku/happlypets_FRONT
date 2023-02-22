@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Token } from '../types/token.type';
-
+import './navbar/navbar.css';
 const urlLogin = 'http://localhost:3000/auth/login';
 
 //export default function Login({ setToken }) {
@@ -39,7 +39,7 @@ export default function Login({ setToken }: any) {
         <div>
             <button
                 type="button"
-                className="btn btn-info"
+                className="btn btn couleur text-light"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
             >
@@ -102,6 +102,7 @@ export default function Login({ setToken }: any) {
                                     onClick={(e) => login(e)}
                                     type="button"
                                     className="btn btn-primary"
+                                    data-bs-dismiss="modal"
                                 >
                                     Valider
                                 </button>

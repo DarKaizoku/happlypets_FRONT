@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { FormulaireAnimal } from './components/formulaire_animal/formulaire';
-import { User } from './types/user.type';
 import './App.css';
 import Navbar from './components/navbar/navbar';
-import { Animal } from './types/animal.type';
+import { FormulaireUser } from './components/formulaire_user/formulaire_user';
+import { TUser } from './types/user.type';
 
 const baseUrl = 'http://localhost:3000/users/users';
 function App() {
@@ -12,20 +12,20 @@ function App() {
 
     const [token, setToken] = useState<string>();
 
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', `Bearer ${token}`);
-    console.log(headers);
-
-    const options = { method: 'GET', headers: headers };
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+    };
 
     useEffect(() => {
         fetch(baseUrl, options)
             .then((response) => response.json())
             .then((donnee) => setData(donnee))
             .catch((erreur) => `${erreur}`);
-    }, []);
-
+    }, [token]);
     console.log('token', token);
 
     console.log('data', data);
@@ -33,8 +33,8 @@ function App() {
     let affichage;
 
     if (data[0]) {
-        affichage = data.map((data: User) => (
-            <div>
+        affichage = data.map((data: TUser, i: number) => (
+            <div key={i}>
                 nom : {data.nom}
                 <br />
                 prénom : {data.prenom}
@@ -59,6 +59,7 @@ function App() {
         <div>
             <Navbar setToken={setToken} />
             <FormulaireAnimal />
+            <FormulaireUser token={token} />
             <div className="text-center">{affichage}</div>;
         </div>
     );

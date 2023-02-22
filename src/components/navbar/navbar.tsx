@@ -52,9 +52,9 @@ export default function Navbar({ setToken }: any) {
                                 >
                                     Mes animaux
                                 </a>
-                                <ul className="dropdown-menu warning">
+                                <ul className="dropdown-menu bg-warning">
                                     <li>
-                                        <a className="dropdown-item" href="#">
+                                        <a className="dropdown-item " href="#">
                                             Carnet de santé
                                         </a>
                                     </li>
