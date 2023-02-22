@@ -1,4 +1,10 @@
-export function InputUser() {
+export function InputUser({ user, setUser }: any) {
+        const inputChange = (e: React.BaseSyntheticEvent) => {
+                const { name, value } = e.target;
+
+                setUser({ ...user, [name]: value });
+        };
+
         return (
                 <div className='row'>
                         <form
@@ -13,6 +19,8 @@ export function InputUser() {
                                                 Nom
                                         </label>
                                         <input
+                                                onChange={(e) => inputChange(e)}
+                                                name='nom'
                                                 type='text'
                                                 className='form-control'
                                                 id='validationCustomNom'
@@ -30,6 +38,8 @@ export function InputUser() {
                                                 Prénom
                                         </label>
                                         <input
+                                                onChange={(e) => inputChange(e)}
+                                                name='prenom'
                                                 type='text'
                                                 className='form-control'
                                                 id='validationCustomPrenom'
@@ -48,6 +58,10 @@ export function InputUser() {
                                         </label>
                                         <div className='input-group has-validation'>
                                                 <input
+                                                        onChange={(e) =>
+                                                                inputChange(e)
+                                                        }
+                                                        name='email'
                                                         type='email'
                                                         className='form-control'
                                                         id='validationEmail'
@@ -60,24 +74,7 @@ export function InputUser() {
                                                 </div>
                                         </div>
                                 </div>
-                                <div className='col-md-6'>
-                                        <label
-                                                form='validationCustomAnniversaire'
-                                                className='form-label'
-                                        >
-                                                Date de Naissance
-                                        </label>
-                                        <input
-                                                placeholder='jj/mm/aaaa'
-                                                type='date'
-                                                className='form-control'
-                                                id='validationCustomAnniversaire'
-                                                required
-                                        />
-                                        <div className='invalid-feedback'>
-                                                Renseignez une date valide svp.
-                                        </div>
-                                </div>
+
                                 <div className='col-md-6'>
                                         <label
                                                 form='validationCustomPseudo'
@@ -86,6 +83,8 @@ export function InputUser() {
                                                 Pseudo
                                         </label>
                                         <input
+                                                onChange={(e) => inputChange(e)}
+                                                name='pseudo'
                                                 type='text'
                                                 className='form-control'
                                                 id='validationCustomPseudo'
@@ -104,7 +103,9 @@ export function InputUser() {
                                                 Mot de Passe
                                         </label>
                                         <input
+                                                onChange={(e) => inputChange(e)}
                                                 placeholder='132 caractère minimum'
+                                                name='password'
                                                 type='password'
                                                 className='form-control'
                                                 id='validationCustomPassword'
@@ -115,7 +116,7 @@ export function InputUser() {
                                                 correct, svp.
                                         </div>
                                 </div>
-                                <div className='col-md-12'>
+                                <div className='col-md-6'>
                                         <label
                                                 form='validationCustomPasswordConfirmation'
                                                 className='form-label'
@@ -123,7 +124,9 @@ export function InputUser() {
                                                 Confirmation du Mot de Passe
                                         </label>
                                         <input
+                                                onChange={(e) => inputChange(e)}
                                                 placeholder='132 caractère minimum, again !!'
+                                                name='passwordConfirmed'
                                                 type='password'
                                                 className='form-control'
                                                 id='validationCustomPasswordConfirmation'
@@ -142,7 +145,9 @@ export function InputUser() {
                                                 Adresse
                                         </label>
                                         <input
+                                                onChange={(e) => inputChange(e)}
                                                 placeholder='N°, type de rue, nom de rue'
+                                                name='adresse'
                                                 type='text'
                                                 className='form-control'
                                                 id='validationCustomAdresse'
@@ -161,8 +166,9 @@ export function InputUser() {
                                                 Ville
                                         </label>
                                         <input
-                                                placeholder='132 caractère minimum'
+                                                onChange={(e) => inputChange(e)}
                                                 type='text'
+                                                name='ville'
                                                 className='form-control'
                                                 id='validationCustomVille'
                                                 required
@@ -179,8 +185,9 @@ export function InputUser() {
                                                 Code Postal
                                         </label>
                                         <input
-                                                placeholder='132 caractère minimum'
+                                                onChange={(e) => inputChange(e)}
                                                 type='text'
+                                                name='codepostal'
                                                 className='form-control'
                                                 id='validationCustomCodePostal'
                                                 required
@@ -198,8 +205,9 @@ export function InputUser() {
                                                 Département
                                         </label>
                                         <input
-                                                placeholder='132 caractère minimum'
+                                                onChange={(e) => inputChange(e)}
                                                 type='text'
+                                                name='departement'
                                                 className='form-control'
                                                 id='validationCustomDepartement'
                                                 required
