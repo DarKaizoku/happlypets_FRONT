@@ -5,19 +5,15 @@ import { InputAnimal } from './input_animal';
 
 export function FormulaireAnimal() {
         const [fiche, setFiche] = useState('animal');
-
         return (
-                <div>
-                        <div
-                                className='card bg-warning mx-auto'
-                                style={{ width: 75 + 'rem' }}
-                        >
+                <div className='container-fluid'>
+                        <div className='container-fluid card bg-warning mx-auto'>
                                 <div className='card-body'>
                                         <h5 className='card-title text-center'>
                                                 Nouvel Animal
                                         </h5>
 
-                                        <div className='container text-center mt-3'>
+                                        <div className='container-fluid text-center mt-3'>
                                                 <img
                                                         src='animal.jpg'
                                                         alt='profil animal'
