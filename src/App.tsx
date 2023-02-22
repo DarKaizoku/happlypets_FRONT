@@ -15,6 +15,7 @@ function App() {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', `Bearer ${token}`);
+    console.log(headers);
 
     const options = { method: 'GET', headers: headers };
 
