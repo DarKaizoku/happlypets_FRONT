@@ -12,11 +12,13 @@ function App() {
 
         const [token, setToken] = useState<string>();
 
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', `Bearer ${token}`);
-
-        const options = { method: 'GET', headers: headers };
+        const options = {
+                method: 'GET',
+                headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                },
+        };
 
         useEffect(() => {
                 fetch(baseUrl, options)
@@ -24,7 +26,6 @@ function App() {
                         .then((donnee) => setData(donnee))
                         .catch((erreur) => `${erreur}`);
         }, []);
-
         console.log('token', token);
 
         console.log('data', data);
