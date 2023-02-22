@@ -1,6 +1,6 @@
 export function Habitat() {
   return (
-    <div>
+    <div className="container-fluid">
       <form className="row g-3 needs-validation" noValidate>
         <div className="col-md-4">
           <label htmlFor="typeHabitat" className="form-label">
