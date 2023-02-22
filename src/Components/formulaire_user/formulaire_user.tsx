@@ -1,8 +1,40 @@
-//import { useState } from 'react';
+import { useState } from 'react';
+import { TUser } from '../../types/user.type';
 import { InputUser } from './input_user';
 
-export function FormulaireUser() {
-        //const [fiche, setFiche] = useState('user');
+export function FormulaireUser({ token }: any) {
+        const newUser: TUser = {
+                prenom: '',
+                nom: '',
+                pseudo: '',
+                email: '',
+                password: '',
+                passwordConfirmed: '',
+                adresse: '',
+                ville: '',
+                codepostal: '',
+                departement: '',
+        };
+
+        const [user, setUser] = useState(newUser);
+
+        const urlAddUser = 'http://localhost:3000/users/register';
+
+        const login = (e: React.BaseSyntheticEvent) => {
+                e.preventDefault();
+
+                async function fetchData() {
+                        const response = await fetch(urlAddUser, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(user),
+                        });
+
+                        const responseJson = await response.json();
+                        console.log(responseJson);
+                }
+                fetchData();
+        };
 
         return (
                 <div className='container-fluid'>
@@ -13,7 +45,12 @@ export function FormulaireUser() {
                                         </h5>
                                         <div className='row'>
                                                 <div className='col-md-8'>
-                                                        <InputUser></InputUser>
+                                                        <InputUser
+                                                                user={user}
+                                                                setUser={
+                                                                        setUser
+                                                                }
+                                                        ></InputUser>
                                                 </div>
 
                                                 {/* <div className='col-12 mt-3'>
@@ -79,6 +116,13 @@ export function FormulaireUser() {
 
                                                         <div className='container text-center mt-3'>
                                                                 <button
+                                                                        onClick={(
+                                                                                e
+                                                                        ) =>
+                                                                                login(
+                                                                                        e
+                                                                                )
+                                                                        }
                                                                         className='btn btn-primary'
                                                                         type='submit'
                                                                 >
