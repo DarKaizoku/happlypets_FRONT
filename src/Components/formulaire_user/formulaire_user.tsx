@@ -23,6 +23,9 @@ export function FormulaireUser({ token }: any) {
         const login = (e: React.BaseSyntheticEvent) => {
                 e.preventDefault();
 
+                if (user.password !== user.passwordConfirmed) {
+                        return alert('Merci de vérifier votre mot de passe !!');
+                }
                 async function fetchData() {
                         const response = await fetch(urlAddUser, {
                                 method: 'POST',

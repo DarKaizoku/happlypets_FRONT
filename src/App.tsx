@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
 import { FormulaireAnimal } from './components/formulaire_animal/formulaire';
 import './App.css';
 import Navbar from './components/navbar/navbar';
