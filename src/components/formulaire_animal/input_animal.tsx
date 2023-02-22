@@ -3,7 +3,7 @@ export function InputAnimal() {
     <div className="container-fluid">
       <form className="container-fluid row g-3 needs-validation" noValidate>
         <div className="col-md-4">
-          <label form="validationCustomNom" className="form-label">
+          <label htmlFor="validationCustomNom" className="form-label">
             Nom
           </label>
           <input
@@ -16,7 +16,7 @@ export function InputAnimal() {
           <div className="valid-feedback">Looks good!</div>
         </div>
         <div className="col-md-4">
-          <label form="validationCustomEspece" className="form-label">
+          <label htmlFor="validationCustomEspece" className="form-label">
             Espèce
           </label>
           <input
@@ -29,7 +29,7 @@ export function InputAnimal() {
           <div className="valid-feedback">Looks good!</div>
         </div>
         <div className="col-md-4">
-          <label form="validationCustomRace" className="form-label">
+          <label htmlFor="validationCustomRace" className="form-label">
             Race
           </label>
           <div className="input-group has-validation">
@@ -45,7 +45,7 @@ export function InputAnimal() {
           </div>
         </div>
         <div className="col-md-4">
-          <label form="validationCustomAnniversaire" className="form-label">
+          <label htmlFor="validationCustomAnniversaire" className="form-label">
             Aniversaire
           </label>
           <input
@@ -61,7 +61,7 @@ export function InputAnimal() {
           </div>
         </div>
         <div className="col-md-4">
-          <label form="validationCustomGenre" className="form-label">
+          <label htmlFor="validationCustomGenre" className="form-label">
             Genre
           </label>
           <select
@@ -80,17 +80,17 @@ export function InputAnimal() {
         </div>
         <div className="col-md-4 row align-items-end">
           <div className="form-check">
-            <label className="form-check-label ms-3" form="invalidCheck">
+            <label className="form-check-label ms-3" htmlFor="lofCheck">
               Pedigree inscrit (LOF, LOOF,etc...)
             </label>
             <input
               className="form-check-input ms-3"
               type="checkbox"
               value=""
-              id="invalidCheck"
+              id="lofCheck"
               name="lof"
               required
-            />{" "}
+            />
           </div>
         </div>
       </form>
