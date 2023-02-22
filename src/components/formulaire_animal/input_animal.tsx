@@ -47,7 +47,7 @@ export function InputAnimal() {
           </label>
           <input
             placeholder="jj/mm/aaaa"
-            type="text"
+            type="date"
             className="form-control"
             id="validationCustomAnniversaire"
             required
