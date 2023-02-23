@@ -1,3 +1,3 @@
-export type Animal = {
+export type TAnimal = {
         nom: string;
 };

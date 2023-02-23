@@ -14,6 +14,7 @@ export function FormulaireUser({ token }: any) {
                 ville: '',
                 codepostal: '',
                 departement: '',
+                animal: undefined,
         };
 
         const [user, setUser] = useState(newUser);

@@ -45,6 +45,9 @@ function App() {
                                 departement : {data.departement}
                                 <br />
                                 <br />
+                                {data.animal?.map((data, i) => (
+                                        <div key={i}>{data.nom}</div>
+                                ))}
                                 <br />
                         </div>
                 ));
