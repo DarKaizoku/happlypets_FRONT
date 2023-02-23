@@ -1,23 +1,29 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import Navbar from './Components/navbar/navbar';
-
+import Navbar from './components/navbar/navbar';
 import { TUser } from './types/user.type';
 
-const baseUrl = 'http://localhost:3000/animal';
+const baseUrl = 'http://localhost:3000/users/users';
 function App() {
         const [data, setData]: any = useState([]);
 
-        const [token, setToken] = useState();
+        const [token, setToken] = useState('');
+
+        const options = {
+                method: 'GET',
+                headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                },
+        };
+
         useEffect(() => {
-                fetch(baseUrl)
+                fetch(baseUrl, options)
                         .then((response) => response.json())
                         .then((donnee) => setData(donnee))
                         .catch((erreur) => `${erreur}`);
         }, [token]);
         console.log('token', token);
-
-        console.log(token);
 
         let affichage;
 
