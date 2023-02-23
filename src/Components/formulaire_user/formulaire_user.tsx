@@ -53,6 +53,7 @@ export function FormulaireUser({ token }: any) {
                                         <h5 className='card-title text-center'>
                                                 Inscription
                                         </h5>
+
                                         <div className='row'>
                                                 <div className='col-md-8'>
                                                         <InputUser
