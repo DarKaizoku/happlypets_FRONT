@@ -3,31 +3,33 @@ export function InputAnimal() {
     <div className="container-fluid">
       <form className="container-fluid row g-3 needs-validation" noValidate>
         <div className="col-md-4">
-          <label form="validationCustomNom" className="form-label">
+          <label htmlFor="validationCustomNom" className="form-label">
             Nom
           </label>
           <input
             type="text"
             className="form-control"
             id="validationCustomNom"
+            name="nom"
             required
           />
           <div className="valid-feedback">Looks good!</div>
         </div>
         <div className="col-md-4">
-          <label form="validationCustomEspece" className="form-label">
+          <label htmlFor="validationCustomEspece" className="form-label">
             Espèce
           </label>
           <input
             type="text"
             className="form-control"
             id="validationCustomEspece"
+            name="espece"
             required
           />
           <div className="valid-feedback">Looks good!</div>
         </div>
         <div className="col-md-4">
-          <label form="validationCustomRace" className="form-label">
+          <label htmlFor="validationCustomRace" className="form-label">
             Race
           </label>
           <div className="input-group has-validation">
@@ -36,13 +38,14 @@ export function InputAnimal() {
               className="form-control"
               id="validationCustomRace"
               aria-describedby="inputGroupPrepend"
+              name="race"
               required
             />
             <div className="invalid-feedback">Choisissez une race svp.</div>
           </div>
         </div>
         <div className="col-md-4">
-          <label form="validationCustomAnniversaire" className="form-label">
+          <label htmlFor="validationCustomAnniversaire" className="form-label">
             Aniversaire
           </label>
           <input
@@ -50,6 +53,7 @@ export function InputAnimal() {
             type="date"
             className="form-control"
             id="validationCustomAnniversaire"
+            name="date_de_naissance"
             required
           />
           <div className="invalid-feedback">
@@ -57,10 +61,15 @@ export function InputAnimal() {
           </div>
         </div>
         <div className="col-md-4">
-          <label form="validationCustomGenre" className="form-label">
+          <label htmlFor="validationCustomGenre" className="form-label">
             Genre
           </label>
-          <select className="form-select" id="validationCustomGenre" required>
+          <select
+            className="form-select"
+            id="validationCustomGenre"
+            name="genre"
+            required
+          >
             <option defaultValue="choix...">Choix...</option>
             <option value="Femelle">Femelle</option>
             <option value="Mâle">Mâle</option>
@@ -71,16 +80,17 @@ export function InputAnimal() {
         </div>
         <div className="col-md-4 row align-items-end">
           <div className="form-check">
-            <label className="form-check-label ms-3" form="invalidCheck">
+            <label className="form-check-label ms-3" htmlFor="lofCheck">
               Pedigree inscrit (LOF, LOOF,etc...)
             </label>
             <input
               className="form-check-input ms-3"
               type="checkbox"
               value=""
-              id="invalidCheck"
+              id="lofCheck"
+              name="lof"
               required
-            />{" "}
+            />
           </div>
         </div>
       </form>
