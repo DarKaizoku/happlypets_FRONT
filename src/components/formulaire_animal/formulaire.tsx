@@ -3,7 +3,7 @@ import CarnetSante from './carnet_sante';
 import { Habitat } from './habitat';
 import { InputAnimal } from './input_animal';
 
-export function FormulaireAnimal() {
+export function FormulaireAnimal({ token }: any) {
         const [fiche, setFiche] = useState('animal');
         return (
                 <div className='container-fluid'>
@@ -12,10 +12,9 @@ export function FormulaireAnimal() {
                                         <h5 className='card-title text-center'>
                                                 Nouvel Animal
                                         </h5>
-
                                         <div className='container-fluid text-center mt-3'>
                                                 <img
-                                                        src='animal.jpg'
+                                                        src='https://i.postimg.cc/hG2tRsNG/shutterstock-1698643315.jpg'
                                                         alt='profil animal'
                                                         title='photo de profil animal'
                                                         className='img-thumbnail bg-black'
@@ -24,6 +23,152 @@ export function FormulaireAnimal() {
                                                                 width: 200,
                                                         }}
                                                 />
+                                                <div>
+                                                        <button
+                                                                type='button'
+                                                                className='btn btn-warning'
+                                                                data-bs-toggle='modal'
+                                                                data-bs-target='#ajoutPhoto'
+                                                        >
+                                                                <img
+                                                                        src='addphoto32.png'
+                                                                        alt=''
+                                                                />
+                                                        </button>
+                                                </div>
+                                                <div
+                                                        className='modal fade'
+                                                        id='ajoutPhoto'
+                                                        tabIndex={-1}
+                                                        aria-labelledby='photoProfilLabel'
+                                                        aria-hidden='true'
+                                                >
+                                                        <div className='modal-dialog modal-dialog-centered'>
+                                                                <div className='modal-content'>
+                                                                        <div className='modal-header'>
+                                                                                <h1
+                                                                                        className='modal-title fs-5'
+                                                                                        id='photoProfilLabel'
+                                                                                >
+                                                                                        Photo
+                                                                                        de
+                                                                                        profil
+                                                                                        de
+                                                                                        votre
+                                                                                        animal
+                                                                                </h1>
+                                                                                <button
+                                                                                        type='button'
+                                                                                        className='btn-close'
+                                                                                        data-bs-dismiss='modal'
+                                                                                        aria-label='Close'
+                                                                                ></button>
+                                                                        </div>
+                                                                        <div className='modal-body'>
+                                                                                <ul>
+                                                                                        <li>
+                                                                                                Rendez
+                                                                                                vous
+                                                                                                sur
+                                                                                                le
+                                                                                                site{' '}
+                                                                                                <a
+                                                                                                        href='https://postimages.org/fr/'
+                                                                                                        target='_blank'
+                                                                                                >
+                                                                                                        postimages
+                                                                                                </a>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                                Selectionnez
+                                                                                                votre
+                                                                                                image
+                                                                                                avec
+                                                                                                le
+                                                                                                bouton
+                                                                                                "Choisissez
+                                                                                                votre
+                                                                                                image"
+                                                                                        </li>
+                                                                                        <li>
+                                                                                                Une
+                                                                                                fois
+                                                                                                validée,
+                                                                                                copiez
+                                                                                                le
+                                                                                                "lien
+                                                                                                direct"
+                                                                                                et
+                                                                                                le
+                                                                                                coller
+                                                                                                ici
+                                                                                                :
+                                                                                        </li>
+                                                                                </ul>
+                                                                                <form>
+                                                                                        <div className='mb-3'>
+                                                                                                <label
+                                                                                                        htmlFor='urlPhoto'
+                                                                                                        className='col-form-label'
+                                                                                                >
+                                                                                                        Lien
+                                                                                                        de
+                                                                                                        l'image
+                                                                                                </label>
+                                                                                                <input
+                                                                                                        type='text'
+                                                                                                        className='form-control'
+                                                                                                        id='urlPhoto'
+                                                                                                />
+                                                                                        </div>
+                                                                                </form>
+                                                                        </div>
+                                                                        <div className='modal-footer'>
+                                                                                <button
+                                                                                        type='button'
+                                                                                        className='btn btn-secondary'
+                                                                                        data-bs-dismiss='modal'
+                                                                                >
+                                                                                        Fermer
+                                                                                </button>
+                                                                                <button
+                                                                                        type='button'
+                                                                                        className='btn btn-primary'
+                                                                                >
+                                                                                        Sauvegarder
+                                                                                        photo
+                                                                                </button>
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                                {/*           
+            Ajouter une photo avec le brosser
+            
+            <div>
+            <div className="mb-4 d-flex justify-content-center">
+              <img
+                src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"
+                alt="example placeholder"
+                style={{ width: 300 }}
+              />
+            </div>
+            <div className="d-flex justify-content-center">
+              <div className="btn btn-primary btn-rounded">
+                <label
+                  className="form-label text-white m-1"
+                  htmlFor="customFile1"
+                >
+                  Choose file
+                </label>
+                <input
+                  type="file"
+                  className="form-control d-none"
+                  id="customFile1"
+                />
+              </div>
+            </div>
+          </div> */}
                                                 .
                                         </div>
                                         {fiche === 'animal' && (
@@ -82,7 +227,7 @@ export function FormulaireAnimal() {
                                                 </div>
                                         </div>
                                         <div
-                                                className='btn-group container text-center mt-3'
+                                                className='btn-group container-fluid mt-3'
                                                 role='group'
                                                 aria-label='Basic radio toggle button group'
                                         >
@@ -103,7 +248,7 @@ export function FormulaireAnimal() {
                                                         }
                                                 />
                                                 <label
-                                                        className='btn btn-outline-primary'
+                                                        className='btn btn-outline'
                                                         htmlFor='btnradio1'
                                                 >
                                                         Fiche animal

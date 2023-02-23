@@ -120,6 +120,7 @@ export default function Login({ setToken }: any) {
                                                                         }
                                                                         type='button'
                                                                         className='btn btn-primary'
+                                                                        data-bs-dismiss='modal'
                                                                 >
                                                                         Valider
                                                                 </button>

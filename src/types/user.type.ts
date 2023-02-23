@@ -1,15 +1,16 @@
-import { Animal } from "./animal.type";
+import { Animal } from './animal.type';
 
-export type User = {
-  prenom: string;
-  nom: string;
-  pseudo: string;
-  email: string;
-  password: string;
-  adresse: string;
-  ville: string;
-  codepostal: 0;
-  departement: string;
+export type TUser = {
+        prenom: string;
+        nom: string;
+        pseudo: string;
+        email: string;
+        password: string;
+        passwordConfirmed: string;
+        adresse: string;
+        ville: string;
+        codepostal: string;
+        departement: string;
 
-  animal: Animal[] | undefined;
+        //animal: Animal[] | undefined;
 };

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
-import { User } from "./types/user.type";
-import "./App.css";
-import Navbar from "./Components/navbar/navbar";
-import { FormulaireAnimal } from "./Components/formulaire_animal/formulaire";
+import React, { useEffect, useState } from 'react';
+import './App.css';
+import { FormulaireAnimal } from './Components/formulaire_animal/formulaire';
+import { FormulaireUser } from './Components/formulaire_user/formulaire_user';
+import Navbar from './Components/navbar/navbar';
+
+import { TUser } from './types/user.type';
 
 const baseUrl = "http://localhost:3000/animal";
 function App() {
@@ -15,36 +16,42 @@ function App() {
                         .then((response) => response.json())
                         .then((donnee) => setData(donnee))
                         .catch((erreur) => `${erreur}`);
-        }, []);
+        }, [token]);
+        console.log('token', token);
 
         console.log(token);
 
-        const affichage = data.map((data: User) => (
-                <div>
-                        nom : {data.nom}
-                        <br />
-                        prénom : {data.prenom}
-                        <br />
-                        pseudo : {data.pseudo}
-                        <br />
-                        adresse : {data.adresse}
-                        <br />
-                        code postal : {data.codepostal}
-                        <br />
-                        ville : {data.ville}
-                        <br />
-                        departement : {data.departement}
-                        <br />
-                        <br />
-                        <br />
-                </div>
-        ));
+        let affichage;
+
+        if (data[0]) {
+                affichage = data.map((data: TUser, i: number) => (
+                        <div key={i}>
+                                nom : {data.nom}
+                                <br />
+                                prénom : {data.prenom}
+                                <br />
+                                pseudo : {data.pseudo}
+                                <br />
+                                adresse : {data.adresse}
+                                <br />
+                                code postal : {data.codepostal}
+                                <br />
+                                ville : {data.ville}
+                                <br />
+                                departement : {data.departement}
+                                <br />
+                                <br />
+                                <br />
+                        </div>
+                ));
+        }
 
         return (
                 <div>
                         <Navbar setToken={setToken} />
                         <FormulaireAnimal />
-                        <div className="text-center">{affichage}</div>;
+                        <FormulaireUser token={token} />
+                        <div className='text-center'>{affichage}</div>;
                 </div>
         );
 }
