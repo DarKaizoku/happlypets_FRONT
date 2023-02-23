@@ -34,7 +34,10 @@ export function FormulaireUser({ token }: any) {
       });
 
       const responseJson = await response.json();
-      console.log(responseJson);
+      if (responseJson.statusCode !== 201) {
+        return alert(responseJson.message.map((data: any) => data + `\n`));
+      }
+      alert(responseJson.message);
     }
     fetchData();
   };
@@ -44,6 +47,7 @@ export function FormulaireUser({ token }: any) {
       <div className="container-fluid card bg-warning mx-auto">
         <div className="card-body">
           <h5 className="card-title text-center">Inscription</h5>
+
           <div className="row">
             <div className="col-md-8">
               <InputUser user={user} setUser={setUser}></InputUser>

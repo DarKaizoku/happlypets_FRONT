@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { FormulaireAnimal } from './components/formulaire_animal/formulaire';
 import './App.css';
 import Navbar from './components/navbar/navbar';
-import { FormulaireUser } from './components/formulaire_user/formulaire_user';
 import { TUser } from './types/user.type';
 
 const baseUrl = 'http://localhost:3000/users/users';
 function App() {
         const [data, setData]: any = useState([]);
 
-        const [token, setToken] = useState<string>();
+        const [token, setToken] = useState('');
 
         const options = {
                 method: 'GET',
@@ -26,8 +24,6 @@ function App() {
                         .catch((erreur) => `${erreur}`);
         }, [token]);
         console.log('token', token);
-
-        console.log('data', data);
 
         let affichage;
 
@@ -57,8 +53,8 @@ function App() {
         return (
                 <div>
                         <Navbar setToken={setToken} />
-                        <FormulaireAnimal />
-                        <FormulaireUser token={token} />
+                        {/*    <FormulaireAnimal />
+            <FormulaireUser token={token} /> */}
                         <div className='text-center'>{affichage}</div>;
                 </div>
         );
