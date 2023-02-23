@@ -1,12 +1,21 @@
 import { useState } from 'react';
+import CarnetSante from '../formulaire_animal/carnet_sante';
 import { FormulaireAnimal } from '../formulaire_animal/formulaire';
 import { FormulaireUser } from '../formulaire_user/formulaire_user';
-
 import Login from '../Login';
 import './navbar.css';
 export default function Navbar({ setToken }: any) {
+        const [fiche, setFiche] = useState('app');
+
         return (
                 <div className='container-fluid couleur shadow rounded-bottom mb-5'>
+                        <div className='text-end'>
+                                <Login
+                                        className='nav-link  text-light'
+                                        href='#'
+                                        setToken={setToken}
+                                />
+                        </div>
                         <div className='text-center'>
                                 <img
                                         src='logo.png'
@@ -40,13 +49,16 @@ export default function Navbar({ setToken }: any) {
                                         >
                                                 <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
                                                         <li className='nav-item'>
-                                                                <Login
-                                                                        className='nav-link  text-light'
-                                                                        href='#'
-                                                                        setToken={
-                                                                                setToken
+                                                                <a
+                                                                        className='nav-link  text-light couleur '
+                                                                        onClick={() =>
+                                                                                setFiche(
+                                                                                        'formulaire_user'
+                                                                                )
                                                                         }
-                                                                />
+                                                                >
+                                                                        Inscription
+                                                                </a>
                                                         </li>
                                                         <li className='nav-item'>
                                                                 <a
@@ -64,9 +76,6 @@ export default function Navbar({ setToken }: any) {
                                                                         role='button'
                                                                         data-bs-toggle='dropdown'
                                                                         aria-expanded='false'
-                                                                        defaultValue={
-                                                                                2
-                                                                        }
                                                                 >
                                                                         Mes
                                                                         animaux
@@ -74,8 +83,28 @@ export default function Navbar({ setToken }: any) {
                                                                 <ul className='dropdown-menu bg-warning'>
                                                                         <li>
                                                                                 <a
+                                                                                        className='dropdown-item'
+                                                                                        href='#'
+                                                                                        onClick={() =>
+                                                                                                setFiche(
+                                                                                                        'animal'
+                                                                                                )
+                                                                                        }
+                                                                                >
+                                                                                        Ajouter
+                                                                                        un
+                                                                                        animal
+                                                                                </a>
+                                                                        </li>
+                                                                        <li>
+                                                                                <a
                                                                                         className='dropdown-item '
                                                                                         href='#'
+                                                                                        onClick={() =>
+                                                                                                setFiche(
+                                                                                                        'carnetDeSante'
+                                                                                                )
+                                                                                        }
                                                                                 >
                                                                                         Carnet
                                                                                         de
@@ -90,7 +119,6 @@ export default function Navbar({ setToken }: any) {
                                                                                         Agenda
                                                                                 </a>
                                                                         </li>
-
                                                                         <li>
                                                                                 <a
                                                                                         className='dropdown-item'
@@ -119,6 +147,10 @@ export default function Navbar({ setToken }: any) {
                                         </div>
                                 </div>
                         </nav>
+
+                        {fiche === 'carnetDeSante' && <CarnetSante />}
+                        {fiche === 'formulaire_user' && <FormulaireUser />}
+                        {fiche === 'animal' && <FormulaireAnimal />}
                 </div>
         );
 }

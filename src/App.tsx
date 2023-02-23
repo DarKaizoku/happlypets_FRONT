@@ -1,33 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { FormulaireAnimal } from './components/formulaire_animal/formulaire';
 import './App.css';
-import Navbar from './components/navbar/navbar';
+import { FormulaireAnimal } from './components/formulaire_animal/formulaire';
 import { FormulaireUser } from './components/formulaire_user/formulaire_user';
+import Navbar from './components/navbar/navbar';
+
 import { TUser } from './types/user.type';
 
-const baseUrl = 'http://localhost:3000/users/users';
+const baseUrl = 'http://localhost:3000/animal';
 function App() {
         const [data, setData]: any = useState([]);
 
-        const [token, setToken] = useState<string>();
-
-        const options = {
-                method: 'GET',
-                headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                },
-        };
-
+        const [token, setToken] = useState();
         useEffect(() => {
-                fetch(baseUrl, options)
+                fetch(baseUrl)
                         .then((response) => response.json())
                         .then((donnee) => setData(donnee))
                         .catch((erreur) => `${erreur}`);
         }, [token]);
         console.log('token', token);
 
-        console.log('data', data);
+        console.log(token);
 
         let affichage;
 
