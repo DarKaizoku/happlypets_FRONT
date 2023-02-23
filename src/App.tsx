@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Navbar from './components/navbar/navbar';
+import Navbar from './Components/navbar/navbar';
 
 import { TUser } from './types/user.type';
 
