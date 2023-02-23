@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import CarnetId from '../formulaire_animal/carnet_sante';
 import { FormulaireAnimal } from '../formulaire_animal/formulaire';
+import { InputAnimal } from '../formulaire_animal/input_animal';
 import { FormulaireUser } from '../formulaire_user/formulaire_user';
 
 import Login from '../Login';

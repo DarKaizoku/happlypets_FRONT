@@ -4,7 +4,7 @@ import Navbar from './components/navbar/navbar';
 
 import { TUser } from './types/user.type';
 
-const baseUrl = 'http://localhost:3000/animal';
+const baseUrl = 'http://localhost:3000/users/users';
 function App() {
     const [data, setData]: any = useState([]);
 
