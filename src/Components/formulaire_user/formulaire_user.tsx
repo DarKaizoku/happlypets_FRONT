@@ -135,7 +135,7 @@ export function FormulaireUser({ token }: any) {
                                                                                         e
                                                                                 )
                                                                         }
-                                                                        className='btn btn couleur text-light'
+                                                                        className='btn bleu text-light btn-outline-primary'
                                                                         type='submit'
                                                                 >
                                                                         Enregistrer
