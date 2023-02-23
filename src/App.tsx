@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
-import { FormulaireAnimal } from './components/formulaire_animal/formulaire';
-import { FormulaireUser } from './components/formulaire_user/formulaire_user';
 import Navbar from './components/navbar/navbar';
 
 import { TUser } from './types/user.type';
@@ -49,8 +47,8 @@ function App() {
         return (
                 <div>
                         <Navbar setToken={setToken} />
-                        <FormulaireAnimal />
-                        <FormulaireUser token={token} />
+                        {/*    <FormulaireAnimal />
+            <FormulaireUser token={token} /> */}
                         <div className='text-center'>{affichage}</div>;
                 </div>
         );
