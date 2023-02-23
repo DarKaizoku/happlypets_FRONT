@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import CarnetId from './carnet_sante';
+import CarnetSante from './carnet_sante';
 import { Habitat } from './habitat';
 import { InputAnimal } from './input_animal';
-import './formulaire_animal.css';
 
 export function FormulaireAnimal() {
     const [fiche, setFiche] = useState('animal');
     return (
-        <div className="container-fluid" >
+        <div className="container-fluid">
             <div className="container card bg-warning mx-auto">
                 <div className="card-body">
                     <h5 className="card-title text-center">Nouvel Animal</h5>
@@ -138,7 +137,7 @@ export function FormulaireAnimal() {
                         .
                     </div>
                     {fiche === 'animal' && <InputAnimal></InputAnimal>}
-                    {fiche === 'carnetDeSante' && <CarnetId></CarnetId>}
+                    {fiche === 'carnetDeSante' && <CarnetSante></CarnetSante>}
                     {fiche === 'habitat' && <Habitat></Habitat>}
                     <div className="col-12 mt-3">
                         <div className="form-check">
