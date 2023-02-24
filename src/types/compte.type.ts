@@ -9,5 +9,5 @@ export type TCompte = {
     ville: string;
     codepostal: string;
     departement: string;
-    animal: Animal[] | undefined;
+    animal: Animal[] | null;
 };

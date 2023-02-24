@@ -53,8 +53,8 @@ function App() {
     }
     return (
         <div>
-            <Navbar setToken={setToken} />
-            <Compte_users setToken={setToken} />
+            <Navbar setToken={setToken} token={token} />
+            <Compte_users token={token} />
             {/*     <FormulaireAnimal />
             <FormulaireUser token={token} /> */}
             <div className="text-center">{affichage}</div>;

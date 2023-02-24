@@ -91,6 +91,7 @@ export function InputUser({ user, setUser }: any) {
                         id="validationCustomPassword"
                         required
                     />
+
                     <div className="invalid-feedback">
                         Renseignez un mot de passe correct, svp.
                     </div>
