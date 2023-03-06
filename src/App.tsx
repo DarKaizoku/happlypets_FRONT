@@ -4,7 +4,7 @@ import Login from './components/Login';
 import Navbar from './components/navbar/navbar';
 import { TUser } from './types/user.type';
 
-const baseUrl = 'http://localhost:3000/users/users';
+const baseUrl = 'http://localhost:8000/users/users';
 function App() {
         const [data, setData]: any = useState([]);
 

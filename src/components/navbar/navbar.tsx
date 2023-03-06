@@ -19,10 +19,14 @@ export default function Navbar({ setToken }: any) {
                                         />
                                 </div>
                                 <div className='text-center'>
-                                        <form action='http://localhost:3001'>
+                                        <form /* action='http://localhost:3001' */
+                                        >
                                                 <button
                                                         className='bleu border-0'
-                                                        type='submit'
+                                                        type='reset'
+                                                        onClick={() =>
+                                                                window.location.reload()
+                                                        }
                                                 >
                                                         <img
                                                                 src='logo.png'
