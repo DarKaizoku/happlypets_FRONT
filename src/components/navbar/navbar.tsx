@@ -19,11 +19,20 @@ export default function Navbar({ setToken }: any) {
                                         />
                                 </div>
                                 <div className='text-center'>
-                                        <img
-                                                src='logo.png'
-                                                style={{ height: 120 }}
-                                                alt='logo'
-                                        />
+                                        <form action='http://localhost:3001'>
+                                                <button
+                                                        className='bleu border-0'
+                                                        type='submit'
+                                                >
+                                                        <img
+                                                                src='logo.png'
+                                                                style={{
+                                                                        height: 120,
+                                                                }}
+                                                                alt='logo'
+                                                        />
+                                                </button>
+                                        </form>
                                 </div>
                                 <div className='d-none d-lg-block text-light text-center fs-5 mt-3'>
                                         <p>

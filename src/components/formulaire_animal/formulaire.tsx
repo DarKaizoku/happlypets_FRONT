@@ -7,10 +7,10 @@ export function FormulaireAnimal() {
   const [fiche, setFiche] = useState("animal");
 
   const [selectedFile, setSelectedFile] = useState();
-  const [preview, setPreview] = useState<string>("/logo.png");
+  const [preview, setPreview] = useState<string>("/reindeer.png");
   useEffect(() => {
     if (!selectedFile) {
-      setPreview("/logo.png");
+      setPreview("/reindeer.png");
       return;
     }
 
@@ -31,7 +31,7 @@ export function FormulaireAnimal() {
 
   return (
     <div className="container-fluid">
-      <div className="container-fluid card bg-warning mx-auto">
+      <div className="container card bg-warning mx-auto">
         <div className="card-body">
           <h5 className="card-title text-center fs-2 mb-4">Nouvel Animal</h5>
           {/* Ajouter une photo avec le brosser */}
@@ -40,7 +40,7 @@ export function FormulaireAnimal() {
               <img
                 src={preview}
                 alt="example placeholder"
-                className="img-thumbnail"
+                className="img-thumbnail bleu"
                 style={{ height: 200, width: 200, borderRadius: 100 }}
               />
             </div>

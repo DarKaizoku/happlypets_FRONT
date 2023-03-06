@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import Login from './components/Login';
 import Navbar from './components/navbar/navbar';
 import { TUser } from './types/user.type';
 
@@ -23,6 +24,7 @@ function App() {
                         .then((donnee) => setData(donnee))
                         .catch((erreur) => `${erreur}`);
         }, [token]);
+
         console.log('token', token);
 
         let affichage;
@@ -57,7 +59,8 @@ function App() {
                 <div>
                         <Navbar setToken={setToken} />
                         {/*    <FormulaireAnimal />
-            <FormulaireUser token={token} /> */}
+            <FormulaireUser token={token} /> 
+                        <Login data={data.animal}></Login>*/}
                         <div className='text-center'>{affichage}</div>;
                 </div>
         );
