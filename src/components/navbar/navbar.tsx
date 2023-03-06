@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import Compte_users from '../compte_user/compte_user';
 import CarnetSante from '../formulaire_animal/carnet_sante';
 import { FormulaireAnimal } from '../formulaire_animal/formulaire';
 import { FormulaireUser } from '../formulaire_user/formulaire_user';
 
 import Login from '../Login';
 import './navbar.css';
-export default function Navbar({ setToken }: any) {
+export default function Navbar({ setToken, token }: any) {
         const [fiche, setFiche] = useState('');
 
         return (
@@ -78,6 +79,11 @@ export default function Navbar({ setToken }: any) {
                                                                         <a
                                                                                 className='nav-link  text-light'
                                                                                 href='#'
+                                                                                onClick={() =>
+                                                                                        setFiche(
+                                                                                                'compte_user'
+                                                                                        )
+                                                                                }
                                                                         >
                                                                                 Mon
                                                                                 Compte
@@ -160,9 +166,10 @@ export default function Navbar({ setToken }: any) {
                         </form> */}
                                                 </div>
                                         </div>
-                                </nav>{' '}
+                                </nav>
                         </div>
                         {fiche === 'carnetDeSante' && <CarnetSante />}
+                        {fiche === 'users' && <Compte_users token={token} />}
                         {fiche === 'formulaire_user' && <FormulaireUser />}
                         {fiche === 'animal' && <FormulaireAnimal />}
                 </div>

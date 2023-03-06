@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Login from './components/Login';
+import Compte_users from './components/compte_user/compte_user';
 import Navbar from './components/navbar/navbar';
 import { TUser } from './types/user.type';
 
@@ -24,7 +24,6 @@ function App() {
                         .then((donnee) => setData(donnee))
                         .catch((erreur) => `${erreur}`);
         }, [token]);
-
         console.log('token', token);
 
         let affichage;
@@ -46,21 +45,18 @@ function App() {
                                 <br />
                                 departement : {data.departement}
                                 <br />
+                                animal :
                                 <br />
-                                {data.animal?.map((data, i) => (
-                                        <div key={i}>{data.nom}</div>
-                                ))}
                                 <br />
                         </div>
                 ));
         }
-
         return (
                 <div>
-                        <Navbar setToken={setToken} />
-                        {/*    <FormulaireAnimal />
-            <FormulaireUser token={token} /> 
-                        <Login data={data.animal}></Login>*/}
+                        <Navbar setToken={setToken} token={token} />
+                        <Compte_users token={token} />
+                        {/*     <FormulaireAnimal />
+            <FormulaireUser token={token} /> */}
                         <div className='text-center'>{affichage}</div>;
                 </div>
         );
