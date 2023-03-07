@@ -1,9 +1,24 @@
-export default function CarnetSante() {
+export default function CarnetSante({ compte }: any) {
     return (
         <div className="container-fluid">
             <div className="container bg-warning mx-auto mb-3 rounded">
                 <form className="row g-3 needs-validation" noValidate>
                     <div className="col-md-4">
+                        <label
+                            htmlFor="validationCustom01"
+                            className="form-label"
+                        >
+                            Animal concerné
+                        </label>
+                        <select
+                            className="form-select"
+                            id="validationCustom04"
+                            required
+                        >
+                            <option defaultValue="choix">Choix...</option>
+                            <option value="oui">{compte}</option>
+                            <option value="non">non</option>
+                        </select>
                         <label
                             htmlFor="validationCustom01"
                             className="form-label"
