@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/happlypets_FRONT/static/css/main.1447ff8d.css",
+    "main.js": "/happlypets_FRONT/static/js/main.329f4840.js",
+    "static/js/787.126433ad.chunk.js": "/happlypets_FRONT/static/js/787.126433ad.chunk.js",
+    "static/media/bg-navbar.png": "/happlypets_FRONT/static/media/bg-navbar.4e617bff94931435d98a.png",
+    "index.html": "/happlypets_FRONT/index.html",
+    "main.1447ff8d.css.map": "/happlypets_FRONT/static/css/main.1447ff8d.css.map",
+    "main.329f4840.js.map": "/happlypets_FRONT/static/js/main.329f4840.js.map",
+    "787.126433ad.chunk.js.map": "/happlypets_FRONT/static/js/787.126433ad.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1447ff8d.css",
+    "static/js/main.329f4840.js"
+  ]
+}
