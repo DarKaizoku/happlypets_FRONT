@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Animal } from '../../types/animal.type';
 import { TCompte } from '../../types/compte.type';
-const urlUser = 'http://localhost:3000/users/profil';
+const urlUser = 'http://localhost:8000/users/profil';
 export default function Compte_users({ token }: any) {
     const [compte, setCompte]: any = useState([]);
     const [preview, setPreview] = useState<string>('/reindeer.png');

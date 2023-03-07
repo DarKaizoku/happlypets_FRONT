@@ -137,7 +137,7 @@ export default function Navbar({ setToken, token }: any) {
                                 >
                                     Search
                                 </button>
-                            </form> */}
+                            </form> */}{' '}
                         </div>
                     </div>
                 </nav>
