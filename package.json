@@ -1,7 +1,7 @@
 {
   "name": "happlypets_front",
   "version": "0.1.0",
-  "homepage": "https://DarKaizoku.github.io/happlypets_FRONT",
+ 
   "private": true,
   "dependencies": {
     "@fullcalendar/core": "^6.1.4",
