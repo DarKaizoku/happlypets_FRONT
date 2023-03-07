@@ -25,8 +25,10 @@ function App() {
             .catch((erreur) => `${erreur}`);
     }, [token]);
     console.log('token', token);
-
     let affichage;
+    if (token === undefined) {
+        alert('pas de compte avec ces identifiant');
+    }
 
     if (data[0]) {
         affichage = data.map((data: TUser, i: number) => (
@@ -51,6 +53,7 @@ function App() {
             </div>
         ));
     }
+
     return (
         <div>
             <Navbar setToken={setToken} token={token} />

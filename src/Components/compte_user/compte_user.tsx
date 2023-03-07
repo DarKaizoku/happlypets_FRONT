@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { TCompte } from '../../types/compte.type';
 import './compte_user.css';
+import { DeleteUser } from './Delete_user';
+
 const urlUser = 'http://localhost:8000/users/profil';
 export default function Compte_users({ token }: any) {
     const [compte, setCompte]: any = useState([]);
@@ -18,7 +20,6 @@ export default function Compte_users({ token }: any) {
             .then((donnee) => setCompte(donnee))
             .catch((erreur) => `${erreur}`);
     }, [token]);
-    console.log(compte[0]);
 
     let affichageAnimal;
     let affichageUser;
@@ -51,15 +52,15 @@ export default function Compte_users({ token }: any) {
                             </div>
                             <div>Département : {data.departement}</div>{' '}
                             <div className="mt-3 p-2 row">
+                                <DeleteUser
+                                    className="  col-4 text-light"
+                                    href="#"
+                                    token={token}
+                                />
+
                                 <button
                                     type="button"
-                                    className="btn btn couleur btn-sm me-3 border border-primary col-6"
-                                >
-                                    Supprimer
-                                </button>
-                                <button
-                                    type="button"
-                                    className="btn btn couleur  btn-sm me-3 border border-primary col-4"
+                                    className="btn btn couleur  btn-sm me-3 border border-primary col-"
                                 >
                                     Modifier
                                 </button>
@@ -105,7 +106,6 @@ export default function Compte_users({ token }: any) {
             </div>
         ));
     }
-    console.log(affichageUser);
 
     return (
         <div className="container-fluid">
