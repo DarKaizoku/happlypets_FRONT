@@ -27,7 +27,7 @@ export default function Compte_users({ token }: any) {
             <div className="container-fluid text-center">
                 <div className="container">
                     <div className="row ">
-                        <div className="col-2 bg-warning rounded">
+                        <div className="col-sm-12 col-lg-2 bg-warning rounded">
                             <div className="">
                                 <img
                                     src={preview}
@@ -52,11 +52,11 @@ export default function Compte_users({ token }: any) {
                             <div>Département : {data.departement}</div>
                         </div>
 
-                        <div className="container col-9 ">
+                        <div className="container col-sm-12 col-lg-9 ">
                             <div>
                                 {data.animal?.map((data) => (
                                     <div key={i}>
-                                        <div className="bg-warning rounded-pill mt-2">
+                                        <div className="bg-warning sm rounded lg rounded-pill mt-2">
                                             <strong>nom : </strong>
                                             {data.nom}
                                             {'   '}
