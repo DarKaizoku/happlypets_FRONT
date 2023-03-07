@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
+import { Animal } from '../../types/animal.type';
 import { TCompte } from '../../types/compte.type';
 const urlUser = 'http://localhost:3000/users/profil';
 export default function Compte_users({ token }: any) {
     const [compte, setCompte]: any = useState([]);
-
+    const [preview, setPreview] = useState<string>('/reindeer.png');
     const options = {
         method: 'GET',
         headers: {
@@ -17,55 +18,85 @@ export default function Compte_users({ token }: any) {
             .then((donnee) => setCompte(donnee))
             .catch((erreur) => `${erreur}`);
     }, [token]);
+    console.log(compte[0]);
 
+    let affichageAnimal;
     let affichageUser;
     if (compte[0]) {
         affichageUser = compte.map((data: TCompte, i: number) => (
-            <div key={i} className="row align-items-center">
-                <div className="col-2 rounded bg-warning">
-                    nom : {data.nom}
-                    <br />
-                    prénom : {data.prenom}
-                    <br />
-                    pseudo : {data.pseudo}
-                    <br />
-                    adresse : {data.adresse}
-                    <br />
-                    code postal : {data.codepostal}
-                    <br />
-                    ville : {data.ville}
-                    <br />
-                    departement : {data.departement}
-                </div>
-                <div className="col-8  ms-5 badge text-center text-dark rounded bg-warning">
-                    {data.animal?.map((data) => (
-                        <div>
-                            <div className="fs-6">
-                                nom :{data.nom}
-                                {'\n'}
-                                espèce :{data.espece}
-                                {'\n'}
-                                race :{data.race}
-                                {'\n'}
-                                genre :{data.genre}
-                                {'\n'}
-                                date de naissance :{data.date_de_naissance}
-                                {'\n'}
-                                habitat : {data.habitat}
+            <div className="container-fluid text-center">
+                <div className="container">
+                    <div className="row ">
+                        <div className="col-2 bg-warning rounded">
+                            <div className="">
+                                <img
+                                    src={preview}
+                                    alt="example placeholder"
+                                    className="img-thumbnail bleu"
+                                    style={{
+                                        height: 150,
+                                        width: 150,
+                                        borderRadius: 100,
+                                    }}
+                                />
+                            </div>
+                            <div>Pseudo : {data.pseudo}</div>
+                            <div>Nom : {data.nom}</div>
+                            <div>Prénom : {data.prenom}</div>
+                            <div>Adresse : {data.adresse}</div>
+                            <div>
+                                Code Postal : {data.codepostal}
+                                <br />
+                                Ville : {data.ville}
+                            </div>
+                            <div>Département : {data.departement}</div>
+                        </div>
+
+                        <div className="container col-9 ">
+                            <div>
+                                {data.animal?.map((data) => (
+                                    <div key={i}>
+                                        <div className="bg-warning rounded-pill mt-2">
+                                            <strong>nom : </strong>
+                                            {data.nom}
+                                            {'   '}
+                                            <strong>race : </strong> {data.race}
+                                            {'   '}
+                                            <strong>espèce : </strong>
+                                            {'   '}
+                                            {data.espece}
+                                            {'   '}
+                                            <strong> genre : </strong>
+                                            {'   '}
+                                            {data.genre}
+                                            {'   '}
+                                            <strong>date de naissance :</strong>
+                                            {'   '}
+                                            {data.date_de_naissance}
+                                            {'   '}
+                                            <strong>habitat :</strong>
+                                            {'   '}
+                                            {data.habitat}
+                                            {'   '}
+                                            <strong> carnet de sante :</strong>
+                                            {'   '}
+                                            {data.carnetDeSante}
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                    ))}
-
-                    <br />
-                    <br />
+                    </div>
                 </div>
             </div>
         ));
     }
+    console.log(affichageUser);
 
     return (
         <div className="container-fluid">
             <div className="container ">{affichageUser}</div>
+            <div className="container ">{affichageAnimal}</div>
         </div>
     );
 }

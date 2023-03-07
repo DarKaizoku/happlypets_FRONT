@@ -12,21 +12,10 @@ export default function Navbar({ setToken, token }: any) {
     return (
         <div>
             <div className="container-fluid couleur shadow rounded-bottom mb-5">
-                <div className="text-end">
-                    <Login
-                        className="nav-link  text-light"
-                        href="#"
-                        setToken={setToken}
-                    />
-                </div>
-                <div className="text-center">
+                <div className="text-center ">
                     <form action="http://localhost:3001">
                         <button className="bleu border-0" type="submit">
-                            <img
-                                src="logo.png"
-                                style={{ height: 120 }}
-                                alt="logo"
-                            />
+                            <img src="logo1.png" alt="logo" />
                         </button>
                     </form>
                 </div>
@@ -36,8 +25,9 @@ export default function Navbar({ setToken, token }: any) {
                         PETS
                     </p>
                 </div>
+
                 <nav className="navbar navbar-expand-lg couleur">
-                    <div className="container-fluid">
+                    <div className="container-fluid ">
                         <button
                             className="navbar-toggler"
                             type="button"
@@ -47,8 +37,9 @@ export default function Navbar({ setToken, token }: any) {
                             aria-expanded="false"
                             aria-label="Toggle navigation"
                         >
-                            <span className="navbar-toggler-icon"></span>
+                            <span className="navbar-toggler-icon"></span>{' '}
                         </button>
+
                         <div
                             className="collapse navbar-collapse"
                             id="navbarSupportedContent"
@@ -56,7 +47,8 @@ export default function Navbar({ setToken, token }: any) {
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item ">
                                     <a
-                                        className="nav-link  text-light couleur "
+                                        className="nav-link  text-light couleur ms-2"
+                                        href="#"
                                         onClick={() =>
                                             setFiche('formulaire_user')
                                         }
@@ -64,16 +56,16 @@ export default function Navbar({ setToken, token }: any) {
                                         Inscription
                                     </a>
                                 </li>
-                                <li className="nav-item">
+                                <li className="nav-item ms-3">
                                     <a
                                         className="nav-link  text-light"
                                         href="#"
-                                        onClick={() => setFiche('compte_user')}
+                                        onClick={() => setFiche('compte')}
                                     >
                                         Mon Compte
                                     </a>
                                 </li>
-                                <li className="nav-item dropdown">
+                                <li className="nav-item dropdown ms-3">
                                     <a
                                         className="nav-link dropdown-toggle text-light"
                                         href="#"
@@ -123,22 +115,29 @@ export default function Navbar({ setToken, token }: any) {
                                             </a>
                                         </li>
                                     </ul>
-                                </li>
-                            </ul>
-                            {/*    <form className="d-flex" role="search">
-                            <input
-                                className="form-control me-2"
-                                type="search"
-                                placeholder="Search"
-                                aria-label="Search"
-                            />
-                            <button
-                                className="btn btn-outline-success"
-                                type="submit"
-                            >
-                                Search
-                            </button>
-                        </form> */}
+                                </li>{' '}
+                            </ul>{' '}
+                            <div className="me-5">
+                                <Login
+                                    className="nav-link  text-light"
+                                    href="#"
+                                    setToken={setToken}
+                                />
+                            </div>
+                            {/*     <form className="d-flex" role="search">
+                                <input
+                                    className="form-control me-2"
+                                    type="search"
+                                    placeholder="Search"
+                                    aria-label="Search"
+                                />
+                                <button
+                                    className="btn btn-outline-success"
+                                    type="submit"
+                                >
+                                    Search
+                                </button>
+                            </form> */}
                         </div>
                     </div>
                 </nav>

@@ -24,7 +24,11 @@ export function FormulaireUser() {
         e.preventDefault();
 
         if (user.password !== user.passwordConfirmed) {
-            return alert('Merci de vérifier votre mot de passe !!');
+            return (
+                <div className="alert alert-primary" role="alert">
+                    alert('Merci de vérifier votre mot de passe !!')
+                </div>
+            );
         }
         async function fetchData() {
             const response = await fetch(urlAddUser, {
