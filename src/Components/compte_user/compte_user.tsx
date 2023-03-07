@@ -4,7 +4,7 @@ import { TCompte } from '../../types/compte.type';
 const urlUser = 'http://localhost:8000/users/profil';
 export default function Compte_users({ token }: any) {
         const [compte, setCompte]: any = useState([]);
-        const [preview, setPreview] = useState<string>('/reindeer.png');
+        const [preview, setPreview] = useState<string>('reindeer.png');
         const options = {
                 method: 'GET',
                 headers: {
@@ -30,9 +30,7 @@ export default function Compte_users({ token }: any) {
                                                 <div className='col-sm-12 col-lg-2 bg-warning rounded'>
                                                         <div className=''>
                                                                 <img
-                                                                        src={
-                                                                                preview
-                                                                        }
+                                                                        src='logo.png'
                                                                         alt='example placeholder'
                                                                         className='img-thumbnail bleu'
                                                                         style={{

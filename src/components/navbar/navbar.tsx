@@ -23,7 +23,7 @@ export default function Navbar({ setToken, token }: any) {
                                                         }
                                                 >
                                                         <img
-                                                                src='logo1.png'
+                                                                src='../logo1.png'
                                                                 alt='logo'
                                                         />
                                                 </button>
