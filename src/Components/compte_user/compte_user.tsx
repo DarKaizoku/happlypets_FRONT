@@ -75,6 +75,9 @@ export default function Compte_users({ token, setPage, setUser }: any) {
 
                         <div className="container col-sm-12 col-lg-9 ">
                             <div>
+                                <p className="text-start text-light">
+                                    Mes animaux
+                                </p>
                                 {data.animal?.map((data) => (
                                     <div key={i}>
                                         <div className="bg-warning sm rounded lg rounded mt-2">
@@ -106,6 +109,9 @@ export default function Compte_users({ token, setPage, setUser }: any) {
                                     </div>
                                 ))}
                             </div>
+                            <p className="text-start text-light">
+                                Mon calendrier
+                            </p>
                         </div>
                     </div>
                 </div>
