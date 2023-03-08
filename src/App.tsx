@@ -5,6 +5,7 @@ import { DataUsertoUpdate } from './components/compte_user/dataUsertoUpdate';
 import CarnetSante from './components/formulaire_animal/carnet_sante';
 import { FormulaireAnimal } from './components/formulaire_animal/formulaire';
 import { FormulaireUser } from './components/formulaire_user/formulaire_user';
+import Login from './components/Login';
 import Navbar from './components/navbar/navbar';
 
 import { TUser } from './types/user.type';
@@ -59,6 +60,7 @@ function App() {
 			</div>
 		));
 	}
+
 	return (
 		<div>
 			<Navbar
@@ -88,16 +90,20 @@ function App() {
 					className='container mx-auto alert alert-warning m-auto alert-dismissible fade show'
 					role='alert'
 				>
-					<strong>ERRREUR!</strong> Compte
+					<strong>ERREUR!</strong> Compte
 					inexistant !?!
 					<button
 						type='button'
 						className='btn-close'
 						data-bs-dismiss='alert'
 						aria-label='Close'
+						onClick={(e) =>
+							setPage('login')
+						}
 					></button>
 				</div>
 			)}
+			{page === 'login' && <Login />}
 			{/*     <FormulaireAnimal />
             <FormulaireUser token={token} /> 
                         <div className='text-center'>{affichage}</div>;*/}
