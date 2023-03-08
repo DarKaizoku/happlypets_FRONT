@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { TCompte } from '../../types/compte.type';
 import { UpdateUser } from './update_user';
 import './compte_user.css';
+import { DeleteUser } from './Delete_user';
+
 const urlUser = 'http://localhost:8000/users/profil';
 export default function Compte_users({ token, setPage, setUser }: any) {
         const [compte, setCompte]: any = useState([]);
@@ -78,12 +80,13 @@ export default function Compte_users({ token, setPage, setUser }: any) {
                                                                 }
                                                         </div>{' '}
                                                         <div className='mt-3 p-2 row'>
-                                                                <button
-                                                                        type='button'
-                                                                        className='btn btn couleur btn-sm me-3 border border-primary col-6'
-                                                                >
-                                                                        Supprimer
-                                                                </button>
+                                                                <DeleteUser
+                                                                        className='  col-4 text-light'
+                                                                        href='#'
+                                                                        token={
+                                                                                token
+                                                                        }
+                                                                />
 
                                                                 <UpdateUser
                                                                         token={
