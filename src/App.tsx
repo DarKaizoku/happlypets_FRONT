@@ -28,7 +28,6 @@ function App() {
         }, [token]);
         console.log('token', token);
 
-<<<<<<< HEAD
         let affichage;
 
         if (data[0]) {
@@ -70,49 +69,6 @@ function App() {
                                 />
                         )}
                         {/*     <FormulaireAnimal />
-=======
-    useEffect(() => {
-        fetch(baseUrl, options)
-            .then((response) => response.json())
-            .then((donnee) => setData(donnee))
-            .catch((erreur) => `${erreur}`);
-    }, [token]);
-    console.log('token', token);
-    let affichage;
-    if (token === undefined) {
-        alert('pas de compte avec ces identifiant');
-    }
-
-    if (data[0]) {
-        affichage = data.map((data: TUser, i: number) => (
-            <div key={i}>
-                nom : {data.nom}
-                <br />
-                prénom : {data.prenom}
-                <br />
-                pseudo : {data.pseudo}
-                <br />
-                adresse : {data.adresse}
-                <br />
-                code postal : {data.codepostal}
-                <br />
-                ville : {data.ville}
-                <br />
-                departement : {data.departement}
-                <br />
-                animal :
-                <br />
-                <br />
-            </div>
-        ));
-    }
-
-    return (
-        <div>
-            <Navbar setToken={setToken} token={token} />
-            <Compte_users token={token} />
-            {/*     <FormulaireAnimal />
->>>>>>> 0f464af12238ddeb5ea89d2a13d07bc19c4a982d
             <FormulaireUser token={token} /> */}
                         <div className='text-center'>{affichage}</div>;
                 </div>
