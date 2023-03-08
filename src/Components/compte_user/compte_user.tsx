@@ -81,30 +81,12 @@ export default function Compte_users({ token, setPage, setUser }: any) {
                                 {data.animal?.map((data) => (
                                     <div key={i}>
                                         <div className="bg-warning sm rounded lg rounded mt-2">
-                                            <strong>nom : </strong>
-                                            {data.nom}
-                                            {'   '}
-                                            <strong>race : </strong> {data.race}
-                                            {'   '}
-                                            <strong>espèce : </strong>
-                                            {'   '}
-                                            {data.espece}
-                                            {'   '}
-                                            <strong> genre : </strong>
-                                            {'   '}
-                                            {data.genre}
-                                            {'   '}
-                                            <strong>date de naissance :</strong>
-                                            {'   '}
-                                            {data.date_de_naissance}
-                                            {'   '}
-                                            <strong>habitat :</strong>
-                                            {'   '}
-                                            {data.habitat}
-                                            {'   '}
-                                            <strong> carnet de sante :</strong>
-                                            {'   '}
-                                            {data.carnetDeSante}
+                                            <p>
+                                                {`nom :   ${data.nom}  
+                                        espèce :  ${data.espece}
+                                         genre :   ${data.genre}
+                                         date de naissance :    ${data.date_de_naissance}`}
+                                            </p>
                                         </div>
                                     </div>
                                 ))}
