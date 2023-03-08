@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Compte_users from './components/compte_user/compte_user';
 import { DataUsertoUpdate } from './components/compte_user/dataUsertoUpdate';
+import CarnetSante from './components/formulaire_animal/carnet_sante';
+import { FormulaireAnimal } from './components/formulaire_animal/formulaire';
+import { FormulaireUser } from './components/formulaire_user/formulaire_user';
 import Navbar from './components/navbar/navbar';
 
 import { TUser } from './types/user.type';
@@ -10,7 +13,9 @@ const baseUrl = 'http://localhost:8000/users/users';
 function App() {
     const [data, setData]: any = useState([]);
     const [dataUser, setDataUser]: any = useState();
+
     const [page, setPage]: any = useState('');
+
     const [token, setToken] = useState('');
 
     const options = {
@@ -56,12 +61,14 @@ function App() {
     }
     return (
         <div>
-            <Navbar setToken={setToken} token={token} />
-            <Compte_users
-                token={token}
-                setPage={setPage}
-                setUser={setDataUser}
-            />
+            <Navbar setToken={setToken} token={token} setPage={setPage} />
+            {page === 'compte' && (
+                <Compte_users
+                    token={token}
+                    setPage={setPage}
+                    setUser={setDataUser}
+                />
+            )}
             {page === 'update' && (
                 <DataUsertoUpdate
                     token={token}
@@ -69,9 +76,27 @@ function App() {
                     updateUser={setDataUser}
                 />
             )}
+            {page === 'carnetDeSante' && <CarnetSante />}
+            {page === 'formulaire_user' && <FormulaireUser />}
+            {page === 'animal' && <FormulaireAnimal />}
+            {page === 'erreur401' && (
+                <div
+                    className="alert alert-warning alert-dismissible fade show"
+                    role="alert"
+                >
+                    <strong>Holy guacamole!</strong> You should check in on some
+                    of those fields below.
+                    <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Close"
+                    ></button>
+                </div>
+            )}
             {/*     <FormulaireAnimal />
-            <FormulaireUser token={token} /> */}
-            <div className="text-center">{affichage}</div>;
+            <FormulaireUser token={token} /> 
+                        <div className='text-center'>{affichage}</div>;*/}
         </div>
     );
 }

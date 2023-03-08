@@ -64,9 +64,9 @@ export function DeleteUser({ token }: any) {
         <button
             onClick={(e) => delett(e)}
             type="button"
-            className="btn btn couleur  btn-sm me-3 border border-primary col-6"
+            className="btn couleur  btn-sm me-3 border border-primary col-6"
         >
-            supprimer
+            Supprimer
         </button>
     );
 }
