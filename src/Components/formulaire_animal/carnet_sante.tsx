@@ -48,6 +48,17 @@ export default function CarnetSante({ compte }: any) {
                             className="form-control"
                             id="validationCustom02"
                             placeholder="Kg..."
+                        />{' '}
+                        <label
+                            htmlFor="validationCustom05"
+                            className="form-label"
+                        >
+                            Date de rappel
+                        </label>
+                        <input
+                            type="date"
+                            className="form-control"
+                            id="validationCustom05"
                         />
                         <div className="valid-feedback">Looks good!</div>
                     </div>
@@ -71,20 +82,6 @@ export default function CarnetSante({ compte }: any) {
                         <div className="invalid-feedback">
                             Selectionner la valeur.
                         </div>
-                    </div>
-
-                    <div className="col-md-4">
-                        <label
-                            htmlFor="validationCustom05"
-                            className="form-label"
-                        >
-                            Date de rappel
-                        </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="validationCustom05"
-                        />
                     </div>
                 </form>
             </div>
