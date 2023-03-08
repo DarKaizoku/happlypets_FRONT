@@ -4,14 +4,12 @@ export function UpdateUser({ token, user, updateUser, setPage }: any) {
     };
 
     return (
-        <div>
-            <button
-                className="btn couleur btn-sm me-3 border border-primary col-6"
-                onClick={(e) => eraser(e)}
-                type="button"
-            >
-                Modifier
-            </button>
-        </div>
+        <button
+            className="btn couleur btn-sm me-3 border border-primary text-light col"
+            onClick={(e) => eraser(e)}
+            type="button"
+        >
+            Modifier
+        </button>
     );
 }
