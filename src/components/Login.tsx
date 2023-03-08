@@ -30,7 +30,7 @@ export default function Login({ setToken, setPage }: any) {
 
 			const responseJson = await response.json();
 			if (responseJson.statusCode === 401) {
-				return alert(responseJson.message);
+				return setPage('erreur401');
 			}
 			setToken(responseJson.access_token);
 			setPage('compte');
