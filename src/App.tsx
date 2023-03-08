@@ -11,32 +11,31 @@ import { TUser } from './types/user.type';
 
 const baseUrl = 'http://localhost:8000/users/users';
 function App() {
-	const [data, setData]: any = useState([]);
-	const [dataUser, setDataUser]: any = useState();
+    const [data, setData]: any = useState([]);
+    const [dataUser, setDataUser]: any = useState();
 
-	const [page, setPage]: any = useState('');
+    const [page, setPage]: any = useState('');
 
-	const [token, setToken] = useState('');
+    const [token, setToken] = useState('');
 
-	const options = {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: `Bearer ${token}`,
-		},
-	};
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+    };
 
-	useEffect(() => {
-		fetch(baseUrl, options)
-			.then((response) => response.json())
-			.then((donnee) => setData(donnee))
-			.catch((erreur) => `${erreur}`);
-	}, [token]);
-	console.log('token', token);
+    useEffect(() => {
+        fetch(baseUrl, options)
+            .then((response) => response.json())
+            .then((donnee) => setData(donnee))
+            .catch((erreur) => `${erreur}`);
+    }, [token]);
+    console.log('token', token);
 
-	let affichage;
+    let affichage;
 
-<<<<<<< HEAD
     if (data[0]) {
         affichage = data.map((data: TUser, i: number) => (
             <div key={i}>
@@ -82,11 +81,10 @@ function App() {
             {page === 'animal' && <FormulaireAnimal />}
             {page === 'erreur401' && (
                 <div
-                    className="container alert alert-warning  alert-dismissible  fade show mx-auto"
+                    className="container mx-auto alert alert-warning m-auto alert-dismissible fade show"
                     role="alert"
                 >
-                    <strong>Holy guacamole!</strong> You should check in on some
-                    of those fields below.
+                    <strong>ERRREUR!</strong> Compte inexistant !?!
                     <button
                         type="button"
                         className="btn-close"
@@ -96,75 +94,10 @@ function App() {
                 </div>
             )}
             {/*     <FormulaireAnimal />
-=======
-	if (data[0]) {
-		affichage = data.map((data: TUser, i: number) => (
-			<div key={i}>
-				nom : {data.nom}
-				<br />
-				prénom : {data.prenom}
-				<br />
-				pseudo : {data.pseudo}
-				<br />
-				adresse : {data.adresse}
-				<br />
-				code postal : {data.codepostal}
-				<br />
-				ville : {data.ville}
-				<br />
-				departement : {data.departement}
-				<br />
-				animal :
-				<br />
-				<br />
-			</div>
-		));
-	}
-	return (
-		<div>
-			<Navbar
-				setToken={setToken}
-				token={token}
-				setPage={setPage}
-			/>
-			{page === 'compte' && (
-				<Compte_users
-					token={token}
-					setPage={setPage}
-					setUser={setDataUser}
-				/>
-			)}
-			{page === 'update' && (
-				<DataUsertoUpdate
-					token={token}
-					user={dataUser}
-					updateUser={setDataUser}
-				/>
-			)}
-			{page === 'carnetDeSante' && <CarnetSante />}
-			{page === 'formulaire_user' && <FormulaireUser />}
-			{page === 'animal' && <FormulaireAnimal />}
-			{page === 'erreur401' && (
-				<div
-					className='container mx-auto alert alert-warning m-auto alert-dismissible fade show'
-					role='alert'
-				>
-					<strong>ERRREUR!</strong> Compte
-					inexistant !?!
-					<button
-						type='button'
-						className='btn-close'
-						data-bs-dismiss='alert'
-						aria-label='Close'
-					></button>
-				</div>
-			)}
-			{/*     <FormulaireAnimal />
->>>>>>> 7072e6fe2842715f0d7a3a9514f76bb6a35c674c
             <FormulaireUser token={token} /> 
                         <div className='text-center'>{affichage}</div>;*/}
-		</div>
-	);
+        </div>
+    );
 }
 
 export default App;
