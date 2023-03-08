@@ -228,7 +228,6 @@ export function InputUser({ user, setUser }: any) {
                                                 correct, svp.
                                         </div>
                                 </div>
-                                <input /* className='d-none' */ type='submit' />
                         </form>
                 </div>
         );
