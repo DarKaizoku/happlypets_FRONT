@@ -81,7 +81,7 @@ function App() {
             {page === 'animal' && <FormulaireAnimal />}
             {page === 'erreur401' && (
                 <div
-                    className="alert alert-warning alert-dismissible fade show"
+                    className="container alert alert-warning  alert-dismissible  fade show mx-auto"
                     role="alert"
                 >
                     <strong>Holy guacamole!</strong> You should check in on some

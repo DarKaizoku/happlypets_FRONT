@@ -56,15 +56,15 @@ export default function Compte_users({ token, setPage, setUser }: any) {
                                 Ville : {data.ville}
                             </div>
                             <div>Département : {data.departement}</div>{' '}
-                            <div className="mt-3 p-2 row">
+                            <div className="mt-3  p-2 row">
                                 <DeleteUser
-                                    className=" col text-light"
+                                    className=" col text-light me-2"
                                     href="#"
                                     token={token}
                                 />
 
                                 <UpdateUser
-                                    className=" col text-light"
+                                    className=" col text-light ms-2 "
                                     token={token}
                                     user={compte}
                                     updateUser={setCompte}
