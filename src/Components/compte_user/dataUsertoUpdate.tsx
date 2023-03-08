@@ -1,4 +1,5 @@
 import { log } from 'console';
+import React from 'react';
 import { TUser } from '../../types/user.type';
 
 export function DataUsertoUpdate({ user, setUser }: TUser | any) {
