@@ -80,7 +80,16 @@ export default function Compte_users({ token, setPage, setUser }: any) {
                                 </p>
                                 {data.animal?.map((data) => (
                                     <div key={i}>
-                                        <div className="bg-warning sm rounded lg rounded mt-2">
+                                        <div
+                                            className="bg-warning sm rounded lg rounded mt-2 ms-5"
+                                            style={{ height: 45 }}
+                                        >
+                                            <img
+                                                src="reindeer.png"
+                                                className="rounded-pill float-start ms-5"
+                                                style={{ height: 40 }}
+                                                alt="patpat"
+                                            />
                                             <p>
                                                 {`nom :   ${data.nom}  
                                         espèce :  ${data.espece}
@@ -94,8 +103,22 @@ export default function Compte_users({ token, setPage, setUser }: any) {
                             <p className="text-start text-light">
                                 Mon calendrier
                             </p>
+                            <div className="bg-warning sm rounded lg rounded mt-2">
+                                Calendrier
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div>
+                    <button className="bg-warning sm rounded lg rounded mt-2 me-5">
+                        Ajouter un animal
+                    </button>
+                    <button className="bg-warning sm rounded lg rounded mt-2 me-5">
+                        Ajouter un événement
+                    </button>
+                    <button className="bg-warning sm rounded lg rounded mt-2">
+                        Agenda
+                    </button>
                 </div>
             </div>
         ));
