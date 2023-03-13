@@ -1,8 +1,10 @@
-import { log } from 'console';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
 
-export function DataUsertoUpdate({ user, setUser }: TUser | any) {
+export function DataUsertoUpdate() {
+	const { user, setUser } = useContext(UserContext);
+	const dataUser = user! as TUser;
 	const inputChange = (e: React.BaseSyntheticEvent) => {};
 
 	/*   const submitUser = (e: React.BaseSyntheticEvent) => {
@@ -75,7 +77,7 @@ export function DataUsertoUpdate({ user, setUser }: TUser | any) {
 										name='nom'
 										type='text'
 										defaultValue={
-											user.nom
+											dataUser.nom
 										}
 										className='form-control'
 										id='validationCustomNom'
@@ -104,7 +106,7 @@ export function DataUsertoUpdate({ user, setUser }: TUser | any) {
 										name='prenom'
 										type='text'
 										defaultValue={
-											user.prenom
+											dataUser.prenom
 										}
 										className='form-control'
 										id='validationCustomPrenom'
@@ -134,7 +136,7 @@ export function DataUsertoUpdate({ user, setUser }: TUser | any) {
 											name='email'
 											type='email'
 											defaultValue={
-												user.email
+												dataUser.email
 											}
 											className='form-control'
 											id='validationEmail'
@@ -169,7 +171,7 @@ export function DataUsertoUpdate({ user, setUser }: TUser | any) {
 										name='pseudo'
 										type='text'
 										defaultValue={
-											user.pseudo
+											dataUser.pseudo
 										}
 										className='form-control'
 										id='validationCustomPseudo'
@@ -203,7 +205,7 @@ export function DataUsertoUpdate({ user, setUser }: TUser | any) {
 										name='adresse'
 										type='text'
 										defaultValue={
-											user.adresse
+											dataUser.adresse
 										}
 										className='form-control'
 										id='validationCustomAdresse'
@@ -237,7 +239,7 @@ export function DataUsertoUpdate({ user, setUser }: TUser | any) {
 										type='text'
 										name='ville'
 										defaultValue={
-											user.ville
+											dataUser.ville
 										}
 										className='form-control'
 										id='validationCustomVille'
@@ -269,7 +271,7 @@ export function DataUsertoUpdate({ user, setUser }: TUser | any) {
 										type='text'
 										name='codepostal'
 										defaultValue={
-											user.codepostal
+											dataUser.codepostal
 										}
 										className='form-control'
 										id='validationCustomCodePostal'
@@ -301,7 +303,7 @@ export function DataUsertoUpdate({ user, setUser }: TUser | any) {
 										type='text'
 										name='departement'
 										defaultValue={
-											user.departement
+											dataUser.departement
 										}
 										className='form-control'
 										id='validationCustomDepartement'
