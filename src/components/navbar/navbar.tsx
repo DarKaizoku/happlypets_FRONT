@@ -1,13 +1,9 @@
-import React from 'react';
-import { useState } from 'react';
-import Compte_users from '../compte_user/compte_user';
-import CarnetSante from '../formulaire_animal/carnet_sante';
-import { FormulaireAnimal } from '../formulaire_animal/formulaire';
-import { FormulaireUser } from '../formulaire_user/formulaire_user';
+import { useContext } from 'react';
+import { TokenContext } from '../../Context/tokenContext';
 
 import Login from '../Login';
 import './navbar.css';
-export default function Navbar({ setToken, token, setPage }: any) {
+export default function Navbar({ setPage }: any) {
 	return (
 		<div>
 			<div className='container-fluid couleur shadow rounded-bottom mb-5'>
@@ -146,9 +142,6 @@ export default function Navbar({ setToken, token, setPage }: any) {
 								<Login
 									className='nav-link  text-light'
 									href='#'
-									setToken={
-										setToken
-									}
 									setPage={
 										setPage
 									}

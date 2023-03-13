@@ -14,20 +14,6 @@ export default function Compte_users({ token, setPage }: any) {
 	const [preview, setPreview] = useState<string>(
 		'./default-avatar-user.jpg'
 	);
-	const options = {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: `Bearer ${token}`,
-		},
-	};
-	/* useEffect(() => {
-		fetch(urlUser, options)
-			.then((response) => response.json())
-			.then((donnee) => setUser(donnee[0]))
-			.catch((erreur) => `${erreur}`);
-		console.log('log compte user', user);
-	}, [token]); */
 
 	let affichageAnimal;
 	let affichageUser;
