@@ -59,8 +59,6 @@ export function DataUsertoUpdate() {
 			.then((response) => response.json())
 			.then((donnee) => setUser(donnee))
 			.catch((erreur) => `${erreur}`);
-
-		return;
 	};
 
 	return (
@@ -168,10 +166,7 @@ export function DataUsertoUpdate() {
 								</div>
 
 								<div className='col-md-6'>
-									<label
-										form='validationCustomPseudo'
-										className='form-label'
-									>
+									<label className='form-label'>
 										Pseudo
 										(
 										Non
@@ -185,7 +180,9 @@ export function DataUsertoUpdate() {
 										}
 										className='form-control'
 										id='validationCustomPseudo'
-										required
+										readOnly={
+											true
+										}
 									/>
 									<div className='invalid-feedback'>
 										!
