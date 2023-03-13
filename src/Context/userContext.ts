@@ -13,7 +13,7 @@ export const UserContext = React.createContext({
 		ville: '',
 		codepostal: '',
 		departement: '',
-		animal: undefined,
+		animal: [],
 	} as TUser,
 	setUser: (value: TUser) => {},
 });

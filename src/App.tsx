@@ -32,33 +32,6 @@ function App() {
 	}, [token]);
 	console.log('token', token);
 
-	let affichage;
-
-	if (user) {
-		affichage = [user].map((data: TUser, i: number) => (
-			<div key={i}>
-				nom : {data.nom}
-				<br />
-				prénom : {data.prenom}
-				<br />
-				pseudo : {data.pseudo}
-				<br />
-				adresse : {data.adresse}
-				<br />
-				code postal : {data.codepostal}
-				<br />
-				ville : {data.ville}
-				<br />
-				departement : {data.departement}
-				<br />
-				animal :
-				<br />
-				<br />
-			</div>
-		));
-	}
-	console.log(user);
-
 	return (
 		<div>
 			<UserContext.Provider value={{ user, setUser }}>
@@ -105,9 +78,6 @@ function App() {
 					</div>
 				)}
 				{page === 'login' && <Login />}
-				{/*     <FormulaireAnimal />
-            <FormulaireUser token={token} /> 
-                        <div className='text-center'>{affichage}</div>;*/}
 			</UserContext.Provider>
 		</div>
 	);
