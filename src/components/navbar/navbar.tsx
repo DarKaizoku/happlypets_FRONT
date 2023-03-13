@@ -140,8 +140,8 @@ export default function Navbar({ setToken, token, setPage }: any) {
 											</a>
 										</li>
 									</ul>
-								</li>{' '}
-							</ul>{' '}
+								</li>
+							</ul>
 							<div className='me-5'>
 								<Login
 									className='nav-link  text-light'
