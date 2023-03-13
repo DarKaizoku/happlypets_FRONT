@@ -13,7 +13,7 @@ import { TUser } from './types/user.type';
 const baseUrl = 'http://localhost:8000/users/users';
 function App() {
     const [user, setUser] = useState<TUser>({} as TUser);
-    const [dataUser, setDataUser]: any = useState();
+    //const [dataUser, setDataUser]: any = useState();
     const [page, setPage]: any = useState('');
     const [token, setToken] = useState('');
     const options = {
@@ -27,10 +27,10 @@ function App() {
     useEffect(() => {
         fetch(baseUrl, options)
             .then((response) => response.json())
-            .then((donnee) => setUser(donnee[0]))
+            .then((donnee) => setUser(donnee))
             .catch((erreur) => `${erreur}`);
     }, [token]);
-    console.log('token', user);
+    console.log('token', token);
 
     let affichage;
 
@@ -57,6 +57,7 @@ function App() {
             </div>
         ));
     }
+    console.log(user);
 
     return (
         <div>
@@ -66,14 +67,14 @@ function App() {
                     <Compte_users
                         token={token}
                         setPage={setPage}
-                        setUser={setDataUser}
+                        //setUser={setDataUser}
                     />
                 )}
                 {page === 'update' && (
                     <DataUsertoUpdate
-                        token={token}
-                        user={dataUser}
-                        updateUser={setDataUser}
+                    //token={token}
+                    //user={dataUser}
+                    //updateUser={setDataUser}
                     />
                 )}
                 {page === 'carnetDeSante' && <CarnetSante />}
