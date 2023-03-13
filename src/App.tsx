@@ -12,7 +12,7 @@ import { TUser } from './types/user.type';
 
 const baseUrl = 'http://localhost:8000/users/users';
 function App() {
-    const { user, setUser } = useContext(UserContext);
+    const [user, setUser] = useState<TUser>({} as TUser);
     const [dataUser, setDataUser]: any = useState();
     const [page, setPage]: any = useState('');
     const [token, setToken] = useState('');
@@ -27,10 +27,10 @@ function App() {
     useEffect(() => {
         fetch(baseUrl, options)
             .then((response) => response.json())
-            .then((donnee) => setUser(donnee))
+            .then((donnee) => setUser(donnee[0]))
             .catch((erreur) => `${erreur}`);
     }, [token]);
-    console.log('token', token);
+    console.log('token', user);
 
     let affichage;
 

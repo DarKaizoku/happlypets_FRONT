@@ -5,6 +5,7 @@ import './compte_user.css';
 import { DeleteUser } from './Delete_user';
 import React from 'react';
 import { UserContext } from '../../Context/userContext';
+import { TUser } from '../../types/user.type';
 
 const urlUser = 'http://localhost:8000/users/profil';
 export default function Compte_users({ token, setPage }: any) {
@@ -20,16 +21,15 @@ export default function Compte_users({ token, setPage }: any) {
     useEffect(() => {
         fetch(urlUser, options)
             .then((response) => response.json())
-            .then((donnee) => setUser(donnee))
+            .then((donnee) => setUser(donnee[0]))
             .catch((erreur) => `${erreur}`);
-    }, [token]);
+    }, [user]);
     console.log(user);
 
     let affichageAnimal;
     let affichageUser;
     if (user) {
-        setUser(user);
-        affichageUser = [user].map((data: TCompte, i: number) => (
+        affichageUser = [user].map((data: TUser, i: number) => (
             <div className="container-fluid text-center">
                 <div className="container">
                     <div className="row ">
@@ -128,8 +128,10 @@ export default function Compte_users({ token, setPage }: any) {
 
     return (
         <div className="container-fluid">
-            <div className="container ">{affichageUser}</div>
-            <div className="container ">{affichageAnimal}</div>
+            <UserContext.Provider value={{ user, setUser }}>
+                <div className="container ">{affichageUser}</div>
+                <div className="container ">{affichageAnimal}</div>{' '}
+            </UserContext.Provider>
         </div>
     );
 }
