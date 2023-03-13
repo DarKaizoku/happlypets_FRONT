@@ -4,22 +4,23 @@ import { UserContext } from '../../Context/userContext';
 
 import Login from '../Login';
 import './navbar.css';
-export default function Navbar({ setToken, token, setPage, preview }: any) {
+export default function Navbar({ setPage }: any) {
     const { user } = useContext(UserContext);
-    console.log(user);
 
     if (user.nom === undefined) {
         return (
             <div>
                 <div className="container-fluid couleur shadow rounded-bottom mb-5">
                     <div className="text-center ">
-                        <button
-                            className="bleu border-0"
-                            type="reset"
-                            onClick={() => window.location.reload()}
-                        >
-                            <img src="logo1.png" alt="logo" />
-                        </button>
+                        <form /* action="http://localhost:3001" */>
+                            <button
+                                className="bleu border-0"
+                                type="reset"
+                                onClick={() => window.location.reload()}
+                            >
+                                <img src="logo1.png" alt="logo" />
+                            </button>
+                        </form>
                     </div>
                     <div className="d-none d-lg-block text-light text-center fs-5 mt-3">
                         <p>
@@ -123,7 +124,6 @@ export default function Navbar({ setToken, token, setPage, preview }: any) {
                                     <Login
                                         className="nav-link  text-light"
                                         href="#"
-                                        setToken={setToken}
                                         setPage={setPage}
                                     />
                                 </div>
@@ -161,28 +161,24 @@ export default function Navbar({ setToken, token, setPage, preview }: any) {
                                 <img src="logo1.png" alt="logo" />
                             </button>
                         </form>
-
-                        <div className="d-none d-lg-block text-light text-center fs-5 mt-3 row align-items-start">
-                            <div className="col-8">
-                                Laissez votre animal avoir un HAPPLY day avec
-                                HAPPLY PETS
-                            </div>
-                            <div className="col-2">
-                                <img
-                                    src={preview}
-                                    alt="example placeholder"
-                                    className="img-thumbnail mt-3 mb-2 "
-                                    style={{
-                                        height: 50,
-                                        width: 50,
-                                        borderRadius: 50,
-                                    }}
-                                />
-                                <p>{user.nom}</p>
-                            </div>{' '}
-                        </div>
                     </div>
-
+                    <div className="d-none d-lg-block text-light text-center fs-5 mt-3 row">
+                        <p className="col">
+                            Laissez votre animal avoir un HAPPLY day avec HAPPLY
+                            PETS
+                        </p>
+                        <img
+                            src=""
+                            alt="example placeholder"
+                            className="img-thumbnail mt-3 mb-2 col"
+                            style={{
+                                height: 150,
+                                width: 150,
+                                borderRadius: 100,
+                            }}
+                        />
+                        <p>{user.nom}</p>
+                    </div>
                     <nav className="navbar navbar-expand-lg couleur">
                         <div className="container-fluid ">
                             <button
@@ -295,7 +291,7 @@ export default function Navbar({ setToken, token, setPage, preview }: any) {
 							</button>
 						</form> */}{' '}
                     </nav>
-                </div>{' '}
+                </div>
             </div>
         );
     }
