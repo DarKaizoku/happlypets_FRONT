@@ -77,9 +77,6 @@ export default function Compte_users({ token, setPage }: any) {
 
 								<UpdateUser
 									className=' col text-light ms-2 '
-									token={
-										token
-									}
 									setPage={
 										setPage
 									}

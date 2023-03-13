@@ -1,4 +1,3 @@
-import parseJson from 'parse-json';
 import { useState, useEffect, useContext } from 'react';
 import { TokenContext } from '../../Context/tokenContext';
 import { UserContext } from '../../Context/userContext';
