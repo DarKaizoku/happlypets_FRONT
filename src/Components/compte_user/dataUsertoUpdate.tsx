@@ -173,18 +173,14 @@ export function DataUsertoUpdate() {
 										className='form-label'
 									>
 										Pseudo
+										(
+										Non
+										Modifiable)
 									</label>
 									<input
-										onChange={(
-											e
-										) =>
-											inputChange(
-												e
-											)
-										}
 										name='pseudo'
 										type='text'
-										defaultValue={
+										value={
 											dataUser.pseudo
 										}
 										className='form-control'
@@ -192,11 +188,10 @@ export function DataUsertoUpdate() {
 										required
 									/>
 									<div className='invalid-feedback'>
-										Renseignez
-										un
-										pseudo
-										valide,
-										svp.
+										!
+										Non
+										modifiable
+										!
 									</div>
 								</div>
 
