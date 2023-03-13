@@ -40,7 +40,6 @@ export default function Navbar({ setToken, token, setPage }: any) {
               <span className="navbar-toggler-icon"></span>{" "}
             </button>
 
-<<<<<<< HEAD
             <div
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
@@ -104,8 +103,8 @@ export default function Navbar({ setToken, token, setPage }: any) {
                       </a>
                     </li>
                   </ul>
-                </li>{" "}
-              </ul>{" "}
+                </li>
+              </ul>
               <div className="me-5">
                 <Login
                   className="nav-link  text-light"
@@ -115,114 +114,6 @@ export default function Navbar({ setToken, token, setPage }: any) {
                 />
               </div>
               {/*     <form className="d-flex" role="search">
-=======
-						<div
-							className='collapse navbar-collapse'
-							id='navbarSupportedContent'
-						>
-							<ul className='navbar-nav me-auto mb-2 mb-lg-0'>
-								<li className='nav-item '>
-									<a
-										className='nav-link  text-light couleur ms-2'
-										href='#'
-										onClick={() =>
-											setPage(
-												'formulaire_user'
-											)
-										}
-									>
-										Inscription
-									</a>
-								</li>
-								<li className='nav-item ms-3'>
-									<a
-										className='nav-link  text-light'
-										href='#'
-										onClick={() =>
-											setPage(
-												'compte'
-											)
-										}
-									>
-										Mon
-										Compte
-									</a>
-								</li>
-								<li className='nav-item dropdown ms-3'>
-									<a
-										className='nav-link dropdown-toggle text-light'
-										href='#'
-										role='button'
-										data-bs-toggle='dropdown'
-										aria-expanded='false'
-									>
-										Mes
-										animaux
-									</a>
-									<ul className='dropdown-menu bg-warning'>
-										<li>
-											<a
-												className='dropdown-item'
-												href='#'
-												onClick={() =>
-													setPage(
-														'animal'
-													)
-												}
-											>
-												Ajouter
-												un
-												animal
-											</a>
-										</li>
-										<li>
-											<a
-												className='dropdown-item '
-												href='#'
-												onClick={() =>
-													setPage(
-														'carnetDeSante'
-													)
-												}
-											>
-												Carnet
-												de
-												santé
-											</a>
-										</li>
-										<li>
-											<a
-												className='dropdown-item'
-												href='#'
-											>
-												Agenda
-											</a>
-										</li>
-										<li>
-											<a
-												className='dropdown-item'
-												href='#'
-											>
-												Bien-être
-											</a>
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<div className='me-5'>
-								<Login
-									className='nav-link  text-light'
-									href='#'
-									setToken={
-										setToken
-									}
-									setPage={
-										setPage
-									}
-								/>
-							</div>
-							{/*     <form className="d-flex" role="search">
->>>>>>> 87b3ba53f7319a86856fa7067fdd14e96195d125
                                 <input
                                     className="form-control me-2"
                                     type="search"
