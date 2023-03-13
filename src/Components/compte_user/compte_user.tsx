@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { TCompte } from '../../types/compte.type';
 import { UpdateUser } from './update_user';
 import './compte_user.css';
 import { DeleteUser } from './Delete_user';
 import React from 'react';
+import { UserContext } from '../../Context/userContext';
 
 const urlUser = 'http://localhost:8000/users/profil';
-export default function Compte_users({ token, setPage, setUser }: any) {
-    const [compte, setCompte]: any = useState([]);
-
+export default function Compte_users({ token, setPage }: any) {
+    const { user, setUser } = useContext(UserContext);
     const [preview, setPreview] = useState<string>('./default-avatar-user.jpg');
     const options = {
         method: 'GET',
@@ -20,16 +20,16 @@ export default function Compte_users({ token, setPage, setUser }: any) {
     useEffect(() => {
         fetch(urlUser, options)
             .then((response) => response.json())
-            .then((donnee) => setCompte(donnee))
+            .then((donnee) => setUser(donnee))
             .catch((erreur) => `${erreur}`);
     }, [token]);
-    console.log(compte[0]);
+    console.log(user);
 
     let affichageAnimal;
     let affichageUser;
-    if (compte[0]) {
-        setUser(compte[0]);
-        affichageUser = compte.map((data: TCompte, i: number) => (
+    if (user) {
+        setUser(user);
+        affichageUser = [user].map((data: TCompte, i: number) => (
             <div className="container-fluid text-center">
                 <div className="container">
                     <div className="row ">
@@ -66,8 +66,6 @@ export default function Compte_users({ token, setPage, setUser }: any) {
                                 <UpdateUser
                                     className=" col text-light ms-2 "
                                     token={token}
-                                    user={compte}
-                                    updateUser={setCompte}
                                     setPage={setPage}
                                 />
                             </div>
