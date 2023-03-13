@@ -71,6 +71,9 @@ export default function Compte_users({ token, setPage, setUser }: any) {
                                     setPage={setPage}
                                 />
                             </div>
+                            <button className="text-start text-light mt-3 mb-2 mx-auto couleur rounded">
+                                Déconnexion
+                            </button>
                         </div>
 
                         <div className="container col-sm-12 col-lg-9 ">
@@ -78,6 +81,7 @@ export default function Compte_users({ token, setPage, setUser }: any) {
                                 <p className="text-start text-light">
                                     Mes animaux
                                 </p>
+
                                 {data.animal?.map((data) => (
                                     <div key={i}>
                                         <div
@@ -86,7 +90,7 @@ export default function Compte_users({ token, setPage, setUser }: any) {
                                         >
                                             <img
                                                 src="reindeer.png"
-                                                className="rounded-pill float-start ms-5"
+                                                className="rounded-pill float-start ms-5 border border-light"
                                                 style={{ height: 40 }}
                                                 alt="patpat"
                                             />
@@ -109,7 +113,7 @@ export default function Compte_users({ token, setPage, setUser }: any) {
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="">
                     <button className="bg-warning sm rounded lg rounded mt-2 me-5">
                         Ajouter un animal
                     </button>
