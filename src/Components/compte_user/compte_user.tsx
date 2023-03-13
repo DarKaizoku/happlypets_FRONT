@@ -9,7 +9,7 @@ import { TUser } from '../../types/user.type';
 
 const urlUser = 'http://localhost:8000/users/profil';
 export default function Compte_users({ token, setPage }: any) {
-	const { user, setUser } = useContext(UserContext);
+	const { user } = useContext(UserContext);
 
 	const [preview, setPreview] = useState<string>(
 		'./default-avatar-user.jpg'
@@ -21,18 +21,19 @@ export default function Compte_users({ token, setPage }: any) {
 			Authorization: `Bearer ${token}`,
 		},
 	};
-	useEffect(() => {
+	/* useEffect(() => {
 		fetch(urlUser, options)
 			.then((response) => response.json())
 			.then((donnee) => setUser(donnee[0]))
 			.catch((erreur) => `${erreur}`);
 		console.log('log compte user', user);
-	}, [token]);
+	}, [token]); */
 
 	let affichageAnimal;
 	let affichageUser;
-	if (user !== null) {
-		//setUser(user);
+	if (user!) {
+		console.log(user);
+
 		affichageUser = [user].map((data: TUser, i: number) => (
 			<div className='container-fluid text-center'>
 				<div className='container'>

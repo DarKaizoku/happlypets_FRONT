@@ -10,7 +10,7 @@ import Navbar from './components/navbar/navbar';
 import { UserContext } from './Context/userContext';
 import { TUser } from './types/user.type';
 
-const baseUrl = 'http://localhost:8000/users/users';
+const baseUrl = 'http://localhost:8000/users/profil';
 function App() {
 	const [user, setUser] = useState<TUser>({} as TUser);
 	//const [dataUser, setDataUser]: any = useState();
