@@ -37,6 +37,7 @@ export default function Login({ setToken, setPage }: any) {
 			setPage('compte');
 		}
 		fetchData();
+		return (e.target[0] = true);
 	};
 
 	return (
@@ -122,7 +123,8 @@ export default function Login({ setToken, setPage }: any) {
 											e
 										)
 									}
-									type='button'
+									type='submit'
+									id='boutonLogin'
 									className='btn btn-primary'
 									data-bs-dismiss='modal'
 								>
@@ -132,10 +134,6 @@ export default function Login({ setToken, setPage }: any) {
 						</div>
 					</div>
 				</div>
-				<button
-					type='submit'
-					className='d-none'
-				/>
 			</form>
 
 			{/* <button
