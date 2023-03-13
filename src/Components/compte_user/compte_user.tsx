@@ -7,25 +7,10 @@ import React from 'react';
 import { UserContext } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
 
-const urlUser = 'http://localhost:8000/users/profil';
 export default function Compte_users({ token, setPage }: any) {
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     const [preview, setPreview] = useState<string>('./default-avatar-user.jpg');
-    const options = {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-        },
-    };
-    useEffect(() => {
-        fetch(urlUser, options)
-            .then((response) => response.json())
-            .then((donnee) => setUser(donnee[0]))
-            .catch((erreur) => `${erreur}`);
-        console.log('log compte user', user);
-    }, [token]);
 
     let affichageAnimal;
     let affichageUser;

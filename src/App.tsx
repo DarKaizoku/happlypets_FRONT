@@ -10,7 +10,7 @@ import Navbar from './components/navbar/navbar';
 import { UserContext } from './Context/userContext';
 import { TUser } from './types/user.type';
 
-const baseUrl = 'http://localhost:8000/users/users';
+const baseUrl = 'http://localhost:8000/users/profil';
 function App() {
     const [user, setUser] = useState<TUser>({} as TUser);
     //const [dataUser, setDataUser]: any = useState();
@@ -31,33 +31,6 @@ function App() {
             .catch((erreur) => `${erreur}`);
     }, [token]);
     console.log('token', token);
-
-    let affichage;
-
-    if (user) {
-        affichage = [user].map((data: TUser, i: number) => (
-            <div key={i}>
-                nom : {data.nom}
-                <br />
-                prénom : {data.prenom}
-                <br />
-                pseudo : {data.pseudo}
-                <br />
-                adresse : {data.adresse}
-                <br />
-                code postal : {data.codepostal}
-                <br />
-                ville : {data.ville}
-                <br />
-                departement : {data.departement}
-                <br />
-                animal :
-                <br />
-                <br />
-            </div>
-        ));
-    }
-    console.log(user);
 
     return (
         <div>
@@ -96,9 +69,6 @@ function App() {
                     </div>
                 )}
                 {page === 'login' && <Login />}
-                {/*     <FormulaireAnimal />
-            <FormulaireUser token={token} /> 
-                        <div className='text-center'>{affichage}</div>;*/}
             </UserContext.Provider>
         </div>
     );

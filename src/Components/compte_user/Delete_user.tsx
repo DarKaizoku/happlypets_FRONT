@@ -1,6 +1,5 @@
-import { response } from 'express';
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 const urlUser = 'http://localhost:8000/users';
 
 export function DeleteUser({ token }: any) {
@@ -47,7 +46,7 @@ export function DeleteUser({ token }: any) {
         <button
             onClick={(e) => delett(e)}
             type="button"
-            className="btn couleur  btn-sm me-3 border border-primary col text-light"
+            className="btn couleur  btn-sm ms-2 me-3 border border-primary col text-light"
         >
             Supprimer
         </button>
