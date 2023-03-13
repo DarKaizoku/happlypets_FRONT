@@ -20,6 +20,7 @@ export default function Login({ setToken, setPage }: any) {
 
 	const login = (e: React.BaseSyntheticEvent) => {
 		e.preventDefault();
+		console.log('123');
 
 		async function fetchData() {
 			const response = await fetch(urlLogin, {
@@ -48,7 +49,7 @@ export default function Login({ setToken, setPage }: any) {
 			>
 				Connexion
 			</button>
-			<form>
+			<form onSubmit={(e) => login(e)}>
 				<div
 					className='modal fade'
 					id='exampleModal'
@@ -131,6 +132,10 @@ export default function Login({ setToken, setPage }: any) {
 						</div>
 					</div>
 				</div>
+				<button
+					type='submit'
+					className='d-none'
+				/>
 			</form>
 
 			{/* <button
