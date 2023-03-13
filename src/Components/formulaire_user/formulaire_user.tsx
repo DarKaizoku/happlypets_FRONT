@@ -1,8 +1,9 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { TUser } from '../../types/user.type';
 import { InputUser } from './input_user';
 
-export function FormulaireUser() {
+export function FormulaireUser({ token }: any) {
     const newUser: TUser = {
         prenom: '',
         nom: '',
@@ -14,11 +15,12 @@ export function FormulaireUser() {
         ville: '',
         codepostal: '',
         departement: '',
+        animal: undefined,
     };
 
     const [user, setUser] = useState(newUser);
 
-    const urlAddUser = 'http://localhost:3000/users/register';
+    const urlAddUser = 'http://localhost:8000/users/register';
 
     const login = (e: React.BaseSyntheticEvent) => {
         e.preventDefault();

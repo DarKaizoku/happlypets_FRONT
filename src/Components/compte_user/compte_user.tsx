@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react';
 import { TCompte } from '../../types/compte.type';
-const urlUser = 'http://localhost:3000/users/profil';
-export default function Compte_users({ token }: any) {
+import { UpdateUser } from './update_user';
+import './compte_user.css';
+import { DeleteUser } from './Delete_user';
+import React from 'react';
+
+const urlUser = 'http://localhost:8000/users/profil';
+export default function Compte_users({ token, setPage, setUser }: any) {
     const [compte, setCompte]: any = useState([]);
 
+    const [preview, setPreview] = useState<string>('./default-avatar-user.jpg');
     const options = {
         method: 'GET',
         headers: {
@@ -17,47 +23,102 @@ export default function Compte_users({ token }: any) {
             .then((donnee) => setCompte(donnee))
             .catch((erreur) => `${erreur}`);
     }, [token]);
+    console.log(compte[0]);
 
+    let affichageAnimal;
     let affichageUser;
     if (compte[0]) {
+        setUser(compte[0]);
         affichageUser = compte.map((data: TCompte, i: number) => (
-            <div key={i} className="row align-items-center">
-                <div className="col-2 rounded bg-warning">
-                    nom : {data.nom}
-                    <br />
-                    prénom : {data.prenom}
-                    <br />
-                    pseudo : {data.pseudo}
-                    <br />
-                    adresse : {data.adresse}
-                    <br />
-                    code postal : {data.codepostal}
-                    <br />
-                    ville : {data.ville}
-                    <br />
-                    departement : {data.departement}
-                </div>
-                <div className="col-8  ms-5 badge text-center text-dark rounded bg-warning">
-                    {data.animal?.map((data) => (
-                        <div>
-                            <div className="fs-6">
-                                nom :{data.nom}
-                                {'\n'}
-                                espèce :{data.espece}
-                                {'\n'}
-                                race :{data.race}
-                                {'\n'}
-                                genre :{data.genre}
-                                {'\n'}
-                                date de naissance :{data.date_de_naissance}
-                                {'\n'}
-                                habitat : {data.habitat}
+            <div className="container-fluid text-center">
+                <div className="container">
+                    <div className="row ">
+                        <div className="col-sm-12 col-lg-2 bg-warning rounded pe-2">
+                            <div className="">
+                                <img
+                                    src={preview}
+                                    alt="example placeholder"
+                                    className="img-thumbnail mt-3 mb-2"
+                                    style={{
+                                        height: 150,
+                                        width: 150,
+                                        borderRadius: 100,
+                                    }}
+                                />
+                            </div>
+                            <div>Pseudo : {data.pseudo}</div>
+                            <div>Nom : {data.nom}</div>
+                            <div>Prénom : {data.prenom}</div>
+                            <div>Adresse : {data.adresse}</div>
+                            <div>
+                                Code Postal : {data.codepostal}
+                                <br />
+                                Ville : {data.ville}
+                            </div>
+                            <div>Département : {data.departement}</div>{' '}
+                            <div className="mt-3  p-2 row">
+                                <DeleteUser
+                                    className=" col text-light me-2"
+                                    href="#"
+                                    token={token}
+                                />
+
+                                <UpdateUser
+                                    className=" col text-light ms-2 "
+                                    token={token}
+                                    user={compte}
+                                    updateUser={setCompte}
+                                    setPage={setPage}
+                                />
                             </div>
                         </div>
-                    ))}
 
-                    <br />
-                    <br />
+                        <div className="container col-sm-12 col-lg-9 ">
+                            <div>
+                                <p className="text-start text-light">
+                                    Mes animaux
+                                </p>
+                                {data.animal?.map((data) => (
+                                    <div key={i}>
+                                        <div
+                                            className="bg-warning sm rounded lg rounded mt-2 ms-5"
+                                            style={{ height: 45 }}
+                                        >
+                                            <img
+                                                src="reindeer.png"
+                                                className="rounded-pill float-start ms-5"
+                                                style={{ height: 40 }}
+                                                alt="patpat"
+                                            />
+                                            <p>
+                                                {`nom :   ${data.nom}  
+                                        espèce :  ${data.espece}
+                                         genre :   ${data.genre}
+                                         date de naissance :    ${data.date_de_naissance}`}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="text-start text-light">
+                                Mon calendrier
+                            </p>
+                            <div className="bg-warning sm rounded lg rounded mt-2">
+                                Calendrier
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button className="bg-warning sm rounded lg rounded mt-2 me-5">
+                        Ajouter un animal
+                    </button>
+                    <button className="bg-warning sm rounded lg rounded mt-2 me-5">
+                        Ajouter un événement
+                    </button>
+                    <button className="bg-warning sm rounded lg rounded mt-2">
+                        Agenda
+                    </button>
                 </div>
             </div>
         ));
@@ -66,6 +127,7 @@ export default function Compte_users({ token }: any) {
     return (
         <div className="container-fluid">
             <div className="container ">{affichageUser}</div>
+            <div className="container ">{affichageAnimal}</div>
         </div>
     );
 }
