@@ -1,20 +1,29 @@
 import { useState, useEffect, useContext } from 'react';
 import { TokenContext } from '../../Context/tokenContext';
-import { UserContext } from '../../Context/userContext';
+import { UserContext, UserInit } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
 
 const baseUrl = 'http://localhost:8000/users/';
 export function DataUsertoUpdate() {
 	const { user, setUser } = useContext(UserContext);
 
+	const [userData, setUserData] = useState(user);
+
 	const { token } = useContext(TokenContext);
 
-	const dataUser = user! as TUser;
+	const dataUser = user as TUser;
 
 	const inputChange = (e: React.BaseSyntheticEvent) => {
 		const { name, value } = e.target;
+		if (name === 'codepostal') {
+			console.log(value);
 
-		setUser({ ...user, [name]: value });
+			setUserData({
+				...userData,
+				[name]: value.toString(),
+			});
+		}
+		setUserData({ ...userData, [name]: value });
 	};
 
 	const [selectedFile, setSelectedFile] = useState();
@@ -42,9 +51,20 @@ export function DataUsertoUpdate() {
 		setSelectedFile(e.target.files[0]);
 	};
 
-	const jsonUser = JSON.stringify(user);
+	const update = (e: React.BaseSyntheticEvent) => {
+		e.preventDefault();
+		if (typeof userData.codepostal === 'number') {
+			setUserData({
+				...dataUser,
+				['codepostal']: (
+					userData.codepostal as number
+				).toString(),
+			});
+			console.log(userData.codepostal);
+		}
 
-	const update = (e: any) => {
+		const jsonUser = JSON.stringify(userData);
+
 		const options = {
 			method: 'PATCH',
 			headers: {
@@ -56,7 +76,7 @@ export function DataUsertoUpdate() {
 
 		fetch(baseUrl, options)
 			.then((response) => response.json())
-			.then((donnee) => setUser(donnee))
+			.then((donnee) => setUser(donnee.data.userUpdate))
 			.catch((erreur) => `${erreur}`);
 	};
 
@@ -165,16 +185,18 @@ export function DataUsertoUpdate() {
 								</div>
 
 								<div className='col-md-6'>
-									<label className='form-label'>
+									<label
+										form='validationCustomPseudo'
+										className='form-label'
+									>
 										Pseudo
-										(
-										Non
+										(Non
 										Modifiable)
 									</label>
 									<input
 										name='pseudo'
 										type='text'
-										value={
+										defaultValue={
 											dataUser.pseudo
 										}
 										className='form-control'
@@ -184,10 +206,11 @@ export function DataUsertoUpdate() {
 										}
 									/>
 									<div className='invalid-feedback'>
-										!
-										Non
-										modifiable
-										!
+										Renseignez
+										un
+										pseudo
+										valide,
+										svp.
 									</div>
 								</div>
 

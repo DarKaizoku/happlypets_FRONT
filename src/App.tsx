@@ -33,7 +33,6 @@ function App() {
 			.then((donnee) => setUser(donnee))
 			.catch((erreur) => `${erreur}`);
 	}, [token]);
-	console.log('token', token);
 
 	return (
 		<div>

@@ -9,6 +9,7 @@ import { TUser } from '../../types/user.type';
 
 export default function Compte_users({ token, setPage }: any) {
 	const { user } = useContext(UserContext);
+	console.log(user);
 
 	const [preview, setPreview] = useState<string>(
 		'./default-avatar-user.jpg'
