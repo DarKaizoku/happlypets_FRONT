@@ -1,9 +1,19 @@
 export function InputAnimal({ animal, setAnimal }: any) {
   const inputChange = (e: React.BaseSyntheticEvent) => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
+
+    if (name === "lof") {
+      console.log(value);
+
+      if (value === "on" && animal.lof === true) {
+        return setAnimal({ ...animal, [name]: (value = false) });
+      }
+      return setAnimal({ ...animal, [name]: (value = true) });
+    }
 
     setAnimal({ ...animal, [name]: value });
   };
+
   return (
     <div className="container-fluid">
       <form className="container-fluid row g-3 needs-validation" noValidate>
@@ -81,8 +91,8 @@ export function InputAnimal({ animal, setAnimal }: any) {
             required
           >
             <option defaultValue="choix...">Choix...</option>
-            <option value="false">Femelle</option>
-            <option value="true">Mâle</option>
+            <option value="Femelle">Femelle</option>
+            <option value="Mâle">Mâle</option>
           </select>
           <div className="invalid-feedback">
             Selectionnez un genre valide svp.
@@ -97,7 +107,6 @@ export function InputAnimal({ animal, setAnimal }: any) {
               onChange={(e) => inputChange(e)}
               className="form-check-input ms-3"
               type="checkbox"
-              value="true"
               id="lofCheck"
               name="lof"
               required

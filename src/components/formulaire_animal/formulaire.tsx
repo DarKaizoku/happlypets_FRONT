@@ -1,16 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import CarnetId from "./carnet_sante";
 import { Habitat } from "./habitat";
 import { InputAnimal } from "./input_animal";
 import "./formulaire_animal.css";
 import { Animal } from "../../types/animal.type";
-export function FormulaireAnimal({ token }: any) {
+import { TokenContext } from "../../Context/tokenContext";
+export function FormulaireAnimal() {
+  const { token } = useContext(TokenContext);
   const newAnimal: Animal = {
     nom: "",
     date_de_naissance: new Date(),
     espece: "",
     race: "",
-    genre: true,
+    genre: "",
     lof: true,
     habitat: "",
     carnetDeSante: "",
@@ -24,15 +26,21 @@ export function FormulaireAnimal({ token }: any) {
     async function fetchData() {
       const response = await fetch(urlAddAnimal, {
         method: "POST",
-        headers: { "Content-type": "application/json" },
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+
         body: JSON.stringify(animal),
       });
       const responseJson = await response.json();
-      if (responseJson.statusCode !== 201) {
+      /* if (responseJson.statusCode !== 201) {
         return alert(responseJson.message.map((data: any) => data + `\n`));
-      }
+      } */
       alert(responseJson.message);
     }
+    console.log(animal);
+
     fetchData();
   };
 

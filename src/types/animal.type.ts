@@ -3,7 +3,7 @@ export type Animal = {
   date_de_naissance: Date;
   espece: string;
   race: string;
-  genre: boolean;
+  genre: string;
   lof: boolean;
   habitat: string;
   carnetDeSante: string;
