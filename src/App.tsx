@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import './App.css';
 import Compte_users from './Components/compte_user/compte_user';
 import { DataUsertoUpdate } from './Components/compte_user/dataUsertoUpdate';
-import CarnetSante from './Components/formulaire_animal/carnet_sante';
 import { FormulaireAnimal } from './Components/formulaire_animal/formulaire';
 import { FormulaireUser } from './Components/formulaire_user/formulaire_user';
 import Navbar from './Components/navbar/navbar';
+import CarnetSante from './Components/formulaire_animal/carnet_sante';
 
 import { TokenContext } from './Context/tokenContext';
 import { UserContext } from './Context/userContext';
@@ -34,7 +34,6 @@ function App() {
             .then((donnee) => setUser(donnee))
             .catch((erreur) => `${erreur}`);
     }, [token]);
-    console.log('token', token);
 
     return (
         <div>
@@ -43,7 +42,6 @@ function App() {
                     <Navbar setPage={setPage} />
                     {page === 'compte' && (
                         <Compte_users
-                            token={token}
                             setPage={setPage}
                             //setUser={setDataUser}
                         />

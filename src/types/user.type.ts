@@ -1,4 +1,4 @@
-import { TAnimal } from './animal.type';
+import { Animal } from './animal.type';
 
 export type TUser = {
     prenom: string;
@@ -12,5 +12,5 @@ export type TUser = {
     codepostal: string;
     departement: string;
 
-    animal: TAnimal[] | null;
+    animal: Animal[] | null;
 };

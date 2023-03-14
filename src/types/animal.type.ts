@@ -1,9 +1,10 @@
-export type TAnimal = {
-	nom: string;
-	date_de_naissance: Date;
-	espece: string;
-	race: string;
-	genre: boolean;
-	habitat: string;
-	carnetDeSante: string;
+export type Animal = {
+  nom: string;
+  date_de_naissance: Date;
+  espece: string;
+  race: string;
+  genre: string;
+  lof: boolean;
+  habitat: string;
+  carnetDeSante: string;
 };
