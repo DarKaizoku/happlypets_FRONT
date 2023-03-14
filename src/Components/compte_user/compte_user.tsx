@@ -7,7 +7,7 @@ import React from 'react';
 import { UserContext } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
 
-export default function Compte_users({ token, setPage }: any) {
+export default function Compte_users({ token, setPage, logout }: any) {
 	const { user } = useContext(UserContext);
 	console.log(user);
 
@@ -83,7 +83,12 @@ export default function Compte_users({ token, setPage }: any) {
 									}
 								/>
 							</div>
-							<button className='text-start text-light mt-3 mb-2 mx-auto couleur rounded'>
+							<button
+								onClick={(e) =>
+									logout()
+								}
+								className='text-start text-light mt-3 mb-2 mx-auto couleur rounded'
+							>
 								Déconnexion
 							</button>
 						</div>
