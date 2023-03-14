@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './App.css';
-import Compte_users from './components/compte_user/compte_user';
-import { DataUsertoUpdate } from './components/compte_user/dataUsertoUpdate';
-import CarnetSante from './components/formulaire_animal/carnet_sante';
-import { FormulaireAnimal } from './components/formulaire_animal/formulaire';
-import { FormulaireUser } from './components/formulaire_user/formulaire_user';
-import Login from './components/Login';
-import Navbar from './components/navbar/navbar';
+import Compte_users from './Components/compte_user/compte_user';
+import { DataUsertoUpdate } from './Components/compte_user/dataUsertoUpdate';
+import CarnetSante from './Components/formulaire_animal/carnet_sante';
+import { FormulaireAnimal } from './Components/formulaire_animal/formulaire';
+import { FormulaireUser } from './Components/formulaire_user/formulaire_user';
+import Navbar from './Components/navbar/navbar';
+
 import { TokenContext } from './Context/tokenContext';
 import { UserContext } from './Context/userContext';
 import { TUser } from './types/user.type';

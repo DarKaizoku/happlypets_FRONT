@@ -1,8 +1,7 @@
 import { useContext } from 'react';
-
 import { UserContext } from '../../Context/userContext';
-
 import Login from '../Login';
+
 import './navbar.css';
 export default function Navbar({ setPage }: any) {
     const { user } = useContext(UserContext);

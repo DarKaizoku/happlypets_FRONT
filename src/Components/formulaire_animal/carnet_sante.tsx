@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CarnetSante({ compte }: any) {
+export default function CarnetId({ compte }: any) {
     return (
         <div className="container-fluid">
             <div className="container bg-warning mx-auto mb-3 rounded">

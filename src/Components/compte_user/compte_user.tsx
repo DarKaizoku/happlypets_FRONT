@@ -15,7 +15,7 @@ export default function Compte_users({ token, setPage }: any) {
     let affichageAnimal;
     let affichageUser;
     if (user !== null) {
-        affichageUser = [user].map((data: TUser, i: number) => (
+        affichageUser = [user].map((data: TCompte, i: number) => (
             <div className="container-fluid text-center">
                 <div className="container">
                     <div className="row ">

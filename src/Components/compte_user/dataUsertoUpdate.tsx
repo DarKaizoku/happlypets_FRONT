@@ -4,18 +4,23 @@ import { TokenContext } from '../../Context/tokenContext';
 import { UserContext } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
 
-const baseUrl = 'http://localhost:8000/users/';
+const baseUrl = 'http://localhost:8000/users';
 export function DataUsertoUpdate() {
-    const { user, setUser } = useContext(UserContext);
-
+    const { user } = useContext(UserContext);
+    const [test, setTest] = useState(user);
     const { token } = useContext(TokenContext);
-
-    const dataUser = user! as TUser;
-
+    const options = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(test),
+    };
     const inputChange = (e: React.BaseSyntheticEvent) => {
         const { name, value } = e.target;
 
-        setUser({ ...user, [name]: value });
+        setTest({ ...user, [name]: value });
     };
 
     const [selectedFile, setSelectedFile] = useState();
@@ -44,21 +49,12 @@ export function DataUsertoUpdate() {
     const jsonUser = JSON.stringify(user);
 
     const update = (e: any) => {
-        const options = {
-            method: 'UPDATE',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-            body: jsonUser,
-        };
+        console.log(test);
 
         fetch(baseUrl, options)
             .then((response) => response.json())
-            .then((donnee) => setUser(donnee))
-            .catch((erreur) => `${erreur}`);
-
-        return;
+            .then((donnee) => setTest(donnee))
+            .catch((err) => console.error(err));
     };
 
     return (
@@ -82,7 +78,7 @@ export function DataUsertoUpdate() {
                                         onChange={(e) => inputChange(e)}
                                         name="nom"
                                         type="text"
-                                        defaultValue={dataUser.nom}
+                                        defaultValue={user.nom}
                                         className="form-control"
                                         id="validationCustomNom"
                                         required
@@ -102,7 +98,7 @@ export function DataUsertoUpdate() {
                                         onChange={(e) => inputChange(e)}
                                         name="prenom"
                                         type="text"
-                                        defaultValue={dataUser.prenom}
+                                        defaultValue={user.prenom}
                                         className="form-control"
                                         id="validationCustomPrenom"
                                         required
@@ -123,7 +119,7 @@ export function DataUsertoUpdate() {
                                             onChange={(e) => inputChange(e)}
                                             name="email"
                                             type="email"
-                                            defaultValue={dataUser.email}
+                                            defaultValue={user.email}
                                             className="form-control"
                                             id="validationEmail"
                                             aria-describedby="inputGroupPrepend"
@@ -146,7 +142,7 @@ export function DataUsertoUpdate() {
                                         onChange={(e) => inputChange(e)}
                                         name="pseudo"
                                         type="text"
-                                        defaultValue={dataUser.pseudo}
+                                        defaultValue={user.pseudo}
                                         className="form-control"
                                         id="validationCustomPseudo"
                                         required
@@ -168,7 +164,7 @@ export function DataUsertoUpdate() {
                                         placeholder="N°, type de rue, nom de rue"
                                         name="adresse"
                                         type="text"
-                                        defaultValue={dataUser.adresse}
+                                        defaultValue={user.adresse}
                                         className="form-control"
                                         id="validationCustomAdresse"
                                         required
@@ -188,7 +184,7 @@ export function DataUsertoUpdate() {
                                         onChange={(e) => inputChange(e)}
                                         type="text"
                                         name="ville"
-                                        defaultValue={dataUser.ville}
+                                        defaultValue={user.ville}
                                         className="form-control"
                                         id="validationCustomVille"
                                         required
@@ -208,7 +204,7 @@ export function DataUsertoUpdate() {
                                         onChange={(e) => inputChange(e)}
                                         type="text"
                                         name="codepostal"
-                                        defaultValue={dataUser.codepostal}
+                                        defaultValue={user.codepostal}
                                         className="form-control"
                                         id="validationCustomCodePostal"
                                         required
@@ -228,7 +224,7 @@ export function DataUsertoUpdate() {
                                         onChange={(e) => inputChange(e)}
                                         type="text"
                                         name="departement"
-                                        defaultValue={dataUser.departement}
+                                        defaultValue={user.departement}
                                         className="form-control"
                                         id="validationCustomDepartement"
                                         required
@@ -274,7 +270,7 @@ export function DataUsertoUpdate() {
                                 <button
                                     onClick={(e) => update(e)}
                                     className="btn bleu text-light btn-outline-primary"
-                                    type="button"
+                                    type="submit"
                                 >
                                     Enregistrer
                                 </button>
