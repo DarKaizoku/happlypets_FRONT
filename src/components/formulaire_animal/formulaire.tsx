@@ -95,7 +95,9 @@ export function FormulaireAnimal({ token }: any) {
             </div>
           </div>
         </div>
-        {fiche === "animal" && <InputAnimal></InputAnimal>}
+        {fiche === "animal" && (
+          <InputAnimal animal={animal} setAnimal={setAnimal}></InputAnimal>
+        )}
         {fiche === "carnetDeSante" && <CarnetId></CarnetId>}
         {fiche === "habitat" && <Habitat></Habitat>}
         <div className="col-12 mt-3">
@@ -177,6 +179,7 @@ export function FormulaireAnimal({ token }: any) {
         </div>
         <div className="container text-center mt-3">
           <button
+            onClick={(e) => newPet(e)}
             className="btn bleu text-light btn-outline-primary"
             type="submit"
           >

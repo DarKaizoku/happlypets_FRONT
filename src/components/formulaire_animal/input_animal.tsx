@@ -12,6 +12,7 @@ export function InputAnimal({ animal, setAnimal }: any) {
             Nom
           </label>
           <input
+            onChange={(e) => inputChange(e)}
             type="text"
             className="form-control"
             id="validationCustomNom"
@@ -25,6 +26,7 @@ export function InputAnimal({ animal, setAnimal }: any) {
             Espèce
           </label>
           <input
+            onChange={(e) => inputChange(e)}
             type="text"
             className="form-control"
             id="validationCustomEspece"
@@ -39,6 +41,7 @@ export function InputAnimal({ animal, setAnimal }: any) {
           </label>
           <div className="input-group has-validation">
             <input
+              onChange={(e) => inputChange(e)}
               type="text"
               className="form-control"
               id="validationCustomRace"
@@ -54,6 +57,7 @@ export function InputAnimal({ animal, setAnimal }: any) {
             Anniversaire
           </label>
           <input
+            onChange={(e) => inputChange(e)}
             placeholder="jj/mm/aaaa"
             type="date"
             className="form-control"
@@ -70,6 +74,7 @@ export function InputAnimal({ animal, setAnimal }: any) {
             Genre
           </label>
           <select
+            onChange={(e) => inputChange(e)}
             className="form-select"
             id="validationCustomGenre"
             name="genre"
@@ -89,6 +94,7 @@ export function InputAnimal({ animal, setAnimal }: any) {
               Pedigree inscrit (LOF, LOOF,etc...)
             </label>
             <input
+              onChange={(e) => inputChange(e)}
               className="form-check-input ms-3"
               type="checkbox"
               value="true"

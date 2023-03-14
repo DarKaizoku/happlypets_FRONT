@@ -17,3 +17,17 @@ export const UserContext = React.createContext({
 	} as TUser,
 	setUser: (value: TUser) => {},
 });
+
+export const UserInit = {
+	prenom: '',
+	nom: '',
+	pseudo: '',
+	email: '',
+	password: '',
+	passwordConfirmed: '',
+	adresse: '',
+	ville: '',
+	codepostal: '',
+	departement: '',
+	animal: [],
+} as TUser;

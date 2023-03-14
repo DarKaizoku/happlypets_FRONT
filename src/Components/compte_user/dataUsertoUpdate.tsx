@@ -1,21 +1,30 @@
 import { useState, useEffect, useContext } from 'react';
-import { UserContext } from '../../Context/userContext';
+import { TokenContext } from '../../Context/tokenContext';
+import { UserContext, UserInit } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
 
+const baseUrl = 'http://localhost:8000/users/';
 export function DataUsertoUpdate() {
 	const { user, setUser } = useContext(UserContext);
-	const dataUser = user! as TUser;
-	const inputChange = (e: React.BaseSyntheticEvent) => {};
 
-	/*   const submitUser = (e: React.BaseSyntheticEvent) => {
-                e.preventDefault();
-                const newTarget: any[] = e.target[e.target.length - 2];
-                const test = e.target!.map((data: any) =>
-                        setUser({ ...user, [data.name]: data.defaultValue })
-                        console.log(data.name)
-                );
-                console.log(typeof e.target);
-        };  */
+	const [userData, setUserData] = useState(user);
+
+	const { token } = useContext(TokenContext);
+
+	const dataUser = user as TUser;
+
+	const inputChange = (e: React.BaseSyntheticEvent) => {
+		const { name, value } = e.target;
+		if (name === 'codepostal') {
+			console.log(value);
+
+			setUserData({
+				...userData,
+				[name]: value.toString(),
+			});
+		}
+		setUserData({ ...userData, [name]: value });
+	};
 
 	const [selectedFile, setSelectedFile] = useState();
 	const [preview, setPreview] = useState<string>(
@@ -42,8 +51,33 @@ export function DataUsertoUpdate() {
 		setSelectedFile(e.target.files[0]);
 	};
 
-	const update = (e: any) => {
-		return '';
+	const update = (e: React.BaseSyntheticEvent) => {
+		e.preventDefault();
+		if (typeof userData.codepostal === 'number') {
+			setUserData({
+				...dataUser,
+				['codepostal']: (
+					userData.codepostal as number
+				).toString(),
+			});
+			console.log(userData.codepostal);
+		}
+
+		const jsonUser = JSON.stringify(userData);
+
+		const options = {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${token}`,
+			},
+			body: jsonUser,
+		};
+
+		fetch(baseUrl, options)
+			.then((response) => response.json())
+			.then((donnee) => setUser(donnee.data.userUpdate))
+			.catch((erreur) => `${erreur}`);
 	};
 
 	return (
@@ -55,10 +89,7 @@ export function DataUsertoUpdate() {
 					</h5>
 					<div className='row'>
 						<div className='col-md-8'>
-							<form
-								//onSubmit={(e) => submitUser(e)}
-								className='container-fluid row g-3 needs-validation'
-							>
+							<form className='container-fluid row g-3 needs-validation'>
 								<div className='col-md-6'>
 									<label
 										form='validationCustomNom'
@@ -159,15 +190,10 @@ export function DataUsertoUpdate() {
 										className='form-label'
 									>
 										Pseudo
+										(Non
+										Modifiable)
 									</label>
 									<input
-										onChange={(
-											e
-										) =>
-											inputChange(
-												e
-											)
-										}
 										name='pseudo'
 										type='text'
 										defaultValue={
@@ -175,7 +201,9 @@ export function DataUsertoUpdate() {
 										}
 										className='form-control'
 										id='validationCustomPseudo'
-										required
+										readOnly={
+											true
+										}
 									/>
 									<div className='invalid-feedback'>
 										Renseignez
@@ -366,7 +394,7 @@ export function DataUsertoUpdate() {
 										)
 									}
 									className='btn bleu text-light btn-outline-primary'
-									type='submit'
+									type='button'
 								>
 									Enregistrer
 								</button>
