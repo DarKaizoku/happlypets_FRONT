@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './App.css';
 import Compte_users from './Components/compte_user/compte_user';
-import { DataUsertoUpdate } from './Components/compte_user/dataUsertoUpdate';
-import { FormulaireAnimal } from './Components/formulaire_animal/formulaire';
-import { FormulaireUser } from './Components/formulaire_user/formulaire_user';
+import {DataUsertoUpdate} from './Components/compte_user/dataUsertoUpdate';
+import {FormulaireAnimal} from './Components/formulaire_animal/formulaire';
+import {FormulaireUser} from './Components/formulaire_user/formulaire_user';
 import Navbar from './Components/navbar/navbar';
 import CarnetSante from './Components/formulaire_animal/carnet_sante';
 
 import { TokenContext } from './Context/tokenContext';
-import { UserContext } from './Context/userContext';
+import { UserContext, UserInit } from './Context/userContext';
 import { TUser } from './types/user.type';
 
 const baseUrl = 'http://localhost:8000/users/profil';
@@ -28,6 +28,12 @@ function App() {
 
     //console.log('public\default-avatar-user.jpg'.);
 
+    const logout = () => {
+        setToken('');
+        setUser(UserInit);
+        window.location.reload();
+    };
+
     useEffect(() => {
         fetch(baseUrl, options)
             .then((response) => response.json())
@@ -39,12 +45,9 @@ function App() {
         <div>
             <UserContext.Provider value={{ user, setUser }}>
                 <TokenContext.Provider value={{ token, setToken }}>
-                    <Navbar setPage={setPage} />
+                    <Navbar setPage={setPage} logout={logout} />
                     {page === 'compte' && (
-                        <Compte_users
-                            setPage={setPage}
-                            //setUser={setDataUser}
-                        />
+                        <Compte_users setPage={setPage} logout={logout} />
                     )}
                     {page === 'update' && (
                         <DataUsertoUpdate
