@@ -7,7 +7,7 @@ import React from 'react';
 import { UserContext } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
 
-export default function Compte_users({ token, setPage }: any) {
+export default function Compte_users({ token, setPage, setAnimal }: any) {
     const { user } = useContext(UserContext);
     console.log(user);
 
@@ -61,36 +61,40 @@ export default function Compte_users({ token, setPage }: any) {
                         </div>
 
                         <div className="container col-sm-12 col-lg-9 ">
-                            <div>
+                            <div
+                                className="vertical carousel slide"
+                                data-ride="carousel"
+                            >
                                 <p className="text-start text-light">
                                     Mes animaux
                                 </p>
-
-                                {data.animal?.map((data) => (
-                                    <div key={i}>
-                                        <div
-                                            className="bg-warning sm rounded lg rounded mt-2 ms-5"
-                                            style={{
-                                                height: 45,
-                                            }}
-                                        >
-                                            <img
-                                                src="reindeer.png"
-                                                className="rounded-pill float-start ms-5 border border-light"
+                                <div>
+                                    {data.animal?.map((data) => (
+                                        <div key={i}>
+                                            <div
+                                                className="bg-warning sm rounded lg rounded mt-2 ms-5"
                                                 style={{
-                                                    height: 40,
+                                                    height: 45,
                                                 }}
-                                                alt="patpat"
-                                            />
-                                            <p>
-                                                {`nom :   ${data.nom}  
+                                            >
+                                                <img
+                                                    src="reindeer.png"
+                                                    className="rounded-pill float-start ms-5 border border-light"
+                                                    style={{
+                                                        height: 40,
+                                                    }}
+                                                    alt="patpat"
+                                                />
+                                                <p>
+                                                    {`nom :   ${data.nom}  
                                         espèce :  ${data.espece}
                                          genre :   ${data.genre}
                                          date de naissance :    ${data.date_de_naissance}`}
-                                            </p>
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>{' '}
                             </div>
                             <p className="text-start text-light">
                                 Mon calendrier
@@ -102,7 +106,12 @@ export default function Compte_users({ token, setPage }: any) {
                     </div>
                 </div>
                 <div className="">
-                    <button className="bg-warning sm rounded lg rounded mt-2 me-5">
+                    <button
+                        onClick={() => {
+                            setPage('animal');
+                        }}
+                        className="bg-warning sm rounded lg rounded mt-2 me-5"
+                    >
                         Ajouter un animal
                     </button>
                     <button className="bg-warning sm rounded lg rounded mt-2 me-5">
