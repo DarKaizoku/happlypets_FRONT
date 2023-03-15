@@ -12,5 +12,5 @@ export type TUser = {
     codepostal: string;
     departement: string;
 
-    animal: Animal[] | null;
+    animal: Animal[] ;
 };

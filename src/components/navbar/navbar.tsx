@@ -5,13 +5,12 @@ import { UserContext, UserInit } from '../../Context/userContext';
 import Login from '../log/Login';
 import './navbar.css';
 export default function Navbar({ setPage, logout }: any) {
-    const { user, setUser } = useContext(UserContext);
-    const { setToken } = useContext(TokenContext);
-
+    const { user } = useContext(UserContext);
+    const affichageButton = user.nom === undefined;
     const dislogged = (
         <button
             onClick={(e) => logout()}
-            className="text-start text-light mt-3 mb-2 mx-auto couleur rounded"
+            className="text-start text-light mt-3 mb-2 mx-auto bg-warning rounded"
         >
             Déconnexion
         </button>
@@ -20,8 +19,6 @@ export default function Navbar({ setPage, logout }: any) {
     const logge = (
         <Login className="nav-link  text-light" href="#" setPage={setPage} />
     );
-
-    const affichageButton = user.nom === undefined;
 
     return (
         <div>

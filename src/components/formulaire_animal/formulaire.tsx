@@ -6,9 +6,12 @@ import './formulaire_animal.css';
 import { Animal } from '../../types/animal.type';
 import { TokenContext } from '../../Context/tokenContext';
 import { UserContext } from '../../Context/userContext';
+
 export function FormulaireAnimal() {
     const { token } = useContext(TokenContext);
+
     const newAnimal: Animal = {
+        id: 0,
         nom: '',
         date_de_naissance: new Date(),
         espece: '',
@@ -131,7 +134,7 @@ export function FormulaireAnimal() {
                             className="form-check-label"
                             htmlFor="publicCheck"
                         >
-                            J'accèpte que les données de mon animal soient
+                            J'accepte que les données de mon animal soient
                             publiques sur le site (optionnel)
                         </label>
                     </div>

@@ -10,6 +10,7 @@ import CarnetSante from './Components/formulaire_animal/carnet_sante';
 import { TokenContext } from './Context/tokenContext';
 import { UserContext, UserInit } from './Context/userContext';
 import { TUser } from './types/user.type';
+import { CompteAnimal } from './Components/compte_animal/compteAnimal';
 
 const baseUrl = 'http://localhost:8000/users/profil';
 function App() {
@@ -33,7 +34,6 @@ function App() {
         setUser(UserInit);
         window.location.reload();
     };
-
     useEffect(() => {
         fetch(baseUrl, options)
             .then((response) => response.json())
@@ -51,11 +51,13 @@ function App() {
                     )}
                     {page === 'update' && (
                         <DataUsertoUpdate
+
                         //token={token}
                         //user={dataUser}
                         //updateUser={setDataUser}
                         />
                     )}
+                    {page === 'compteanimal' && <CompteAnimal />}
                     {page === 'carnetDeSante' && <CarnetSante />}
                     {page === 'formulaire_user' && <FormulaireUser />}
                     {page === 'animal' && <FormulaireAnimal />}
