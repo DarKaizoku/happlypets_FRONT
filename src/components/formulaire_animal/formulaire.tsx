@@ -6,10 +6,9 @@ import './formulaire_animal.css';
 import { Animal } from '../../types/animal.type';
 import { TokenContext } from '../../Context/tokenContext';
 import { UserContext } from '../../Context/userContext';
-
 export function FormulaireAnimal() {
+    const { user } = useContext(UserContext);
     const { token } = useContext(TokenContext);
-
     const newAnimal: Animal = {
         id: 0,
         nom: '',
@@ -42,6 +41,7 @@ export function FormulaireAnimal() {
         return alert(responseJson.message.map((data: any) => data + `\n`));
       } */
             alert(responseJson.message);
+            user.animal?.push(responseJson.data);
         }
         console.log(animal);
 
