@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './App.css';
 import Compte_users from './Components/compte_user/compte_user';
-import {DataUsertoUpdate} from './Components/compte_user/dataUsertoUpdate';
-import {FormulaireAnimal} from './Components/formulaire_animal/formulaire';
-import {FormulaireUser} from './Components/formulaire_user/formulaire_user';
+import { DataUsertoUpdate } from './Components/compte_user/dataUsertoUpdate';
+import { FormulaireAnimal } from './Components/formulaire_animal/formulaire';
+import { FormulaireUser } from './Components/formulaire_user/formulaire_user';
 import Navbar from './Components/navbar/navbar';
 import CarnetSante from './Components/formulaire_animal/carnet_sante';
 

@@ -5,6 +5,7 @@ import { InputAnimal } from './input_animal';
 import './formulaire_animal.css';
 import { Animal } from '../../types/animal.type';
 import { TokenContext } from '../../Context/tokenContext';
+import { UserContext } from '../../Context/userContext';
 export function FormulaireAnimal() {
     const { token } = useContext(TokenContext);
     const newAnimal: Animal = {

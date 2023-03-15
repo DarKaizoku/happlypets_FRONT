@@ -7,17 +7,11 @@ import React from 'react';
 import { UserContext } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
 
-<<<<<<< HEAD
-export default function Compte_users({ token, setPage, setAnimal }: any) {
+export default function Compte_users({ token, setPage, logout }: any) {
     const { user } = useContext(UserContext);
     console.log(user);
-=======
-export default function Compte_users({ token, setPage, logout }: any) {
-	const { user } = useContext(UserContext);
-	console.log(user);
->>>>>>> 0d8b97bf5ba473864a78c86eeaa81dbf8620273c
 
-    const [preview, setPreview] = useState<string>('./default-avatar-user.jpg');
+    const [preview] = useState<string>('./default-avatar-user.jpg');
 
     let affichageAnimal;
     let affichageUser;
@@ -56,34 +50,18 @@ export default function Compte_users({ token, setPage, logout }: any) {
                                     token={token}
                                 />
 
-<<<<<<< HEAD
                                 <UpdateUser
                                     className=" col text-light ms-2 "
                                     setPage={setPage}
                                 />
                             </div>
-                            <button className="text-start text-light mt-3 mb-2 mx-auto couleur rounded">
+                            <button
+                                onClick={(e) => logout()}
+                                className="text-start text-light mt-3 mb-2 mx-auto couleur rounded"
+                            >
                                 Déconnexion
                             </button>
                         </div>
-=======
-								<UpdateUser
-									className=' col text-light ms-2 '
-									setPage={
-										setPage
-									}
-								/>
-							</div>
-							<button
-								onClick={(e) =>
-									logout()
-								}
-								className='text-start text-light mt-3 mb-2 mx-auto couleur rounded'
-							>
-								Déconnexion
-							</button>
-						</div>
->>>>>>> 0d8b97bf5ba473864a78c86eeaa81dbf8620273c
 
                         <div className="container col-sm-12 col-lg-9 ">
                             <div
