@@ -46,7 +46,6 @@ function App() {
       <UserContext.Provider value={{ user, setUser }}>
         <TokenContext.Provider value={{ token, setToken }}>
           <Navbar setPage={setPage} logout={logout} />
-          <UpdateAnimal />
           {page === "compte" && (
             <Compte_users setPage={setPage} logout={logout} />
           )}
