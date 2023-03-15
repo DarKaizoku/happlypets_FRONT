@@ -5,7 +5,9 @@ import { InputAnimal } from "./input_animal";
 import "./formulaire_animal.css";
 import { Animal } from "../../types/animal.type";
 import { TokenContext } from "../../Context/tokenContext";
+import { UserContext } from "../../Context/userContext";
 export function FormulaireAnimal() {
+  const { user } = useContext(UserContext);
   const { token } = useContext(TokenContext);
   const newAnimal: Animal = {
     nom: "",
@@ -17,9 +19,9 @@ export function FormulaireAnimal() {
     habitat: "",
     carnetDeSante: "",
   };
-
   const [animal, setAnimal] = useState(newAnimal);
   const urlAddAnimal = "http://localhost:8000/animal";
+
   const newPet = (e: React.BaseSyntheticEvent) => {
     e.preventDefault();
 
@@ -33,12 +35,16 @@ export function FormulaireAnimal() {
 
         body: JSON.stringify(animal),
       });
+
       const responseJson = await response.json();
       /* if (responseJson.statusCode !== 201) {
         return alert(responseJson.message.map((data: any) => data + `\n`));
       } */
+
       alert(responseJson.message);
+      user.animal?.push(responseJson.data);
     }
+
     console.log(animal);
 
     fetchData();
