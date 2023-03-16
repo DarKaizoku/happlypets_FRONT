@@ -7,9 +7,10 @@ import { Animal } from '../../types/animal.type';
 import { TokenContext } from '../../Context/tokenContext';
 import { UserContext } from '../../Context/userContext';
 export function FormulaireAnimal() {
-	const { token } = useContext(TokenContext);
 	const { user } = useContext(UserContext);
+	const { token } = useContext(TokenContext);
 	const newAnimal: Animal = {
+		id: 0,
 		nom: '',
 		date_de_naissance: new Date(),
 		espece: '',
@@ -40,11 +41,9 @@ export function FormulaireAnimal() {
         return alert(responseJson.message.map((data: any) => data + `\n`));
       } */
 			alert(responseJson.message);
-
 			user.animal?.push(responseJson.data);
-
-			//setUser({...user,['animal']:newDataAnimals})
 		}
+		console.log(animal);
 
 		fetchData();
 	};
@@ -142,7 +141,7 @@ export function FormulaireAnimal() {
 							className='form-check-label'
 							htmlFor='publicCheck'
 						>
-							J'accèpte que les
+							J'accepte que les
 							données de mon animal
 							soient publiques sur le
 							site (optionnel)

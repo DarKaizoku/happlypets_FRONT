@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './App.css';
+import { CompteAnimal } from './components/compte_animal/compteAnimal';
 import Compte_users from './components/compte_user/compte_user';
 import { DataUsertoUpdate } from './components/compte_user/dataUsertoUpdate';
 import CarnetSante from './components/formulaire_animal/carnet_sante';
@@ -28,12 +29,11 @@ function App() {
 
 	//console.log('public\default-avatar-user.jpg'.);
 
-	const logout = (e: Event) => {
+	const logout = () => {
 		setToken('');
 		setUser(UserInit);
 		window.location.reload();
 	};
-
 	useEffect(() => {
 		fetch(baseUrl, options)
 			.then((response) => response.json())
@@ -59,10 +59,14 @@ function App() {
 					)}
 					{page === 'update' && (
 						<DataUsertoUpdate
+
 						//token={token}
 						//user={dataUser}
 						//updateUser={setDataUser}
 						/>
+					)}
+					{page === 'compteanimal' && (
+						<CompteAnimal />
 					)}
 					{page === 'carnetDeSante' && (
 						<CarnetSante />

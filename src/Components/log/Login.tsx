@@ -26,7 +26,6 @@ export default function Login({ setPage }: any) {
 		async function fetchData() {
 			const response = await fetch(urlLogin, {
 				method: 'POST',
-				credentials: 'include',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(dataInput),
 			});
