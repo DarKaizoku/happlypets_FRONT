@@ -1,3 +1,4 @@
 export type Token = {
-        access_token: string;
+	access_token: string;
+	tokenVnr: string;
 };

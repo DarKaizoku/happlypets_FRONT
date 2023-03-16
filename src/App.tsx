@@ -14,9 +14,10 @@ const baseUrl = 'http://localhost:8000/users/profil';
 function App() {
 	const [user, setUser] = useState<TUser>({} as TUser);
 	//const [dataUser, setDataUser]: any = useState();
-	const [page, setPage]: any = useState('');
+	const [page, setPage] = useState<string>('');
 
 	const [token, setToken] = useState('');
+
 	const options = {
 		method: 'GET',
 		headers: {
@@ -27,7 +28,7 @@ function App() {
 
 	//console.log('public\default-avatar-user.jpg'.);
 
-	const logout = () => {
+	const logout = (e: Event) => {
 		setToken('');
 		setUser(UserInit);
 		window.location.reload();

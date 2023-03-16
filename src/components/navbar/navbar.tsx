@@ -4,7 +4,7 @@ import { UserContext, UserInit } from '../../Context/userContext';
 
 import Login from '../log/Login';
 import './navbar.css';
-export default function Navbar({ setPage }: any, { logout }: any) {
+export default function Navbar({ setPage, logout }: any) {
 	const { user, setUser } = useContext(UserContext);
 	const { setToken } = useContext(TokenContext);
 
@@ -324,7 +324,9 @@ export default function Navbar({ setPage }: any, { logout }: any) {
 									onClick={(
 										e
 									) =>
-										logout()
+										logout(
+											e
+										)
 									}
 									className='text-start text-light mt-3 mb-2 mx-auto couleur rounded'
 								>
