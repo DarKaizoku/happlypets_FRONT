@@ -6,6 +6,7 @@ import { UserContext } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
 import { updateAnimalContext } from '../../Context/updateAnimalContext';
 import { title } from 'process';
+import { AnimalContext } from '../../Context/animalContext';
 
 export default function Compte_users({ token, setPage, logout }: any) {
     const { user } = useContext(UserContext);
@@ -15,7 +16,9 @@ export default function Compte_users({ token, setPage, logout }: any) {
     const [preview_animal] = useState<string>('./animal.jpg');
     const comptani = (e: React.BaseSyntheticEvent) => {
         const { title } = e.currentTarget;
+
         console.log(title);
+
         setIdAnimal(title);
     };
     console.log(idAnimal);
@@ -75,7 +78,6 @@ export default function Compte_users({ token, setPage, logout }: any) {
                                 Mes animaux
                             </div>
                             <div className="container-fluid col-sm-12">
-                                {' '}
                                 <div
                                     className="container col-12 text-light text-center couleur sm rounded lg rounded mt-4  ms-4 row justify-content-start"
                                     style={{
@@ -97,13 +99,12 @@ export default function Compte_users({ token, setPage, logout }: any) {
                                         <div>
                                             <div
                                                 defaultValue={data.id}
-                                                title={data.id.toString()}
+                                                title={data.nom}
                                                 id="animal"
                                                 onClick={(e) => {
+                                                    setIdAnimal(data.id);
                                                     comptani(e);
-                                                    setIdAnimal(
-                                                        data.id.toString(),
-                                                    );
+
                                                     setPage('compteanimal');
                                                 }}
                                                 key={i}
@@ -157,7 +158,7 @@ export default function Compte_users({ token, setPage, logout }: any) {
                                 Calendrier
                             </div>
                         </div>
-                    </div>{' '}
+                    </div>
                 </div>
                 <div className="">
                     <button
