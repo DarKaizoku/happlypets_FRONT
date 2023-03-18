@@ -5,7 +5,7 @@ export function UpdateUser({ setPage }: any) {
 
     return (
         <button
-            className="btn couleur btn-sm me-3 border border-primary text-light col"
+            className="btn couleur btn-sm me-3 ms-2 border border-primary text-light col"
             onClick={(e) => eraser(e)}
             type="button"
         >

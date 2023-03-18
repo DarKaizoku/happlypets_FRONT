@@ -6,11 +6,11 @@ import { FormulaireAnimal } from './Components/formulaire_animal/formulaire';
 import { FormulaireUser } from './Components/formulaire_user/formulaire_user';
 import Navbar from './Components/navbar/navbar';
 import CarnetSante from './Components/formulaire_animal/carnet_sante';
-
 import { TokenContext } from './Context/tokenContext';
 import { UserContext, UserInit } from './Context/userContext';
 import { TUser } from './types/user.type';
 import { CompteAnimal } from './Components/compte_animal/compteAnimal';
+import { UpdateAnimal } from './Components/formulaire_animal/animalUpdate';
 
 const baseUrl = 'http://localhost:8000/users/profil';
 function App() {
@@ -57,7 +57,10 @@ function App() {
                         //updateUser={setDataUser}
                         />
                     )}
-                    {page === 'compteanimal' && <CompteAnimal />}
+                    {page === 'animalUpdate' && <UpdateAnimal />}
+                    {page === 'compteanimal' && (
+                        <CompteAnimal setPage={setPage} />
+                    )}
                     {page === 'carnetDeSante' && <CarnetSante />}
                     {page === 'formulaire_user' && <FormulaireUser />}
                     {page === 'animal' && <FormulaireAnimal />}

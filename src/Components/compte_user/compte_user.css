@@ -5,8 +5,11 @@
     background: #006FAA;
     
 }
-#animal{ 
+.compte{ 
   
   text-decoration: none;
 
+}
+.compte:hover{
+  cursor:pointer;
 }
