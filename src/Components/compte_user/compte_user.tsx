@@ -90,7 +90,7 @@ export default function Compte_users({ token, setPage, logout }: any) {
                                     </div>
                                 </div>
                                 <div
-                                    className="container row justify-content-start text-center text-light overflow-y-scroll"
+                                    className="container row justify-content-start text-center text-light overflow-y-scroll inner"
                                     style={{ height: 150 }}
                                 >
                                     {data.animal?.map((data) => (
@@ -149,12 +149,15 @@ export default function Compte_users({ token, setPage, logout }: any) {
                                     ))}
                                 </div>
                             </div>
+
+                            <p className="text-start text-light mt-5">
+                                Mon calendrier
+                            </p>
+                            <div className="bg-warning sm rounded lg rounded mt-2">
+                                Calendrier
+                            </div>
                         </div>
-                        <p className="text-start text-light">Mon calendrier</p>
-                        <div className="bg-warning sm rounded lg rounded mt-2">
-                            Calendrier
-                        </div>
-                    </div>
+                    </div>{' '}
                 </div>
                 <div className="">
                     <button
