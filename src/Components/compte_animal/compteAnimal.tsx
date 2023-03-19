@@ -33,8 +33,8 @@ export function CompteAnimal({ setPage }: any) {
                     alt="patpat"
                 />
             </div>
-            <div className="row">
-                <div className="col mt-2 mx-auto">
+            <div className="row text-center">
+                <div className="col mt-2 ">
                     <div>
                         <strong className="me-2 fs-4">id:</strong>
                         {data.id}
@@ -47,12 +47,6 @@ export function CompteAnimal({ setPage }: any) {
                         <strong className="me-2 fs-4">Genre:</strong>
                         {data.genre}
                     </div>
-                </div>
-                <div className="col mt-2 mx-auto">
-                    <div>
-                        <strong className="me-2 fs-4">Habitat:</strong>
-                        {data.habitat}
-                    </div>
                     <div>
                         <>
                             <strong className="me-2 fs-4">
@@ -62,6 +56,13 @@ export function CompteAnimal({ setPage }: any) {
                             {data.date_de_naissance}
                         </>
                     </div>
+                </div>
+                <div className="col mt-2 mx-auto">
+                    <div>
+                        <strong className="me-2 fs-4">Habitat:</strong>
+                        {data.habitat}
+                    </div>
+
                     <div>
                         <strong className="me-2 fs-4">Lof:</strong>
                         {data.lof}
@@ -73,9 +74,9 @@ export function CompteAnimal({ setPage }: any) {
                 </div>
             </div>
             <div>
-                <div className="d-flex justify-content-around mt-5">
+                <div className="d-flex justify-content-center mt-5">
                     <button
-                        className="btn couleur  btn-sm ms-2 me-3  mb-5 border border-primary  text-light
+                        className="btn couleur rounded-pill btn-sm  me-3  mb-5 border border-primary  text-light
 "
                     >
                         <i className="bi bi-x-lg">
@@ -84,7 +85,7 @@ export function CompteAnimal({ setPage }: any) {
                         </i>
                     </button>
                     <button
-                        className="btn couleur  btn-sm ms-2 me-3 mb-5 border border-primary text-light
+                        className="btn couleur rounded-pill btn-sm  me-3 mb-5 border border-primary text-light
                        "
                         onClick={(e) => updateAnimal(e)}
                         type="button"

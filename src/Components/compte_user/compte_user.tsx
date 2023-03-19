@@ -11,6 +11,11 @@ import { AnimalContext } from '../../Context/animalContext';
 export default function Compte_users({ token, setPage, logout }: any) {
     const { user } = useContext(UserContext);
 
+    //permet de recuperer l'url enregistrer dans localstorage
+    const photo: any = localStorage.getItem('photoprofil');
+    const test = photo?.slice('5');
+    console.log(test);
+
     const { idAnimal, setIdAnimal } = useContext(updateAnimalContext);
     const [preview] = useState<string>('./default-avatar-user.jpg');
     const [preview_animal] = useState<string>('./animal.jpg');
@@ -33,7 +38,7 @@ export default function Compte_users({ token, setPage, logout }: any) {
                         <div className="col-sm-12 col-lg-2 bg-warning rounded pe-2">
                             <div className="">
                                 <img
-                                    src={preview}
+                                    src={test}
                                     alt="example placeholder"
                                     className="img-thumbnail mt-3 mb-2"
                                     style={{
