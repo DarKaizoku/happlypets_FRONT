@@ -16,7 +16,7 @@ const baseUrl = 'http://localhost:8000/users/profil';
 function App() {
     const [user, setUser] = useState<TUser>({} as TUser);
     //const [dataUser, setDataUser]: any = useState();
-    const [page, setPage]: any = useState('');
+    const [page, setPage] = useState('');
 
     const [token, setToken] = useState('');
     const options = {

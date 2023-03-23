@@ -5,8 +5,6 @@ import { DeleteUser } from './Delete_user';
 import { UserContext } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
 import { updateAnimalContext } from '../../Context/updateAnimalContext';
-import { title } from 'process';
-import { AnimalContext } from '../../Context/animalContext';
 
 export default function Compte_users({ token, setPage, logout }: any) {
     const { user } = useContext(UserContext);
@@ -19,14 +17,18 @@ export default function Compte_users({ token, setPage, logout }: any) {
     const { idAnimal, setIdAnimal } = useContext(updateAnimalContext);
     const [preview] = useState<string>('./default-avatar-user.jpg');
     const [preview_animal] = useState<string>('./animal.jpg');
-    const comptani = (e: React.BaseSyntheticEvent) => {
+    const inputChange = (e: React.BaseSyntheticEvent) => {
         const { title } = e.currentTarget;
-
         console.log(title);
 
-        setIdAnimal(title);
+        /*  if (title) {
+            console.log();
+            setIdAnimal({
+                ...idAnimal,
+                [title]: title,
+            });
+        } */
     };
-    console.log(idAnimal);
 
     let affichageUser;
 
@@ -84,7 +86,7 @@ export default function Compte_users({ token, setPage, logout }: any) {
                             </div>
                             <div className="container-fluid col-sm-12">
                                 <div
-                                    className="container col-12 text-light text-center couleur sm rounded lg rounded mt-4  ms-4 row justify-content-start"
+                                    className="container  col-12 text-light text-center couleur sm rounded lg rounded mt-4  ms-4 row justify-content-start"
                                     style={{
                                         height: 45,
                                     }}
@@ -106,9 +108,9 @@ export default function Compte_users({ token, setPage, logout }: any) {
                                                 defaultValue={data.id}
                                                 title={data.nom}
                                                 id="animal"
+                                                aria-hidden="false"
                                                 onClick={(e) => {
-                                                    setIdAnimal(data.id);
-                                                    comptani(e);
+                                                    inputChange(e);
 
                                                     setPage('compteanimal');
                                                 }}
@@ -116,19 +118,18 @@ export default function Compte_users({ token, setPage, logout }: any) {
                                                 className="compte row justify-content-start text-dark m-0"
                                             >
                                                 <div
-                                                    className=" container text-dark text-center bg-warning sm rounded lg rounded mt-2 mb-2 ms-4 row justify-content-start"
+                                                    className=" container  text-dark text-center bg-warning sm rounded lg rounded mt-2 mb-2 ms-4 row justify-content-start"
                                                     style={{
                                                         height: 45,
                                                     }}
                                                 >
-                                                    <img
-                                                        src={preview_animal}
-                                                        className="rounded-circle float-start mt-1 mb-2 col-1 border border-0"
-                                                        style={{
-                                                            height: 35,
-                                                        }}
-                                                        alt="patpat"
-                                                    />
+                                                    <div className="avatar">
+                                                        <img
+                                                            src={preview_animal}
+                                                            className="avatar-img avatar-md rounded-circle  mt-3 "
+                                                            alt="patpat"
+                                                        />
+                                                    </div>
                                                     <div className="col-2 p-0">
                                                         {data.nom}
                                                     </div>
