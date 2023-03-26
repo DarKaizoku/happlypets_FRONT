@@ -10,7 +10,7 @@ export default function Navbar({ setPage, logout }: any) {
     const dislogged = (
         <button
             onClick={(e) => logout()}
-            className="text-start text-light mt-3 mb-2 mx-auto bg-warning rounded"
+            className="text-start  mt-3 mb-2 mx-auto bg-warning rounded"
         >
             Déconnexion
         </button>

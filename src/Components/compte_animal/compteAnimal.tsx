@@ -12,9 +12,13 @@ export function CompteAnimal({ setPage }: any) {
     const updateAnimal = (e: React.SyntheticEvent) => {
         setPage('animalUpdate');
     };
+    const [inputHabitat, setInputHabitat] = useState(false);
+    const [inputSoin, setInputSoin] = useState(false);
 
     const affichageAnimal = user.animal?.map((data: Animal, i: number) => {
-        if (data.nom == idAnimal) {
+        console.log(data.id);
+
+        if (data.id === +idAnimal) {
             return (
                 <div className="bg-warning container mb-5 rounded">
                     <div className="container text-center mb-4">
@@ -58,8 +62,18 @@ export function CompteAnimal({ setPage }: any) {
                         />
                         <div className="col mt-2 mx-auto">
                             <div>
+                                <button onClick={() => setInputHabitat(true)}>
+                                    <i className="bi bi-pencil"></i>
+                                </button>
                                 <strong className="me-2 fs-4">Habitat:</strong>
-                                {data.habitat}
+                                {inputHabitat === false ? (
+                                    <div> {data.habitat}</div>
+                                ) : (
+                                    <>
+                                        <input type="text" />
+                                        <i className="bi bi-check-square"></i>
+                                    </>
+                                )}
                             </div>
 
                             <div>
@@ -69,6 +83,17 @@ export function CompteAnimal({ setPage }: any) {
                             <div>
                                 <strong className="me-2 fs-4">Race:</strong>
                                 {data.race}
+                            </div>
+                            <div>
+                                <button onClick={() => setInputSoin(true)}>
+                                    <i className="bi bi-pencil"></i>
+                                </button>
+                                <strong className="me-2 fs-4">Soin:</strong>
+                                {inputSoin === false ? (
+                                    <div> {data.soin}</div>
+                                ) : (
+                                    <input type="text" />
+                                )}
                             </div>
                         </div>
                     </div>

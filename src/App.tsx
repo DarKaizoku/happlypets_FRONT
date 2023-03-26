@@ -21,7 +21,7 @@ function App() {
     const [idAnimal, setIdAnimal] = useState('');
     const [token, setToken] = useState('');
     const options = {
-        method: 'GET',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,

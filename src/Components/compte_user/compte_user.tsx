@@ -23,7 +23,6 @@ export default function Compte_users({ token, setPage, logout }: any) {
 
         setIdAnimal(values.title);
     };
-    console.log(idAnimal);
 
     let affichageUser;
 
@@ -99,7 +98,7 @@ export default function Compte_users({ token, setPage, logout }: any) {
                                         {data.animal?.map((data) => (
                                             <tr
                                                 defaultValue={data.id}
-                                                title={data.nom}
+                                                title={data.id.toString()}
                                                 id="animal"
                                                 aria-hidden="false"
                                                 onClick={(e) => {
