@@ -4,7 +4,7 @@ import './compte_user.css';
 import { DeleteUser } from './Delete_user';
 import { UserContext } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
-import { updateAnimalContext } from '../../Context/updateAnimalContext';
+import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 
 export default function Compte_users({ token, setPage, logout }: any) {
     const { user } = useContext(UserContext);
@@ -12,23 +12,18 @@ export default function Compte_users({ token, setPage, logout }: any) {
     //permet de recuperer l'url enregistrer dans localstorage
     const photo: any = localStorage.getItem('photoprofil');
     const test = photo?.slice('5');
-    console.log(test);
 
-    const { idAnimal, setIdAnimal } = useContext(updateAnimalContext);
+    const { idAnimal, setIdAnimal } = useContext(UpdateAnimalContext);
     const [preview] = useState<string>('./default-avatar-user.jpg');
     const [preview_animal] = useState<string>('./animal.jpg');
     const inputChange = (e: React.BaseSyntheticEvent) => {
         const { title } = e.currentTarget;
-        console.log(title);
+        const values = { title };
+        console.log(values.title);
 
-        /*  if (title) {
-            console.log();
-            setIdAnimal({
-                ...idAnimal,
-                [title]: title,
-            });
-        } */
+        setIdAnimal(values.title);
     };
+    console.log(idAnimal);
 
     let affichageUser;
 
@@ -59,7 +54,7 @@ export default function Compte_users({ token, setPage, logout }: any) {
                                 <br />
                                 Ville : {data.ville}
                             </div>
-                            <div>Département : {data.departement}</div>{' '}
+                            <div>Département : {data.departement}</div>
                             <div className="mt-3  p-2 row">
                                 <DeleteUser
                                     className=" col text-light me-2"
@@ -81,30 +76,28 @@ export default function Compte_users({ token, setPage, logout }: any) {
                         </div>
 
                         <div className="container-fluid col-sm-12 col-lg-9 ">
-                            <div className="text-start text-light">
+                            <div className="text-start text-light mb-3">
                                 Mes animaux
                             </div>
-                            <div className="container-fluid col-sm-12">
-                                <div
-                                    className="container  col-12 text-light text-center couleur sm rounded lg rounded mt-4  ms-4 row justify-content-start"
-                                    style={{
-                                        height: 45,
-                                    }}
-                                >
-                                    <div className="col-2  ms-5">Nom</div>
-                                    <div className="col-2 ">Espèce</div>
-                                    <div className="col-2 ">Genre</div>
-                                    <div className=" col-3 ">
-                                        Date de naissance
-                                    </div>
-                                </div>
-                                <div
-                                    className="container row justify-content-start text-center text-light overflow-y-scroll inner"
-                                    style={{ height: 150 }}
-                                >
-                                    {data.animal?.map((data) => (
-                                        <div>
-                                            <div
+                            <div
+                                className=" table-responsive bg-warning rounded overflow-y-scroll inner"
+                                style={{ height: 150 }}
+                            >
+                                <table className="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Photo</th>
+                                            <th scope="col">Nom</th>
+                                            <th scope="col">Espèce</th>
+                                            <th scope="col">Genre</th>
+                                            <th scope="col">
+                                                Date de naissance
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className=" overflow-y-scroll inner">
+                                        {data.animal?.map((data) => (
+                                            <tr
                                                 defaultValue={data.id}
                                                 title={data.nom}
                                                 id="animal"
@@ -114,59 +107,58 @@ export default function Compte_users({ token, setPage, logout }: any) {
 
                                                     setPage('compteanimal');
                                                 }}
-                                                key={i}
-                                                className="compte row justify-content-start text-dark m-0"
                                             >
-                                                <div
-                                                    className=" container  text-dark text-center bg-warning sm rounded lg rounded mt-2 mb-2 ms-4 row justify-content-start"
-                                                    style={{
-                                                        height: 45,
-                                                    }}
-                                                >
+                                                <th scope="row">
                                                     <div className="avatar">
                                                         <img
                                                             src={preview_animal}
-                                                            className="avatar-img avatar-md rounded-circle  mt-3 "
+                                                            className="avatar-img avatar-md rounded-circle   "
                                                             alt="patpat"
                                                         />
                                                     </div>
-                                                    <div className="col-2 p-0">
-                                                        {data.nom}
-                                                    </div>
-                                                    <div className="col-2 p-0">
-                                                        {data.espece}
-                                                    </div>
-                                                    <div className="col-2 p-0">
-                                                        {data.genre}
-                                                    </div>
-                                                    <div className="col-3 p-0">
-                                                        {`${data.date_de_naissance}`}
-                                                    </div>
-                                                    {/*   <div className="col-2">
-                                                    <button className="couleur border border-0 rounded mt-2 me-2">
-                                                        <i className="bi bi-x-lg"></i>
-                                                    </button>
-                                                    <button className="couleur border border-0 rounded mt-2">
-                                                        <i className="bi bi-pencil-fill"></i>
-                                                    </button>
-                                                </div> */}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
+                                                </th>
+                                                <td>{data.nom}</td>
+                                                <td>{data.espece}</td>
+                                                <td>{data.genre}</td>
+                                                <td>{`${data.date_de_naissance}`}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
                             </div>
 
                             <p className="text-start text-light mt-5">
                                 Mon calendrier
                             </p>
-                            <div className="bg-warning sm rounded lg rounded mt-2">
-                                Calendrier
+                            <div className=" table-responsive bg-warning sm rounded lg rounded mt-2">
+                                <table className="table">
+                                    <thead>
+                                        <caption>
+                                            <strong>AVRIL</strong>
+                                        </caption>
+                                        <tr>
+                                            <th scope="col">1/04</th>
+                                            <th scope="col">15/04</th>
+                                            <th scope="col">20/04</th>
+                                            <th scope="col">30/04</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">
+                                                Concours national
+                                            </th>
+                                            <td>Rappel fongique</td>
+                                            <td>toilettage</td>
+                                            <td>collier anti-puce</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="">
+                <div className="mb-3 mt-3">
                     <button
                         onClick={() => {
                             setPage('animal');

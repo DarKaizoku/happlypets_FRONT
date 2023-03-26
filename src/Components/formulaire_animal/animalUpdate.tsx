@@ -1,12 +1,12 @@
 import { useState, useEffect, useContext } from 'react';
 import { AnimalContext } from '../../Context/animalContext';
 import { TokenContext } from '../../Context/tokenContext';
-import { updateAnimalContext } from '../../Context/updateAnimalContext';
+import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 import { Animal } from '../../types/animal.type';
 
 const animalUrl = 'http://localhost:8000/animal/';
 export function UpdateAnimal() {
-    const { idAnimal } = useContext(updateAnimalContext);
+    const { idAnimal } = useContext(UpdateAnimalContext);
     console.log(idAnimal);
 
     const { animal, setAnimal }: any = useContext(AnimalContext);

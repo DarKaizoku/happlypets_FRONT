@@ -1,9 +1,7 @@
-import { title } from 'process';
-import react from 'react';
+import React from 'react';
 
-export const updateAnimalContext = react.createContext({
-    idAnimal: {
-        title: '',
-    },
+export const UpdateAnimalContext = React.createContext({
+    idAnimal: '',
+
     setIdAnimal: (value: string) => {},
 });
