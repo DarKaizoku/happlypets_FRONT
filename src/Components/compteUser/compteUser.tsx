@@ -1,23 +1,29 @@
 import { useContext, useState } from 'react';
-import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
+import './compteUser.css';
 import { UserContext } from '../../Context/userContext';
 import { Animal } from '../../types/animal.type';
 import { TUser } from '../../types/user.type';
-import './compteUser.css';
+import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 import { DeleteUser } from './DeleteUser';
 import { UpdateUser } from './updateUser';
-export function CompteUsers({ token, setPage, logout }: any) {
-    const { user } = useContext(UserContext);
 
+export default function CompteUsers(props: {
+    TOKEN: string;
+    setPage: (value: string) => void;
+    logout: () => void;
+}) {
+    const { user } = useContext(UserContext);
+    const { TOKEN, setPage, logout } = props;
     //permet de recuperer l'url enregistrer dans localstorage
-    /*    const photo: any = localStorage.getItem('photoprofil');
-     */
+    const photo: any = localStorage.getItem('photoprofil');
+    const test = photo?.slice('5');
+
     const { setIdAnimal } = useContext(UpdateAnimalContext);
-    const [preview] = useState<string>('./default-avatar-user.jpg');
     const [preview_animal] = useState<string>('./animal.jpg');
     const inputChange = (e: React.BaseSyntheticEvent) => {
         const { title } = e.currentTarget;
         const values = { title };
+        console.log(values.title);
 
         setIdAnimal(values.title);
     };
@@ -32,7 +38,7 @@ export function CompteUsers({ token, setPage, logout }: any) {
                         <div className="col-sm-12 col-lg-2 bg-warning rounded pe-2">
                             <div className="">
                                 <img
-                                    src={preview}
+                                    src={test}
                                     alt="example placeholder"
                                     className="img-thumbnail mt-3 mb-2"
                                     style={{
@@ -53,15 +59,12 @@ export function CompteUsers({ token, setPage, logout }: any) {
                             </div>
                             <div>Département : {data.departement}</div>
                             <div className="mt-3  p-2 row">
-                                <DeleteUser
-                                    className=" col text-light me-2"
-                                    token={token}
-                                />
-
-                                <UpdateUser
-                                    className=" col text-light ms-2 "
-                                    setPage={setPage}
-                                />
+                                <div className=" col text-light me-2">
+                                    <DeleteUser TOKEN={TOKEN} />
+                                </div>
+                                <div className=" col text-light me-2">
+                                    <UpdateUser setPage={setPage} />
+                                </div>
                             </div>
                             <button
                                 onClick={(e) => logout()}
@@ -94,37 +97,33 @@ export function CompteUsers({ token, setPage, logout }: any) {
                                         </tr>
                                     </thead>
                                     <tbody className=" overflow-y-scroll inner">
-                                        {data.animal?.map(
-                                            (data: Animal, i: number) => (
-                                                <tr
-                                                    defaultValue={data.id}
-                                                    title={data.id.toString()}
-                                                    id="animal"
-                                                    aria-hidden="false"
-                                                    onClick={(e) => {
-                                                        inputChange(e);
+                                        {data.animal?.map((data) => (
+                                            <tr
+                                                defaultValue={data.id}
+                                                title={data.id.toString()}
+                                                id="animal"
+                                                aria-hidden="false"
+                                                onClick={(e) => {
+                                                    inputChange(e);
 
-                                                        setPage('compteanimal');
-                                                    }}
-                                                >
-                                                    <th scope="row">
-                                                        <div className="avatar">
-                                                            <img
-                                                                src={
-                                                                    preview_animal
-                                                                }
-                                                                className="avatar-img avatar-md rounded-circle   "
-                                                                alt="patpat"
-                                                            />
-                                                        </div>
-                                                    </th>
-                                                    <td>{data.nom}</td>
-                                                    <td>{data.espece}</td>
-                                                    <td>{data.genre}</td>
-                                                    <td>{`${data.date_de_naissance}`}</td>
-                                                </tr>
-                                            ),
-                                        )}
+                                                    setPage('compteanimal');
+                                                }}
+                                            >
+                                                <th scope="row">
+                                                    <div className="avatar">
+                                                        <img
+                                                            src={preview_animal}
+                                                            className="avatar-img avatar-md rounded-circle   "
+                                                            alt="patpat"
+                                                        />
+                                                    </div>
+                                                </th>
+                                                <td>{data.nom}</td>
+                                                <td>{data.espece}</td>
+                                                <td>{data.genre}</td>
+                                                <td>{`${data.date_de_naissance}`}</td>
+                                            </tr>
+                                        ))}
                                     </tbody>
                                 </table>
                             </div>
@@ -133,11 +132,11 @@ export function CompteUsers({ token, setPage, logout }: any) {
                                 Mon calendrier
                             </p>
                             <div className=" table-responsive bg-warning sm rounded lg rounded mt-2">
-                                <caption className="ms-2">
-                                    <strong>AVRIL</strong>
-                                </caption>{' '}
                                 <table className="table">
                                     <thead>
+                                        <caption>
+                                            <strong>AVRIL</strong>
+                                        </caption>
                                         <tr>
                                             <th scope="col">1/04</th>
                                             <th scope="col">15/04</th>

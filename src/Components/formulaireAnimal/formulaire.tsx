@@ -6,9 +6,13 @@ import './formulaireAnimal.css';
 import { Animal } from '../../types/animal.type';
 import { TokenContext } from '../../Context/tokenContext';
 import { UserContext } from '../../Context/userContext';
+import { Habitats } from '../../types/habitat.type';
+import { CarnetDeSante } from '../../types/carnetDeSsante.type';
 export function FormulaireAnimal() {
     const { user } = useContext(UserContext);
     const { token } = useContext(TokenContext);
+
+    //Enregistrement d'un nouvel animal
     const newAnimal: Animal = {
         id: 0,
         nom: '',
@@ -38,17 +42,75 @@ export function FormulaireAnimal() {
                 body: JSON.stringify(animal),
             });
             const responseJson = await response.json();
-            /* if (responseJson.statusCode !== 201) {
-        return alert(responseJson.message.map((data: any) => data + `\n`));
-      } */
             alert(responseJson.message);
             user.animal?.push(responseJson.data);
         }
+        console.log(animal);
 
         fetchData();
     };
 
-    const [fiche, setFiche] = useState('animal');
+    //Enregistrement d'un nouvel habitat
+    const newHabitat: Habitats = {
+        habitats: '',
+    };
+
+    const [habitat, setHabitat] = useState(newHabitat);
+    const urlAddHabitat = 'http://localhost:8000/habitats';
+    const newHome = (e: React.BaseSyntheticEvent) => {
+        e.preventDefault();
+
+        async function fetchData() {
+            const response = await fetch(urlAddHabitat, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+
+                body: JSON.stringify(habitat),
+            });
+            const responseJson = await response.json();
+            alert(responseJson.message);
+        }
+        console.log(habitat);
+
+        fetchData();
+    };
+
+    //Enregistrement des données santé
+
+    const newSante: CarnetDeSante = {
+        poids: 0,
+        steriliser: '',
+        vaccin: '',
+        date_vaccin: new Date(),
+    };
+
+    const [carnetSante, setCarnetSante] = useState(newSante);
+    const urlAddSante = 'http://localhost:8000/carnet';
+    const newCS = (e: React.BaseSyntheticEvent) => {
+        e.preventDefault();
+
+        async function fetchData() {
+            const response = await fetch(urlAddSante, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+
+                body: JSON.stringify(carnetSante),
+            });
+            const responseJson = await response.json();
+            alert(responseJson.message);
+        }
+        console.log(habitat);
+
+        fetchData();
+    };
+
+    const [fiche] = useState('animal');
 
     const [selectedFile, setSelectedFile] = useState();
     const [preview, setPreview] = useState<string>('/reindeer.png');
@@ -116,7 +178,11 @@ export function FormulaireAnimal() {
                     <InputAnimal
                         animal={animal}
                         setAnimal={setAnimal}
-                    ></InputAnimal>
+                        habitat={habitat}
+                        setHabitat={setHabitat}
+                        carnetSante={carnetSante}
+                        setCarnetSante={setCarnetSante}
+                    />
                 )}
                 {fiche === 'carnetDeSante' && <CarnetId></CarnetId>}
                 {fiche === 'habitat' && <Habitat></Habitat>}
@@ -157,57 +223,59 @@ export function FormulaireAnimal() {
                         </div>
                     </div>
                 </div>
-                <div
-                    className="btn-group container-fluid mt-3 p-1 mb-1 bleu"
-                    role="group"
-                    aria-label="Basic radio toggle button group"
-                >
-                    <input
-                        type="radio"
-                        className="btn-check"
-                        name="btnradio"
-                        id="btnradio1"
-                        autoComplete="off"
-                        onClick={() => setFiche('animal')}
-                        defaultChecked={fiche === 'animal'}
-                    />
-                    <label
-                        className="btn btn-outline-warning"
-                        htmlFor="btnradio1"
-                    >
-                        Fiche animal
-                    </label>
+                {/* 
+        <div
+          className="btn-group container-fluid mt-3 p-1 mb-1 bleu"
+          role="group"
+          aria-label="Basic radio toggle button group"
+        >
+          <input
+            type="radio"
+            className="btn-check"
+            name="btnradio"
+            id="btnradio1"
+            autoComplete="off"
+            onClick={() => setFiche("animal")}
+            defaultChecked={fiche === "animal"}
+          />
+          <label className="btn btn-outline-warning" htmlFor="btnradio1">
+            Fiche animal
+          </label>
 
-                    <input
-                        type="radio"
-                        className="btn-check"
-                        name="btnradio"
-                        id="btnradio2"
-                        autoComplete="off"
-                        onClick={() => setFiche('carnetDeSante')}
-                        defaultChecked={fiche === 'carnetDeSante'}
-                    />
-                    <label className="btn btn-warning" htmlFor="btnradio2">
-                        Carnet de santé
-                    </label>
+          <input
+            type="radio"
+            className="btn-check"
+            name="btnradio"
+            id="btnradio2"
+            autoComplete="off"
+            onClick={() => setFiche("carnetDeSante")}
+            defaultChecked={fiche === "carnetDeSante"}
+          />
+          <label className="btn btn-outline-warning" htmlFor="btnradio2">
+            Carnet de santé
+          </label>
 
-                    <input
-                        type="radio"
-                        className="btn-check"
-                        name="btnradio"
-                        id="btnradio3"
-                        autoComplete="off"
-                        onClick={() => setFiche('habitat')}
-                        defaultChecked={fiche === 'habitat'}
-                    />
-                    <label className="btn btn-warning" htmlFor="btnradio3">
-                        Habitat
-                    </label>
-                </div>
+          <input
+            type="radio"
+            className="btn-check"
+            name="btnradio"
+            id="btnradio3"
+            autoComplete="off"
+            onClick={() => setFiche("habitat")}
+            defaultChecked={fiche === "habitat"}
+          />
+          <label className="btn btn-outline-warning" htmlFor="btnradio3">
+            Habitat
+          </label>
+        </div> */}
                 <div className="container text-center mt-3">
                     <button
-                        onClick={(e) => newPet(e)}
-                        className="btn btn-primary bleu text-light "
+                        onClick={(e) => {
+                            newPet(e);
+                            newHome(e);
+                            newCS(e);
+                        }}
+                        className="btn bleu text-light btn-outline-primary"
                         type="submit"
                     >
                         Enregistrer

@@ -5,7 +5,10 @@ import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 
 const urlAddSoin = 'http://localhost:8000/soin';
 
-export default function Soin(props: { setPage: any }) {
+export default function Soin(props: {
+    setPage: React.Dispatch<React.SetStateAction<string>>;
+    TOKEN: string;
+}) {
     const { idAnimal } = useContext(UpdateAnimalContext);
     const { token } = useContext(TokenContext);
     const animalId = parseInt(idAnimal);
@@ -28,7 +31,7 @@ export default function Soin(props: { setPage: any }) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${props.TOKEN}`,
         },
         body: JSON.stringify({ activite, date, animalId }),
     };
