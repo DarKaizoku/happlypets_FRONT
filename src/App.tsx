@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
-
 import './App.css';
+import CompteUsers from './components/compteUser/compteUser';
+import Compte_users from './components/compteUser/compteUser';
+import { DataUsertoUpdate } from './components/compteUser/dataUsertoUpdate';
 import { CompteAnimal } from './components/compte_animal/compteAnimal';
 import { Soin } from './components/compte_animal/soin';
-import Compte_users from './components/compte_user/compte_user';
-import { DataUsertoUpdate } from './components/compte_user/dataUsertoUpdate';
-import { UpdateAnimal } from './components/formulaire_animal/animalUpdate';
-import CarnetSante from './components/formulaire_animal/carnet_sante';
-import { FormulaireAnimal } from './components/formulaire_animal/formulaire';
-import { FormulaireUser } from './components/formulaire_user/formulaire_user';
+import { UpdateAnimal } from './components/formulaireAnimal/animalUpdate';
+import CarnetSante from './components/formulaireAnimal/carnetSante';
+import { FormulaireAnimal } from './components/formulaireAnimal/formulaire';
+import { FormulaireUser } from './components/formulaireUser/formulaireUser';
 import Navbar from './components/navbar/navbar';
 
 import { UpdateAnimalContext } from './Context/updateAnimalContext';
-import { UserContext, UserInit } from './Context/userContext';
+import { UserInit, UserContext } from './Context/userContext';
 import { TUser } from './types/user.type';
 
 const baseUrl = 'http://localhost:8000/users/profil';
@@ -58,7 +58,7 @@ function App() {
 						logout={logout}
 					/>
 					{page === 'compte' && (
-						<Compte_users
+						<CompteUsers
 							setPage={setPage}
 							logout={logout}
 							TOKEN={TOKEN}

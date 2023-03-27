@@ -18,7 +18,6 @@ export function Login({ setPage }: any) {
 
 	const login = (e: React.BaseSyntheticEvent) => {
 		e.preventDefault();
-		console.log('123');
 
 		async function fetchData() {
 			const response = await fetch(urlLogin, {

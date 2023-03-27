@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react';
-import { UpdateUser } from './update_user';
-import './compte_user.css';
-import { DeleteUser } from './Delete_user';
+import './compteUser.css';
 import { UserContext } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
 import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
+import { DeleteUser } from './DeleteUser';
+import { UpdateUser } from './updateUser';
 
-export default function Compte_users(props: {
+export default function CompteUsers(props: {
 	TOKEN: string;
 	setPage: (value: string) => void;
 	logout: () => void;
@@ -90,14 +90,14 @@ export default function Compte_users(props: {
 								<div className=' col text-light me-2'>
 									<UpdateUser
 										setPage={
-											props.setPage
+											setPage
 										}
 									/>
 								</div>
 							</div>
 							<button
 								onClick={(e) =>
-									props.logout()
+									logout()
 								}
 								className='btn couleur  btn-sm  mt-3 ms-2 me-3 mb-2 border border-primary col text-light'
 							>
@@ -156,7 +156,7 @@ export default function Compte_users(props: {
 															e
 														);
 
-														props.setPage(
+														setPage(
 															'compteanimal'
 														);
 													}}
@@ -248,7 +248,7 @@ export default function Compte_users(props: {
 				<div className='mb-3 mt-3'>
 					<button
 						onClick={() => {
-							props.setPage('animal');
+							setPage('animal');
 						}}
 						className='bg-warning sm rounded lg rounded mt-2 me-5'
 					>

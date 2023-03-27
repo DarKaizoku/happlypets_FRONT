@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+
 const urlUser = 'http://localhost:8000/users';
 
 export function DeleteUser(props: { TOKEN: string }) {
@@ -17,20 +18,6 @@ export function DeleteUser(props: { TOKEN: string }) {
 			const response = await fetch(urlUser, options);
 			if (response.status === 404) {
 				return alert('Votre compte est déjà supprimé');
-				{
-					/* <div
-                        className="alert alert-warning alert-dismissible fade show"
-                        role="alert"
-                    >
-                        {response}
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        ></button>
-                    </div> */
-				}
 			}
 
 			const responseJson = await response.json();
