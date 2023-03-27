@@ -1,6 +1,6 @@
 export type CarnetDeSante = {
   poids: number;
-  sterilise: boolean;
+  steriliser: string;
   vaccin: string;
-  date: Date;
+  date_vaccin: Date;
 };
