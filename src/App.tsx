@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import CompteUsers from './components/compteUser/compteUser';
-import Compte_users from './components/compteUser/compteUser';
 import { DataUsertoUpdate } from './components/compteUser/dataUsertoUpdate';
 import { CompteAnimal } from './components/compte_animal/compteAnimal';
 import { Soin } from './components/compte_animal/soin';
