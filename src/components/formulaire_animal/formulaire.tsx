@@ -188,10 +188,7 @@ export function FormulaireAnimal() {
                         onClick={() => setFiche('carnetDeSante')}
                         defaultChecked={fiche === 'carnetDeSante'}
                     />
-                    <label
-                        className="btn btn-outline-warning"
-                        htmlFor="btnradio2"
-                    >
+                    <label className="btn btn-warning" htmlFor="btnradio2">
                         Carnet de santé
                     </label>
 
@@ -204,17 +201,14 @@ export function FormulaireAnimal() {
                         onClick={() => setFiche('habitat')}
                         defaultChecked={fiche === 'habitat'}
                     />
-                    <label
-                        className="btn btn-outline-warning"
-                        htmlFor="btnradio3"
-                    >
+                    <label className="btn btn-warning" htmlFor="btnradio3">
                         Habitat
                     </label>
                 </div>
                 <div className="container text-center mt-3">
                     <button
                         onClick={(e) => newPet(e)}
-                        className="btn bleu text-light btn-outline-primary"
+                        className="btn btn-primary bleu text-light "
                         type="submit"
                     >
                         Enregistrer

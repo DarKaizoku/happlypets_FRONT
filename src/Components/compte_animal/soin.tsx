@@ -40,7 +40,7 @@ export function Soin(props: { setPage: any }) {
 
     const buttonRetour = (e: React.BaseSyntheticEvent) => {
         postSoin(e);
-        alert('Soin saisie');
+
         props.setPage('compteanimal');
     };
 

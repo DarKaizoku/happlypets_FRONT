@@ -7,20 +7,17 @@ export function CompteAnimal(props: {
     page: string;
     setPage: React.Dispatch<React.SetStateAction<string>>;
 }) {
-    const [preview] = useState<string>('./default-avatar-user.jpg');
+    const [inputHabitat, setInputHabitat] = useState(false);
+    const [inputSoin, setInputSoin] = useState(false);
     const [preview_animal] = useState<string>('./animal.jpg');
     const { user } = useContext(UserContext);
     const { idAnimal } = useContext(UpdateAnimalContext);
-    console.log(idAnimal);
-
     const updateAnimal = (e: React.SyntheticEvent) => {
         props.setPage('animalUpdate');
     };
-    const [inputHabitat, setInputHabitat] = useState(false);
-    const [inputSoin, setInputSoin] = useState(false);
-
+  
     const affichageAnimal = user.animal?.map((data: Animal, i: number) => {
-        console.log(data.id);
+      
 
         if (data.id === +idAnimal) {
             return (
@@ -45,7 +42,7 @@ export function CompteAnimal(props: {
                             <div>
                                 <strong className="me-2 fs-4">Genre:</strong>
                                 {data.genre}
-                            </div>{' '}
+                            </div>
                             <div>
                                 <>
                                     <strong className="me-2 fs-4">
@@ -54,7 +51,7 @@ export function CompteAnimal(props: {
                                     {data.date_de_naissance}
                                 </>
                             </div>
-                        </div>{' '}
+                        </div>
                         <img
                             src={preview_animal}
                             className="container rounded-circle text-center mt-2 mb-2 col-1 border border-0"

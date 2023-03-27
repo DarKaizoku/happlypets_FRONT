@@ -17,20 +17,6 @@ export function DeleteUser({ token }: any) {
             const response = await fetch(urlUser, options);
             if (response.status === 404) {
                 return alert('Votre compte est déjà supprimé');
-                {
-                    /* <div
-                        className="alert alert-warning alert-dismissible fade show"
-                        role="alert"
-                    >
-                        {response}
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        ></button>
-                    </div> */
-                }
             }
 
             const responseJson = await response.json();

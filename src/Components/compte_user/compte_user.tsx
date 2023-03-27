@@ -5,21 +5,21 @@ import { DeleteUser } from './Delete_user';
 import { UserContext } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
 import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
+import { Animal } from '../../types/animal.type';
 
 export default function Compte_users({ token, setPage, logout }: any) {
     const { user } = useContext(UserContext);
 
     //permet de recuperer l'url enregistrer dans localstorage
-    const photo: any = localStorage.getItem('photoprofil');
-    const test = photo?.slice('5');
+    /*   const photo: any = localStorage.getItem('photoprofil');
+     */
 
-    const { idAnimal, setIdAnimal } = useContext(UpdateAnimalContext);
+    const { setIdAnimal } = useContext(UpdateAnimalContext);
     const [preview] = useState<string>('./default-avatar-user.jpg');
     const [preview_animal] = useState<string>('./animal.jpg');
     const inputChange = (e: React.BaseSyntheticEvent) => {
         const { title } = e.currentTarget;
         const values = { title };
-        console.log(values.title);
 
         setIdAnimal(values.title);
     };
@@ -34,7 +34,7 @@ export default function Compte_users({ token, setPage, logout }: any) {
                         <div className="col-sm-12 col-lg-2 bg-warning rounded pe-2">
                             <div className="">
                                 <img
-                                    src={test}
+                                    src={preview}
                                     alt="example placeholder"
                                     className="img-thumbnail mt-3 mb-2"
                                     style={{
@@ -95,33 +95,37 @@ export default function Compte_users({ token, setPage, logout }: any) {
                                         </tr>
                                     </thead>
                                     <tbody className=" overflow-y-scroll inner">
-                                        {data.animal?.map((data) => (
-                                            <tr
-                                                defaultValue={data.id}
-                                                title={data.id.toString()}
-                                                id="animal"
-                                                aria-hidden="false"
-                                                onClick={(e) => {
-                                                    inputChange(e);
+                                        {data.animal?.map(
+                                            (data: Animal, i: number) => (
+                                                <tr
+                                                    defaultValue={data.id}
+                                                    title={data.id.toString()}
+                                                    id="animal"
+                                                    aria-hidden="false"
+                                                    onClick={(e) => {
+                                                        inputChange(e);
 
-                                                    setPage('compteanimal');
-                                                }}
-                                            >
-                                                <th scope="row">
-                                                    <div className="avatar">
-                                                        <img
-                                                            src={preview_animal}
-                                                            className="avatar-img avatar-md rounded-circle   "
-                                                            alt="patpat"
-                                                        />
-                                                    </div>
-                                                </th>
-                                                <td>{data.nom}</td>
-                                                <td>{data.espece}</td>
-                                                <td>{data.genre}</td>
-                                                <td>{`${data.date_de_naissance}`}</td>
-                                            </tr>
-                                        ))}
+                                                        setPage('compteanimal');
+                                                    }}
+                                                >
+                                                    <th scope="row">
+                                                        <div className="avatar">
+                                                            <img
+                                                                src={
+                                                                    preview_animal
+                                                                }
+                                                                className="avatar-img avatar-md rounded-circle   "
+                                                                alt="patpat"
+                                                            />
+                                                        </div>
+                                                    </th>
+                                                    <td>{data.nom}</td>
+                                                    <td>{data.espece}</td>
+                                                    <td>{data.genre}</td>
+                                                    <td>{`${data.date_de_naissance}`}</td>
+                                                </tr>
+                                            ),
+                                        )}
                                     </tbody>
                                 </table>
                             </div>
