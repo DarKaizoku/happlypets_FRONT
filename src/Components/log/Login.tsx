@@ -1,6 +1,4 @@
-import React, { useState, useContext } from 'react';
-import { TokenContext } from '../../Context/tokenContext';
-import { Token } from '../../types/token.type';
+import React, { useState } from 'react';
 import './Login.css';
 
 const urlLogin = 'http://localhost:8000/auth/login';
@@ -10,8 +8,6 @@ export function Login({ setPage }: any) {
 		pseudo: '',
 		password: '',
 	};
-
-	const { setToken } = useContext(TokenContext);
 
 	const [dataInput, setDataInput] = useState(dataLogin);
 
@@ -35,8 +31,9 @@ export function Login({ setPage }: any) {
 			if (responseJson.statusCode === 401) {
 				return setPage('erreur401');
 			}
-			setToken(responseJson.access_token);
 			setPage('compte');
+			const token = responseJson.access_token;
+			localStorage.setItem('token', token);
 		}
 		fetchData();
 		return (e.target[0] = true);

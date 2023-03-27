@@ -6,15 +6,18 @@ import { UserContext } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
 import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 
-export default function Compte_users({ token, setPage, logout }: any) {
+export default function Compte_users(props: {
+	TOKEN: string;
+	setPage: (value: string) => void;
+	logout: () => void;
+}) {
 	const { user } = useContext(UserContext);
-
+	const { TOKEN, setPage, logout } = props;
 	//permet de recuperer l'url enregistrer dans localstorage
 	const photo: any = localStorage.getItem('photoprofil');
 	const test = photo?.slice('5');
 
-	const { idAnimal, setIdAnimal } = useContext(UpdateAnimalContext);
-	const [preview] = useState<string>('./default-avatar-user.jpg');
+	const { setIdAnimal } = useContext(UpdateAnimalContext);
 	const [preview_animal] = useState<string>('./animal.jpg');
 	const inputChange = (e: React.BaseSyntheticEvent) => {
 		const { title } = e.currentTarget;
@@ -77,24 +80,24 @@ export default function Compte_users({ token, setPage, logout }: any) {
 								}
 							</div>
 							<div className='mt-3  p-2 row'>
-								<DeleteUser
-									className=' col text-light me-2'
-									href='#'
-									token={
-										token
-									}
-								/>
-
-								<UpdateUser
-									className=' col text-light ms-2 '
-									setPage={
-										setPage
-									}
-								/>
+								<div className=' col text-light me-2'>
+									<DeleteUser
+										TOKEN={
+											TOKEN
+										}
+									/>
+								</div>
+								<div className=' col text-light me-2'>
+									<UpdateUser
+										setPage={
+											props.setPage
+										}
+									/>
+								</div>
 							</div>
 							<button
 								onClick={(e) =>
-									logout()
+									props.logout()
 								}
 								className='btn couleur  btn-sm  mt-3 ms-2 me-3 mb-2 border border-primary col text-light'
 							>
@@ -153,7 +156,7 @@ export default function Compte_users({ token, setPage, logout }: any) {
 															e
 														);
 
-														setPage(
+														props.setPage(
 															'compteanimal'
 														);
 													}}
@@ -245,7 +248,7 @@ export default function Compte_users({ token, setPage, logout }: any) {
 				<div className='mb-3 mt-3'>
 					<button
 						onClick={() => {
-							setPage('animal');
+							props.setPage('animal');
 						}}
 						className='bg-warning sm rounded lg rounded mt-2 me-5'
 					>
