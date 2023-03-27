@@ -5,7 +5,7 @@ import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 import { Animal } from '../../types/animal.type';
 
 const animalUrl = 'http://localhost:8000/animal/';
-export function UpdateAnimal() {
+export function UpdateAnimal({ setPage }: any) {
     const { idAnimal } = useContext(UpdateAnimalContext);
     console.log(idAnimal);
 
@@ -72,9 +72,20 @@ export function UpdateAnimal() {
             .then((donnee) => setAnimalData(donnee.data.userUpdate))
             .catch((erreur) => `${erreur}`);
     };
-
+    const buttonRetour = (e: React.BaseSyntheticEvent) => {
+        setPage('compteanimal');
+    };
     return (
         <div className="container card bg-warning mx-auto">
+            <div className="d-flex justify-content-end mt-2">
+                <button
+                    type="button"
+                    className="btn-close "
+                    data-bs-dismiss="form"
+                    aria-label="Close"
+                    onClick={(e) => buttonRetour(e)}
+                ></button>
+            </div>
             <div className="container-fluid">
                 <div className="card-body">
                     <h5 className="card-title text-center fs-2 mb-4">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+
 const urlUser = 'http://localhost:8000/users';
 
 export function DeleteUser({ token }: any) {

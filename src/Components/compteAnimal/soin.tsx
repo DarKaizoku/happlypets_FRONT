@@ -1,4 +1,3 @@
-import { response } from 'express';
 import { useContext, useState } from 'react';
 import { TokenContext } from '../../Context/tokenContext';
 import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
@@ -45,7 +44,7 @@ export function Soin(props: { setPage: any }) {
 
     const buttonRetour = (e: React.BaseSyntheticEvent) => {
         postSoin(e);
-        alert('Soin saisie');
+
         props.setPage('compteanimal');
     };
 

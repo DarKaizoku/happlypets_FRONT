@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { TokenContext } from '../../Context/tokenContext';
-import { UserContext, UserInit } from '../../Context/userContext';
+import { UserContext } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
 
 const baseUrl = 'http://localhost:8000/users';
@@ -60,7 +60,6 @@ export function DataUsertoUpdate() {
                 ...dataUser,
                 ['codepostal']: (userData.codepostal as number).toString(),
             });
-            console.log(userData.codepostal);
         }
 
         const jsonUser = JSON.stringify(userData);

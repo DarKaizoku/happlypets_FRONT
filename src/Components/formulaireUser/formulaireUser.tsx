@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { TUser } from '../../types/user.type';
-import { InputUser } from './input_user';
+import { InputUser } from './inputUser';
 
 export function FormulaireUser({ token }: any) {
     const newUser: TUser = {
