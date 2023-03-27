@@ -18,7 +18,7 @@ export default function GetSoin() {
             </tbody>
         ));
     return (
-        <div className="table-responsive">
+        <div className="container table-responsive">
             <caption className="text-black">Soins</caption>
             <table className="table bg-warning rounded">
                 <thead>

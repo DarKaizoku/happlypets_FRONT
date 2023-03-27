@@ -14,11 +14,9 @@ export default function CompteUsers(props: {
 }) {
     const { user } = useContext(UserContext);
     const { TOKEN, setPage, logout } = props;
-    //permet de recuperer l'url enregistrer dans localstorage
-    const photo: any = localStorage.getItem('photoprofil');
-    const test = photo?.slice('5');
 
     const { setIdAnimal } = useContext(UpdateAnimalContext);
+    const [preview] = useState('./default-avatar-user.jpg');
     const [preview_animal] = useState<string>('./animal.jpg');
     const inputChange = (e: React.BaseSyntheticEvent) => {
         const { title } = e.currentTarget;
@@ -38,7 +36,7 @@ export default function CompteUsers(props: {
                         <div className="col-sm-12 col-lg-2 bg-warning rounded pe-2">
                             <div className="">
                                 <img
-                                    src={test}
+                                    src={preview}
                                     alt="example placeholder"
                                     className="img-thumbnail mt-3 mb-2"
                                     style={{
