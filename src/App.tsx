@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { CompteAnimal } from './Components/compteAnimal/compteAnimal';
-import { Soin } from './Components/compteAnimal/soin';
+import Soin from './Components/compteAnimal/soin';
 import { CompteUsers } from './Components/compteUser/compteUser';
 import { DataUsertoUpdate } from './Components/compteUser/dataUsertoUpdate';
 import { UpdateAnimal } from './Components/formulaireAnimal/animalUpdate';

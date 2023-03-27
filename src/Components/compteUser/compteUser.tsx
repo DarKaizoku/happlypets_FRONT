@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 import { UserContext } from '../../Context/userContext';
+import { Animal } from '../../types/animal.type';
 import { TUser } from '../../types/user.type';
 import './compteUser.css';
 import { DeleteUser } from './DeleteUser';
@@ -93,33 +94,37 @@ export function CompteUsers({ token, setPage, logout }: any) {
                                         </tr>
                                     </thead>
                                     <tbody className=" overflow-y-scroll inner">
-                                        {data.animal?.map((data) => (
-                                            <tr
-                                                defaultValue={data.id}
-                                                title={data.id.toString()}
-                                                id="animal"
-                                                aria-hidden="false"
-                                                onClick={(e) => {
-                                                    inputChange(e);
+                                        {data.animal?.map(
+                                            (data: Animal, i: number) => (
+                                                <tr
+                                                    defaultValue={data.id}
+                                                    title={data.id.toString()}
+                                                    id="animal"
+                                                    aria-hidden="false"
+                                                    onClick={(e) => {
+                                                        inputChange(e);
 
-                                                    setPage('compteanimal');
-                                                }}
-                                            >
-                                                <th scope="row">
-                                                    <div className="avatar">
-                                                        <img
-                                                            src={preview_animal}
-                                                            className="avatar-img avatar-md rounded-circle   "
-                                                            alt="patpat"
-                                                        />
-                                                    </div>
-                                                </th>
-                                                <td>{data.nom}</td>
-                                                <td>{data.espece}</td>
-                                                <td>{data.genre}</td>
-                                                <td>{`${data.date_de_naissance}`}</td>
-                                            </tr>
-                                        ))}
+                                                        setPage('compteanimal');
+                                                    }}
+                                                >
+                                                    <th scope="row">
+                                                        <div className="avatar">
+                                                            <img
+                                                                src={
+                                                                    preview_animal
+                                                                }
+                                                                className="avatar-img avatar-md rounded-circle   "
+                                                                alt="patpat"
+                                                            />
+                                                        </div>
+                                                    </th>
+                                                    <td>{data.nom}</td>
+                                                    <td>{data.espece}</td>
+                                                    <td>{data.genre}</td>
+                                                    <td>{`${data.date_de_naissance}`}</td>
+                                                </tr>
+                                            ),
+                                        )}
                                     </tbody>
                                 </table>
                             </div>

@@ -2,7 +2,8 @@ import { useContext, useState } from 'react';
 import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 import { UserContext } from '../../Context/userContext';
 import { Animal } from '../../types/animal.type';
-import { Soin } from './soin';
+import GetSoin from './getSoin';
+import Soin from './soin';
 
 export function CompteAnimal(props: { page: string; setPage: any }) {
     const [preview_animal] = useState<string>('./animal.jpg');
@@ -82,17 +83,17 @@ export function CompteAnimal(props: { page: string; setPage: any }) {
                                 <strong className="me-2 fs-4">Race:</strong>
                                 {data.race}
                             </div>
-                            <div>
+                            {/*  <div>
                                 <button onClick={() => setInputSoin(true)}>
                                     <i className="bi bi-pencil"></i>
                                 </button>
                                 <strong className="me-2 fs-4">Soin:</strong>
                                 {inputSoin === false ? (
-                                    <div> {data.soin}</div>
+                                    <GetSoin />
                                 ) : (
                                     <input type="text" />
                                 )}
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div>
@@ -136,6 +137,7 @@ export function CompteAnimal(props: { page: string; setPage: any }) {
     return (
         <div className="container-fluid">
             <div className="container ">{affichageAnimal}</div>
+            <GetSoin />
             {props.page === 'soin' && <Soin setPage={props.setPage} />}
         </div>
     );
