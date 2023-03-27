@@ -5,7 +5,7 @@ import { Soin } from './Components/compteAnimal/soin';
 import { CompteUsers } from './Components/compteUser/compteUser';
 import { DataUsertoUpdate } from './Components/compteUser/dataUsertoUpdate';
 import { UpdateAnimal } from './Components/formulaireAnimal/animalUpdate';
-import CarnetSante from './Components/formulaireAnimal/carnet_sante';
+import CarnetSante from './Components/formulaireAnimal/carnetSante';
 import { FormulaireAnimal } from './Components/formulaireAnimal/formulaire';
 import { FormulaireUser } from './Components/formulaireUser/formulaireUser';
 import Navbar from './Components/navbar/navbar';
@@ -40,7 +40,6 @@ function App() {
         setUser(UserInit);
         window.location.reload();
     };
-    console.log(token);
 
     return (
         <div>

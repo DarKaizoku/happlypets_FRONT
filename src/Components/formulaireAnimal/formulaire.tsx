@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
-import CarnetId from './carnet_sante';
+import CarnetId from './carnetSante';
 import { Habitat } from './habitat';
-import { InputAnimal } from './input_animal';
-import './formulaire_animal.css';
+import { InputAnimal } from './inputAnimal';
+import './formulaireAnimal.css';
 import { Animal } from '../../types/animal.type';
 import { TokenContext } from '../../Context/tokenContext';
 import { UserContext } from '../../Context/userContext';
@@ -44,7 +44,6 @@ export function FormulaireAnimal() {
             alert(responseJson.message);
             user.animal?.push(responseJson.data);
         }
-        console.log(animal);
 
         fetchData();
     };

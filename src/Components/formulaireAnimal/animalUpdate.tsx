@@ -7,7 +7,6 @@ import { Animal } from '../../types/animal.type';
 const animalUrl = 'http://localhost:8000/animal/';
 export function UpdateAnimal({ setPage }: any) {
     const { idAnimal } = useContext(UpdateAnimalContext);
-    console.log(idAnimal);
 
     const { animal, setAnimal }: any = useContext(AnimalContext);
 
@@ -21,8 +20,6 @@ export function UpdateAnimal({ setPage }: any) {
         let { name, value } = e.target;
 
         if (name === 'lof') {
-            console.log(value);
-
             if (value === 'on' && animal.lof === true) {
                 return setAnimal({ ...animal, [name]: (value = false) });
             }

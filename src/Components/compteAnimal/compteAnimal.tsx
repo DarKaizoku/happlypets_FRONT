@@ -16,8 +16,6 @@ export function CompteAnimal(props: { page: string; setPage: any }) {
     const [inputSoin, setInputSoin] = useState(false);
 
     const affichageAnimal = user.animal?.map((data: Animal, i: number) => {
-        console.log(data.id);
-
         if (data.id === +idAnimal) {
             return (
                 <div className="bg-warning container mb-5 rounded">
@@ -134,8 +132,6 @@ export function CompteAnimal(props: { page: string; setPage: any }) {
         }
         return '';
     });
-
-    console.log(affichageAnimal);
 
     return (
         <div className="container-fluid">

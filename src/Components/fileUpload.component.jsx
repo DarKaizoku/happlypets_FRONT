@@ -8,7 +8,7 @@ const FileUploadComponent = () => {
         return { url: 'https://httpbin.org/post' }
     }
     const onFileChange = ({ meta, file }, status) => { 
-        console.log(status, meta, file) 
+        /* console.log(status, meta, file)  */
     }
     const onSubmit = (files, allFiles) => {
         allFiles.forEach(f => f.remove())

@@ -17,7 +17,6 @@ export function CompteUsers({ token, setPage, logout }: any) {
     const inputChange = (e: React.BaseSyntheticEvent) => {
         const { title } = e.currentTarget;
         const values = { title };
-        console.log(values.title);
 
         setIdAnimal(values.title);
     };

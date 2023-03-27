@@ -16,7 +16,7 @@ export function DataUsertoUpdate() {
     const inputChange = (e: React.BaseSyntheticEvent) => {
         const { name, value } = e.target;
         if (name === 'codepostal') {
-            console.log(value);
+          
 
             setUserData({
                 ...userData,
