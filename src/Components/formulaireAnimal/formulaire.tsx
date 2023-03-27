@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext } from "react";
-import CarnetId from "./carnet_sante";
+import CarnetId from "./carnetSante";
 import { Habitat } from "./habitat";
-import { InputAnimal } from "./input_animal";
-import "./formulaire_animal.css";
+import { InputAnimal } from "./inputAnimal";
+import "./formulaireAnimal.css";
 import { Animal } from "../../types/animal.type";
 import { TokenContext } from "../../Context/tokenContext";
 import { UserContext } from "../../Context/userContext";
 import { Habitats } from "../../types/habitat.type";
-import { CarnetDeSante } from "../../types/carnet_de_sante.type";
+import { CarnetDeSante } from "../../types/carnetDeSsante.type";
 export function FormulaireAnimal() {
   const { user } = useContext(UserContext);
   const { token } = useContext(TokenContext);

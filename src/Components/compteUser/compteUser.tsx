@@ -1,25 +1,22 @@
 import { useContext, useState } from 'react';
-import { UpdateUser } from './update_user';
-import './compte_user.css';
-import { DeleteUser } from './Delete_user';
+import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 import { UserContext } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
-import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
-
-export default function Compte_users({ token, setPage, logout }: any) {
+import './compteUser.css';
+import { DeleteUser } from './DeleteUser';
+import { UpdateUser } from './updateUser';
+export function CompteUsers({ token, setPage, logout }: any) {
     const { user } = useContext(UserContext);
 
     //permet de recuperer l'url enregistrer dans localstorage
-    const photo: any = localStorage.getItem('photoprofil');
-    const test = photo?.slice('5');
-
-    const { idAnimal, setIdAnimal } = useContext(UpdateAnimalContext);
+    /*    const photo: any = localStorage.getItem('photoprofil');
+     */
+    const { setIdAnimal } = useContext(UpdateAnimalContext);
     const [preview] = useState<string>('./default-avatar-user.jpg');
     const [preview_animal] = useState<string>('./animal.jpg');
     const inputChange = (e: React.BaseSyntheticEvent) => {
         const { title } = e.currentTarget;
         const values = { title };
-        console.log(values.title);
 
         setIdAnimal(values.title);
     };
@@ -34,7 +31,7 @@ export default function Compte_users({ token, setPage, logout }: any) {
                         <div className="col-sm-12 col-lg-2 bg-warning rounded pe-2">
                             <div className="">
                                 <img
-                                    src={test}
+                                    src={preview}
                                     alt="example placeholder"
                                     className="img-thumbnail mt-3 mb-2"
                                     style={{
@@ -57,7 +54,6 @@ export default function Compte_users({ token, setPage, logout }: any) {
                             <div className="mt-3  p-2 row">
                                 <DeleteUser
                                     className=" col text-light me-2"
-                                    href="#"
                                     token={token}
                                 />
 
@@ -80,7 +76,9 @@ export default function Compte_users({ token, setPage, logout }: any) {
                             </div>
                             <div
                                 className=" table-responsive bg-warning rounded overflow-y-scroll inner"
-                                style={{ height: 150 }}
+                                style={{
+                                    height: 150,
+                                }}
                             >
                                 <table className="table">
                                     <thead>
@@ -130,11 +128,11 @@ export default function Compte_users({ token, setPage, logout }: any) {
                                 Mon calendrier
                             </p>
                             <div className=" table-responsive bg-warning sm rounded lg rounded mt-2">
+                                <caption className="ms-2">
+                                    <strong>AVRIL</strong>
+                                </caption>{' '}
                                 <table className="table">
                                     <thead>
-                                        <caption>
-                                            <strong>AVRIL</strong>
-                                        </caption>
                                         <tr>
                                             <th scope="col">1/04</th>
                                             <th scope="col">15/04</th>

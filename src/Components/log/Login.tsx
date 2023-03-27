@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { TokenContext } from '../../Context/tokenContext';
 import './Login.css';
+
 const urlLogin = 'http://localhost:8000/auth/login';
 
 export function Login({ setPage }: any) {
@@ -20,7 +21,6 @@ export function Login({ setPage }: any) {
 
     const login = (e: React.BaseSyntheticEvent) => {
         e.preventDefault();
-        console.log('123');
 
         async function fetchData() {
             const response = await fetch(urlLogin, {

@@ -1,20 +1,23 @@
-import { response } from 'express';
 import { useContext, useState } from 'react';
 import { TokenContext } from '../../Context/tokenContext';
 import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
+
+const urlAddSoin = 'http://localhost:8000/soin';
 
 export function Soin(props: { setPage: any }) {
     const { idAnimal } = useContext(UpdateAnimalContext);
     const { token } = useContext(TokenContext);
     const animalId = parseInt(idAnimal);
-    const urlAddSoin = 'http://localhost:8000/soin';
+
     const [activite, setActivite] = useState('');
     const [date, setDate] = useState<Date>();
     const [envoi, setEnvoi] = useState();
+
     const inputSoin = (e: React.BaseSyntheticEvent) => {
         const { value } = e.currentTarget;
         setActivite(value);
     };
+
     const inputDate = (e: React.BaseSyntheticEvent) => {
         const { value } = e.target;
         setDate(value);
@@ -28,6 +31,7 @@ export function Soin(props: { setPage: any }) {
         },
         body: JSON.stringify({ activite, date, animalId }),
     };
+
     const postSoin = (e: React.BaseSyntheticEvent) => {
         e.preventDefault();
         fetch(urlAddSoin, options)
@@ -40,7 +44,7 @@ export function Soin(props: { setPage: any }) {
 
     const buttonRetour = (e: React.BaseSyntheticEvent) => {
         postSoin(e);
-        alert('Soin saisie');
+
         props.setPage('compteanimal');
     };
 

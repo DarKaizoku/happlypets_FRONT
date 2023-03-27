@@ -3,14 +3,14 @@ import { UserContext } from '../../Context/userContext';
 import { Login } from '../log/Login';
 
 import './navbar.css';
-export default function Navbar({ setPage, logout }: any) {
+export default function Navbar({ logout, setPage }: any) {
     const { user } = useContext(UserContext);
 
     const affichageButton = user.nom === undefined;
     const dislogged = (
         <button
             onClick={(e) => logout()}
-            className="text-start  mt-3 mb-2 mx-auto bg-warning rounded"
+            className="text-start mt-3 mb-2 mx-auto bg-warning rounded"
         >
             Déconnexion
         </button>
@@ -40,7 +40,6 @@ export default function Navbar({ setPage, logout }: any) {
                         PETS
                     </p>
                 </div>
-
                 <nav className="navbar navbar-expand-lg couleur">
                     <div className="container-fluid ">
                         <button
@@ -94,7 +93,7 @@ export default function Navbar({ setPage, logout }: any) {
                                         <li>
                                             <a
                                                 className="dropdown-item"
-                                                href="#"
+                                                href="animal"
                                                 onClick={() =>
                                                     setPage('animal')
                                                 }

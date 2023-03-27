@@ -1,17 +1,13 @@
 import { useContext, useState } from 'react';
+import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 import { UserContext } from '../../Context/userContext';
 import { Animal } from '../../types/animal.type';
-import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 import { Soin } from './soin';
-export function CompteAnimal(props: {
-    page: string;
-    setPage: React.Dispatch<React.SetStateAction<string>>;
-}) {
-    const [preview] = useState<string>('./default-avatar-user.jpg');
+
+export function CompteAnimal(props: { page: string; setPage: any }) {
     const [preview_animal] = useState<string>('./animal.jpg');
     const { user } = useContext(UserContext);
     const { idAnimal } = useContext(UpdateAnimalContext);
-    console.log(idAnimal);
 
     const updateAnimal = (e: React.SyntheticEvent) => {
         props.setPage('animalUpdate');
@@ -20,8 +16,6 @@ export function CompteAnimal(props: {
     const [inputSoin, setInputSoin] = useState(false);
 
     const affichageAnimal = user.animal?.map((data: Animal, i: number) => {
-        console.log(data.id);
-
         if (data.id === +idAnimal) {
             return (
                 <div className="bg-warning container mb-5 rounded">
@@ -139,11 +133,9 @@ export function CompteAnimal(props: {
         return '';
     });
 
-    console.log(affichageAnimal);
-
     return (
         <div className="container-fluid">
-            <div className="container ">{affichageAnimal}</div>{' '}
+            <div className="container ">{affichageAnimal}</div>
             {props.page === 'soin' && <Soin setPage={props.setPage} />}
         </div>
     );
