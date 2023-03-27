@@ -1,12 +1,19 @@
-/* .backg{
-    background-image: url('../../../public/bg-navbar.png');
-} */
+
 .couleur{
     background: #006FAA;
     
 }
-#animal{ 
+.compte{ 
   
   text-decoration: none;
 
+}
+.compte:hover{
+  cursor:pointer;
+}
+.inner::-webkit-scrollbar {
+  display: none;
+}
+.inner {
+  -ms-overflow-style: none; 
 }

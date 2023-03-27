@@ -8,4 +8,5 @@ export type Animal = {
     lof: boolean;
     habitat: string;
     carnetDeSante: string;
+    soin: string;
 };
