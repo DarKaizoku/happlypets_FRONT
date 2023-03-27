@@ -1,16 +1,16 @@
 import { useContext } from 'react';
 import { UserContext } from '../../Context/userContext';
+import { Login } from '../log/Login';
 
-import Login from '../log/Login';
 import './navbar.css';
-export default function Navbar({ setPage, logout }: any) {
+export default function Navbar({ logout, setPage }: any) {
 	const { user } = useContext(UserContext);
 
 	const affichageButton = user.nom === undefined;
 	const dislogged = (
 		<button
 			onClick={(e) => logout()}
-			className='text-start text-light mt-3 mb-2 mx-auto bg-warning rounded'
+			className='text-start mt-3 mb-2 mx-auto bg-warning rounded'
 		>
 			Déconnexion
 		</button>
@@ -50,11 +50,10 @@ export default function Navbar({ setPage, logout }: any) {
 						HAPPLY day avec HAPPLY PETS
 					</p>
 				</div>
-
 				<nav className='navbar navbar-expand-lg couleur'>
 					<div className='container-fluid '>
 						<button
-							className='navbar-toggler'
+							className='navbar-toggler mb-2'
 							type='button'
 							data-bs-toggle='collapse'
 							data-bs-target='#navbarSupportedContent'
@@ -62,7 +61,7 @@ export default function Navbar({ setPage, logout }: any) {
 							aria-expanded='false'
 							aria-label='Toggle navigation'
 						>
-							<span className='navbar-toggler-icon'></span>{' '}
+							<span className='navbar-toggler-icon'></span>
 						</button>
 
 						<div

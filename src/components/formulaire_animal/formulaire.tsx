@@ -19,6 +19,7 @@ export function FormulaireAnimal() {
 		lof: true,
 		habitat: '',
 		carnetDeSante: '',
+		soin: '',
 	};
 
 	const [animal, setAnimal] = useState(newAnimal);

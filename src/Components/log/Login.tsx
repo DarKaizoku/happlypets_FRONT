@@ -5,14 +5,13 @@ import './Login.css';
 
 const urlLogin = 'http://localhost:8000/auth/login';
 
-//export default function Login({ setToken }) {
-export default function Login({ setPage }: any) {
+export function Login({ setPage }: any) {
 	const dataLogin = {
 		pseudo: '',
 		password: '',
 	};
 
-	const { token, setToken } = useContext(TokenContext);
+	const { setToken } = useContext(TokenContext);
 
 	const [dataInput, setDataInput] = useState(dataLogin);
 
@@ -23,6 +22,8 @@ export default function Login({ setPage }: any) {
 
 	const login = (e: React.BaseSyntheticEvent) => {
 		e.preventDefault();
+		console.log('123');
+
 		async function fetchData() {
 			const response = await fetch(urlLogin, {
 				method: 'POST',
@@ -34,12 +35,6 @@ export default function Login({ setPage }: any) {
 			if (responseJson.statusCode === 401) {
 				return setPage('erreur401');
 			}
-
-			localStorage.setItem(
-				'tokenVnr',
-				JSON.stringify(responseJson.tokenVnr)
-			);
-
 			setToken(responseJson.access_token);
 			setPage('compte');
 		}
@@ -142,16 +137,6 @@ export default function Login({ setPage }: any) {
 					</div>
 				</div>
 			</form>
-
-			{/* <button
-                                onClick={(e) => login(e)}
-                                type='button'
-                                classNameName='btn btn-info justify-content-end'
-                                data-bs-toggle='modal'
-                                data-bs-target='#exampleModal'
-                        >
-                                LOGIN
-                        </button> */}
 		</div>
 	);
 }

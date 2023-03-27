@@ -4,16 +4,24 @@ import './compte_user.css';
 import { DeleteUser } from './Delete_user';
 import { UserContext } from '../../Context/userContext';
 import { TUser } from '../../types/user.type';
+import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 
 export default function Compte_users({ token, setPage, logout }: any) {
 	const { user } = useContext(UserContext);
-	const [idAnimal, setIdAnimal] = useState();
+
+	//permet de recuperer l'url enregistrer dans localstorage
+	const photo: any = localStorage.getItem('photoprofil');
+	const test = photo?.slice('5');
+
+	const { idAnimal, setIdAnimal } = useContext(UpdateAnimalContext);
 	const [preview] = useState<string>('./default-avatar-user.jpg');
 	const [preview_animal] = useState<string>('./animal.jpg');
-	const comptani = (e: React.SyntheticEvent) => {
-		e.preventDefault();
-		const { id } = e.currentTarget;
-		console.log(id);
+	const inputChange = (e: React.BaseSyntheticEvent) => {
+		const { title } = e.currentTarget;
+		const values = { title };
+		console.log(values.title);
+
+		setIdAnimal(values.title);
 	};
 
 	let affichageUser;
@@ -27,7 +35,7 @@ export default function Compte_users({ token, setPage, logout }: any) {
 							<div className=''>
 								<img
 									src={
-										preview
+										test
 									}
 									alt='example placeholder'
 									className='img-thumbnail mt-3 mb-2'
@@ -67,7 +75,7 @@ export default function Compte_users({ token, setPage, logout }: any) {
 								{
 									data.departement
 								}
-							</div>{' '}
+							</div>
 							<div className='mt-3  p-2 row'>
 								<DeleteUser
 									className=' col text-light me-2'
@@ -88,123 +96,153 @@ export default function Compte_users({ token, setPage, logout }: any) {
 								onClick={(e) =>
 									logout()
 								}
-								className='btn couleur  btn-sm  mt-3 ms-2 me-3 border border-primary col text-light'
+								className='btn couleur  btn-sm  mt-3 ms-2 me-3 mb-2 border border-primary col text-light'
 							>
 								Déconnexion
 							</button>
 						</div>
 
-						<div className='container col-sm-12 col-lg-9 '>
-							<div>
-								<p className='text-start text-light'>
-									Mes
-									animaux
-								</p>
-
-								<div className='container'>
-									<div className='row justify-content-start text-center text-light ms-5'>
-										<div className='col-2 ms-5'>
-											Nom
-										</div>
-										<div className='col-2 ms-3'>
-											Espèce
-										</div>
-										<div className='col-2 '>
-											Genre
-										</div>
-										<div className=' col-3 '>
-											Date
-											de
-											naissance
-										</div>
-									</div>
-									<div className=''>
+						<div className='container-fluid col-sm-12 col-lg-9 '>
+							<div className='text-start text-light mb-3'>
+								Mes animaux
+							</div>
+							<div
+								className=' table-responsive bg-warning rounded overflow-y-scroll inner'
+								style={{
+									height: 150,
+								}}
+							>
+								<table className='table'>
+									<thead>
+										<tr>
+											<th scope='col'>
+												Photo
+											</th>
+											<th scope='col'>
+												Nom
+											</th>
+											<th scope='col'>
+												Espèce
+											</th>
+											<th scope='col'>
+												Genre
+											</th>
+											<th scope='col'>
+												Date
+												de
+												naissance
+											</th>
+										</tr>
+									</thead>
+									<tbody className=' overflow-y-scroll inner'>
 										{data.animal?.map(
 											(
 												data
 											) => (
-												<div>
-													<a
-														defaultValue={
-															data.id
-														}
-														title='animal'
-														id={data.id.toLocaleString()}
-														onClick={(
+												<tr
+													defaultValue={
+														data.id
+													}
+													title={data.id.toString()}
+													id='animal'
+													aria-hidden='false'
+													onClick={(
+														e
+													) => {
+														inputChange(
 															e
-														) => {
-															comptani(
-																e
-															);
-															setPage(
-																'compteanimal'
-															);
-														}}
-														key={
-															i
-														}
-														className='row justify-content-start text-dark'
-													>
-														<div
-															className='text-center bg-warning sm rounded lg rounded mt-2 mb-2 ms-4 row justify-content-start'
-															style={{
-																height: 45,
-															}}
-														>
+														);
+
+														setPage(
+															'compteanimal'
+														);
+													}}
+												>
+													<th scope='row'>
+														<div className='avatar'>
 															<img
 																src={
 																	preview_animal
 																}
-																className='rounded-circle float-start mt-1 mb-2 col-1 border border-0'
-																style={{
-																	height: 35,
-																}}
+																className='avatar-img avatar-md rounded-circle   '
 																alt='patpat'
 															/>
-															<div className='col-2'>
-																{
-																	data.nom
-																}
-															</div>
-															<div className='col-2'>
-																{
-																	data.espece
-																}
-															</div>
-															<div className='col-2'>
-																{
-																	data.genre
-																}
-															</div>
-															<div className='col-3'>
-																{`${data.date_de_naissance}`}
-															</div>
-															{/*   <div className="col-2">
-                                                    <button className="couleur border border-0 rounded mt-2 me-2">
-                                                        <i className="bi bi-x-lg"></i>
-                                                    </button>
-                                                    <button className="couleur border border-0 rounded mt-2">
-                                                        <i className="bi bi-pencil-fill"></i>
-                                                    </button>
-                                                </div> */}
 														</div>
-													</a>
-												</div>
+													</th>
+													<td>
+														{
+															data.nom
+														}
+													</td>
+													<td>
+														{
+															data.espece
+														}
+													</td>
+													<td>
+														{
+															data.genre
+														}
+													</td>
+													<td>{`${data.date_de_naissance}`}</td>
+												</tr>
 											)
 										)}
-									</div>
-								</div>
+									</tbody>
+								</table>
 							</div>
-						</div>
-						<p className='text-start text-light'>
-							Mon calendrier
-						</p>
-						<div className='bg-warning sm rounded lg rounded mt-2'>
-							Calendrier
+
+							<p className='text-start text-light mt-5'>
+								Mon calendrier
+							</p>
+							<div className=' table-responsive bg-warning sm rounded lg rounded mt-2'>
+								<table className='table'>
+									<thead>
+										<caption>
+											<strong>
+												AVRIL
+											</strong>
+										</caption>
+										<tr>
+											<th scope='col'>
+												1/04
+											</th>
+											<th scope='col'>
+												15/04
+											</th>
+											<th scope='col'>
+												20/04
+											</th>
+											<th scope='col'>
+												30/04
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope='row'>
+												Concours
+												national
+											</th>
+											<td>
+												Rappel
+												fongique
+											</td>
+											<td>
+												toilettage
+											</td>
+											<td>
+												collier
+												anti-puce
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div className=''>
+				<div className='mb-3 mt-3'>
 					<button
 						onClick={() => {
 							setPage('animal');
