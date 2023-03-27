@@ -2,7 +2,11 @@ import { useContext, useState } from 'react';
 import { UserContext } from '../../Context/userContext';
 import { Animal } from '../../types/animal.type';
 import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
-export function CompteAnimal({ setPage }: any) {
+import { Soin } from './soin';
+export function CompteAnimal(props: {
+    page: string;
+    setPage: React.Dispatch<React.SetStateAction<string>>;
+}) {
     const [preview] = useState<string>('./default-avatar-user.jpg');
     const [preview_animal] = useState<string>('./animal.jpg');
     const { user } = useContext(UserContext);
@@ -10,7 +14,7 @@ export function CompteAnimal({ setPage }: any) {
     console.log(idAnimal);
 
     const updateAnimal = (e: React.SyntheticEvent) => {
-        setPage('animalUpdate');
+        props.setPage('animalUpdate');
     };
     const [inputHabitat, setInputHabitat] = useState(false);
     const [inputSoin, setInputSoin] = useState(false);
@@ -103,9 +107,19 @@ export function CompteAnimal({ setPage }: any) {
                                 className="btn couleur rounded-pill btn-sm  me-3  mb-5 border border-primary  text-light
 "
                             >
+                                {'           '}
                                 <i className="bi bi-x-lg">
-                                    {'      '}
-                                    Retirez cette animal de ma liste
+                                    <p>Retirez cette animal de ma liste</p>
+                                </i>
+                            </button>
+                            <button
+                                className="btn couleur rounded-pill btn-sm  me-3  mb-5 border border-primary  text-light
+"
+                                onClick={() => props.setPage('soin')}
+                            >
+                                {'        '}
+                                <i className="bi bi-plus-square ">
+                                    <p>Ajouter un soin</p>
                                 </i>
                             </button>
                             <button
@@ -115,7 +129,7 @@ export function CompteAnimal({ setPage }: any) {
                                 type="button"
                             >
                                 <i className="bi bi-pencil-fill"></i>
-                                {'      '} Modifier
+                                <p> Modifier</p>
                             </button>
                         </div>
                     </div>
@@ -129,7 +143,8 @@ export function CompteAnimal({ setPage }: any) {
 
     return (
         <div className="container-fluid">
-            <div className="container ">{affichageAnimal}</div>
+            <div className="container ">{affichageAnimal}</div>{' '}
+            {props.page === 'soin' && <Soin setPage={props.setPage} />}
         </div>
     );
 }

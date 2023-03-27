@@ -12,6 +12,7 @@ import { TUser } from './types/user.type';
 import { CompteAnimal } from './Components/compte_animal/compteAnimal';
 import { UpdateAnimal } from './Components/formulaire_animal/animalUpdate';
 import { UpdateAnimalContext } from './Context/updateAnimalContext';
+import { Soin } from './Components/compte_animal/soin';
 
 const baseUrl = 'http://localhost:8000/users/profil';
 function App() {
@@ -53,6 +54,7 @@ function App() {
                         {page === 'compte' && (
                             <Compte_users setPage={setPage} logout={logout} />
                         )}
+                        {page === 'soin' && <Soin setPage={setPage} />}
                         {page === 'update' && (
                             <DataUsertoUpdate
 
@@ -63,7 +65,7 @@ function App() {
                         )}
                         {page === 'animalUpdate' && <UpdateAnimal />}
                         {page === 'compteanimal' && (
-                            <CompteAnimal setPage={setPage} />
+                            <CompteAnimal setPage={setPage} page={page} />
                         )}
                         {page === 'carnetDeSante' && <CarnetSante />}
                         {page === 'formulaire_user' && <FormulaireUser />}
