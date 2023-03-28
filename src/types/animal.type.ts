@@ -1,4 +1,6 @@
 import { Soin } from './soin.type';
+import { Photo } from './photo.type';
+import { TCarnetDeSante } from './carnetDeSsante.type';
 
 export type Animal = {
     id: number;
@@ -9,6 +11,7 @@ export type Animal = {
     genre: string;
     lof: boolean;
     habitat: string;
-    carnetDeSante: string;
+    carnetDeSante: TCarnetDeSante[];
     soin: Soin[];
+    photo: Photo[];
 };

@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 import { UserContext } from '../../Context/userContext';
 import { Animal } from '../../types/animal.type';
+
 import GetSoin from './getSoin';
 import Soin from './soin';
 
@@ -13,6 +14,7 @@ export function CompteAnimal(props: {
 	const [preview_animal] = useState<string>('./animal.jpg');
 	const { user } = useContext(UserContext);
 	const { idAnimal } = useContext(UpdateAnimalContext);
+	console.log(user);
 
 	const updateAnimal = (e: React.SyntheticEvent) => {
 		props.setPage('animalUpdate');
@@ -32,12 +34,6 @@ export function CompteAnimal(props: {
 					</div>
 					<div className='row text-center mt-4'>
 						<div className='col mt-3 '>
-							<div>
-								<strong className='me-2 fs-4'>
-									id:
-								</strong>
-								{data.id}
-							</div>
 							<div>
 								<strong className='me-2 fs-4'>
 									Espèce:
@@ -114,17 +110,6 @@ export function CompteAnimal(props: {
 								</strong>
 								{data.race}
 							</div>
-							{/*  <div>
-                                <button onClick={() => setInputSoin(true)}>
-                                    <i className="bi bi-pencil"></i>
-                                </button>
-                                <strong className="me-2 fs-4">Soin:</strong>
-                                {inputSoin === false ? (
-                                    <GetSoin />
-                                ) : (
-                                    <input type="text" />
-                                )}
-                            </div> */}
 						</div>
 					</div>
 					<div>
@@ -188,6 +173,7 @@ export function CompteAnimal(props: {
 		<div className='container-fluid'>
 			<div className='container '>{affichageAnimal}</div>
 			<GetSoin />
+
 			{props.page === 'soin' && (
 				<Soin
 					TOKEN={props.TOKEN}

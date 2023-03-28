@@ -17,15 +17,11 @@ import { TUser } from './types/user.type';
 const baseUrl = 'http://localhost:8000/users/profil';
 
 function App() {
-	const token = localStorage.getItem('token');
-	console.log(token);
+	const TOKEN = localStorage.getItem('token')!;
 
 	const [user, setUser] = useState<TUser>({} as TUser);
-	//const [dataUser, setDataUser]: any = useState();
-	const [page, setPage] = useState('');
-	const [idAnimal, setIdAnimal] = useState('');
-
-	const TOKEN: string = token!;
+	const [page, setPage] = useState<string>('');
+	const [idAnimal, setIdAnimal] = useState<string>('');
 
 	const options = {
 		method: 'POST',
@@ -41,7 +37,6 @@ function App() {
 			.then((donnee) => setUser(donnee))
 			.catch((erreur) => `${erreur}`);
 	}, [page]);
-	console.log(user);
 
 	const logout = () => {
 		localStorage.clear();
@@ -97,6 +92,7 @@ function App() {
 					{page === 'animal' && (
 						<FormulaireAnimal
 							TOKEN={TOKEN}
+							setPage={setPage}
 						/>
 					)}
 					{page === 'erreur401' && (

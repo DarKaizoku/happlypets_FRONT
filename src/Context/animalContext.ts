@@ -10,7 +10,6 @@ export const AnimalContext = React.createContext({
         genre: '',
         lof: true,
         habitat: '',
-        carnetDeSante: '',
     } as Animal,
     setUser: (value: Animal) => {},
 });
