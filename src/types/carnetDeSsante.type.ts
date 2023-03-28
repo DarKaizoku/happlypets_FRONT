@@ -1,7 +1,7 @@
 export type TCarnetDeSante = {
-    vaccin: string;
-    date_vaccin: string;
+    animalId: number;
     poids: number;
     steriliser: string;
-    animalId: number;
+    vaccin: string;
+    date_vaccin: string;
 };

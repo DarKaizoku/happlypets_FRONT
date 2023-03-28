@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import CarnetSante from './carnetSante';
+import CarnetId from './carnetSante';
 import { Habitat } from './habitat';
 import { InputAnimal } from './inputAnimal';
 import './formulaireAnimal.css';
@@ -8,6 +8,8 @@ import { TokenContext } from '../../Context/tokenContext';
 import { UserContext } from '../../Context/userContext';
 import { Habitats } from '../../types/habitat.type';
 import { TCarnetDeSante } from '../../types/carnetDeSsante.type';
+import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
+import CarnetSante from './carnetSante';
 export function FormulaireAnimal(props: { TOKEN: string }) {
     const { user } = useContext(UserContext);
 
@@ -25,8 +27,9 @@ export function FormulaireAnimal(props: { TOKEN: string }) {
         soin: [],
         photo: [],
     };
-
     const [animal, setAnimal] = useState(newAnimal);
+
+    const { idAnimal, setIdAnimal } = useContext(UpdateAnimalContext);
     const urlAddAnimal = 'http://localhost:8000/animal';
     const newPet = (e: React.BaseSyntheticEvent) => {
         e.preventDefault();
@@ -44,8 +47,9 @@ export function FormulaireAnimal(props: { TOKEN: string }) {
             const responseJson = await response.json();
             alert(responseJson.message);
             user.animal?.push(responseJson.data);
+            console.log(responseJson.data);
+            setIdAnimal(responseJson.data.id);
         }
-        console.log(animal);
 
         fetchData();
     };
@@ -79,21 +83,23 @@ export function FormulaireAnimal(props: { TOKEN: string }) {
     };
 
     //Enregistrement des données santé
+    console.log(idAnimal);
 
     const newSante: TCarnetDeSante = {
-        vaccin: '',
-        date_vaccin: '',
+        animalId: 0,
         poids: 0,
         steriliser: '',
-        animalId: 0,
+        vaccin: '',
+        date_vaccin: '',
     };
 
-    const [carnetSante, setCarnetSante] = useState(newSante);
+    const [carnetSante, setCarnetSante] = useState<TCarnetDeSante>(newSante);
     const urlAddSante = 'http://localhost:8000/carnet';
-    const newCS = (e: React.BaseSyntheticEvent) => {
-        e.preventDefault();
+    console.log(carnetSante);
 
+    useEffect(() => {
         async function fetchData() {
+            carnetSante.animalId = +idAnimal;
             const response = await fetch(urlAddSante, {
                 method: 'POST',
                 headers: {
@@ -106,10 +112,9 @@ export function FormulaireAnimal(props: { TOKEN: string }) {
             const responseJson = await response.json();
             alert(responseJson.message);
         }
-        console.log(habitat);
 
         fetchData();
-    };
+    }, [idAnimal]);
 
     const [fiche] = useState('animal');
 
@@ -274,7 +279,6 @@ export function FormulaireAnimal(props: { TOKEN: string }) {
                         onClick={(e) => {
                             newPet(e);
                             newHome(e);
-                            newCS(e);
                         }}
                         className="btn bleu text-light btn-outline-primary"
                         type="submit"
