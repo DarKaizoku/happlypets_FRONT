@@ -13,6 +13,9 @@ export default function GetSoin() {
         .find((elm: Animal) => elm.id === animalId)
         ?.soin.map((data, i: number) => (
             <tbody>
+                <td> </td>
+                <td> </td>
+                <td> </td>
                 <td>{data.activite}</td>
                 <td>{data.date}</td>
             </tbody>
@@ -28,16 +31,17 @@ export default function GetSoin() {
                 {/*  <td>{data.url}</td> */}
             </tbody>
         ));
+
     return (
         <div>
-            <div className="container table-responsive">
+            <div className="container table-responsive ">
                 <caption className="text-black">Soins</caption>
-                <table
-                    className="table bg-warning rounded"
-                    style={{ width: 400 }}
-                >
+                <table className="table bg-warning rounded">
                     <thead>
                         <tr>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
                             <td>
                                 <strong>Activité</strong>
                             </td>
@@ -49,12 +53,9 @@ export default function GetSoin() {
                     {idSoin}
                 </table>
             </div>
-            <div className="container table-responsive">
-                <caption className="text-black">Soins</caption>
-                <table
-                    className="table bg-warning rounded"
-                    style={{ width: 400 }}
-                >
+            <div className="container table-responsive ">
+                <caption className="text-black">Carnet de Santé</caption>
+                <table className="table bg-warning rounded">
                     <thead>
                         <tr>
                             <td>

@@ -10,7 +10,7 @@ export default function Soin(props: {
     TOKEN: string;
 }) {
     const { idAnimal } = useContext(UpdateAnimalContext);
-    const { token } = useContext(TokenContext);
+
     const animalId = parseInt(idAnimal);
 
     const [activite, setActivite] = useState('');

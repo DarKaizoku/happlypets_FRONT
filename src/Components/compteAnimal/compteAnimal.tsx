@@ -62,18 +62,18 @@ export function CompteAnimal(props: {
                         />
                         <div className="col mt-2 mx-auto">
                             <div>
-                                <button onClick={() => setInputHabitat(true)}>
+                                {/*    <button onClick={() => setInputHabitat(true)}>
                                     <i className="bi bi-pencil"></i>
-                                </button>
+                                </button> */}
                                 <strong className="me-2 fs-4">Habitat:</strong>
-                                {inputHabitat === false ? (
+                                {/*  {inputHabitat === false ? (
                                     <div> {data.habitat}</div>
                                 ) : (
                                     <>
                                         <input type="text" />
                                         <i className="bi bi-check-square"></i>
                                     </>
-                                )}
+                                )} */}
                             </div>
 
                             <div>
@@ -89,7 +89,7 @@ export function CompteAnimal(props: {
                     <div>
                         <div className="d-flex justify-content-center mt-4">
                             <button
-                                className="btn couleur rounded-pill btn-sm  me-3  mb-5 border border-primary  text-light
+                                className="btn btn-primary couleur rounded-pill btn-sm  me-3  mb-5 border border-primary  text-light
 "
                             >
                                 {'           '}
@@ -98,7 +98,7 @@ export function CompteAnimal(props: {
                                 </i>
                             </button>
                             <button
-                                className="btn couleur rounded-pill btn-sm  me-3  mb-5 border border-primary  text-light
+                                className="btn btn-primary couleur rounded-pill btn-sm  me-3  mb-5 border border-primary  text-light
 "
                                 onClick={() => props.setPage('soin')}
                             >
@@ -108,7 +108,7 @@ export function CompteAnimal(props: {
                                 </i>
                             </button>
                             <button
-                                className="btn couleur rounded-pill btn-sm  me-3 mb-5 border border-primary text-light
+                                className="btn btn-primary couleur rounded-pill btn-sm  me-3 mb-5 border border-primary text-light
                        "
                                 onClick={(e) => updateAnimal(e)}
                                 type="button"
