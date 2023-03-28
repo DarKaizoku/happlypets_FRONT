@@ -64,7 +64,7 @@ function App() {
           )}
           {page === "carnetDeSante" && <CarnetSante />}
           {page === "formulaire_user" && <FormulaireUser />}
-          {page === "animal" && <FormulaireAnimal />}
+          {page === "animal" && <FormulaireAnimal TOKEN={TOKEN} />}
           {page === "erreur401" && (
             <div
               className="container mx-auto alert alert-warning m-auto alert-dismissible fade show"
