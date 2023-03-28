@@ -21,7 +21,7 @@ function App() {
   const [user, setUser] = useState<TUser>({} as TUser);
   //const [dataUser, setDataUser]: any = useState();
   const [page, setPage] = useState("");
-  const [idAnimal, setIdAnimal] = useState("");
+  const [idAnimal, setIdAnimal] = useState<string>("");
   const TOKEN: string = token!;
   const options = {
     method: "POST",

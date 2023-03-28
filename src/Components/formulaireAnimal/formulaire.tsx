@@ -86,18 +86,20 @@ export function FormulaireAnimal(props: { TOKEN: string }) {
   console.log(idAnimal);
 
   const newSante: TCarnetDeSante = {
-    animalId: +idAnimal,
+    animalId: 0,
     poids: 0,
     steriliser: "",
     vaccin: "",
     date_vaccin: new Date(),
   };
 
-  const [carnetSante, setCarnetSante] = useState(newSante);
+  const [carnetSante, setCarnetSante] = useState<TCarnetDeSante>(newSante);
   const urlAddSante = "http://localhost:8000/carnet";
+  console.log(carnetSante);
 
   useEffect(() => {
     async function fetchData() {
+      carnetSante.animalId = +idAnimal;
       const response = await fetch(urlAddSante, {
         method: "POST",
         headers: {
@@ -110,7 +112,6 @@ export function FormulaireAnimal(props: { TOKEN: string }) {
       const responseJson = await response.json();
       alert(responseJson.message);
     }
-    console.log(habitat);
 
     fetchData();
   }, [idAnimal]);
