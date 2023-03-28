@@ -21,7 +21,7 @@ export function FormulaireAnimal(props: { TOKEN: string }) {
         genre: '',
         lof: true,
         habitat: '',
-        carnetDeSante: [],
+        carnetdesante: [],
         soin: [],
         photo: [],
     };

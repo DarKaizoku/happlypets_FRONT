@@ -11,7 +11,7 @@ export type Animal = {
     genre: string;
     lof: boolean;
     habitat: string;
-    carnetDeSante: TCarnetDeSante[];
+    carnetdesante: TCarnetDeSante[];
     soin: Soin[];
     photo: Photo[];
 };
