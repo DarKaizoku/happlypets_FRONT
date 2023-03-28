@@ -36,7 +36,6 @@ function App() {
 			.then((donnee) => setUser(donnee))
 			.catch((erreur) => `${erreur}`);
 	}, [TOKEN]);
-	console.log(TOKEN);
 
 	const logout = () => {
 		localStorage.clear();
