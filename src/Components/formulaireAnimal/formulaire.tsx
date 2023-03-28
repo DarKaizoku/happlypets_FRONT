@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import CarnetId from './carnetSante';
+import CarnetSante from './carnetSante';
 import { Habitat } from './habitat';
 import { InputAnimal } from './inputAnimal';
 import './formulaireAnimal.css';
@@ -8,9 +8,8 @@ import { TokenContext } from '../../Context/tokenContext';
 import { UserContext } from '../../Context/userContext';
 import { Habitats } from '../../types/habitat.type';
 import { TCarnetDeSante } from '../../types/carnetDeSsante.type';
-export function FormulaireAnimal() {
+export function FormulaireAnimal(props: { TOKEN: string }) {
     const { user } = useContext(UserContext);
-    const { token } = useContext(TokenContext);
 
     //Enregistrement d'un nouvel animal
     const newAnimal: Animal = {
@@ -37,7 +36,7 @@ export function FormulaireAnimal() {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${props.TOKEN}`,
                 },
 
                 body: JSON.stringify(animal),
@@ -66,7 +65,7 @@ export function FormulaireAnimal() {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${props.TOKEN}`,
                 },
 
                 body: JSON.stringify(habitat),
@@ -99,7 +98,7 @@ export function FormulaireAnimal() {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${props.TOKEN}`,
                 },
 
                 body: JSON.stringify(carnetSante),
@@ -186,7 +185,7 @@ export function FormulaireAnimal() {
                         setCarnetSante={setCarnetSante}
                     />
                 )}
-                {fiche === 'carnetDeSante' && <CarnetId></CarnetId>}
+                {fiche === 'carnetDeSante' && <CarnetSante />}
                 {fiche === 'habitat' && <Habitat></Habitat>}
                 <div className="col-12 mt-3">
                     <div className="form-check">
