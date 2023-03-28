@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 import { UserContext } from '../../Context/userContext';
 import { Animal } from '../../types/animal.type';
@@ -15,7 +15,6 @@ export default function GetSoin() {
 				<td>{data.date}</td>
 			</tbody>
 		));
-
 	return (
 		<div className='container table-responsive'>
 			<caption className='text-black'>Soins</caption>

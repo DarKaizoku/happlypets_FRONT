@@ -95,7 +95,9 @@ function App() {
 						<FormulaireUser />
 					)}
 					{page === 'animal' && (
-						<FormulaireAnimal />
+						<FormulaireAnimal
+							TOKEN={TOKEN}
+						/>
 					)}
 					{page === 'erreur401' && (
 						<div
