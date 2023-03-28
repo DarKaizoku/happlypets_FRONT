@@ -1,10 +1,14 @@
+import { response } from 'express';
 import { useContext, useState } from 'react';
 import { TokenContext } from '../../Context/tokenContext';
 import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 
 const urlAddSoin = 'http://localhost:8000/soin';
 
-export function Soin(props: { setPage: any }) {
+export default function Soin(props: {
+    setPage: React.Dispatch<React.SetStateAction<string>>;
+    TOKEN: string;
+}) {
     const { idAnimal } = useContext(UpdateAnimalContext);
     const { token } = useContext(TokenContext);
     const animalId = parseInt(idAnimal);
@@ -27,7 +31,7 @@ export function Soin(props: { setPage: any }) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${props.TOKEN}`,
         },
         body: JSON.stringify({ activite, date, animalId }),
     };
@@ -37,10 +41,14 @@ export function Soin(props: { setPage: any }) {
         fetch(urlAddSoin, options)
             .then((response) => response.json())
 
-            .then((response) => setEnvoi(response))
+            .then((response) => {
+                console.log(response);
+                setEnvoi(response);
+            })
 
             .catch((err) => console.error(err));
     };
+    console.log(envoi);
 
     const buttonRetour = (e: React.BaseSyntheticEvent) => {
         postSoin(e);

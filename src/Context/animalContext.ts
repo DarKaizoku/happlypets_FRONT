@@ -14,7 +14,7 @@ export const AnimalContext = React.createContext({
     } as Animal,
     setUser: (value: Animal) => {},
 });
-const animalUpdateContext = {
+/* const animalUpdateContext = {
     animal: {
         id: '',
         nom: '',
@@ -27,4 +27,4 @@ const animalUpdateContext = {
         carnetDeSante: '',
     },
     setUser: (value: Animal) => {},
-};
+}; */

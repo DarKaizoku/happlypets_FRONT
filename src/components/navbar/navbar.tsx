@@ -93,7 +93,7 @@ export default function Navbar({ logout, setPage }: any) {
                                         <li>
                                             <a
                                                 className="dropdown-item"
-                                                href="animal"
+                                                href="#"
                                                 onClick={() =>
                                                     setPage('animal')
                                                 }

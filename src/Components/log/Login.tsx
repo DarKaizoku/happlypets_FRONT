@@ -30,9 +30,10 @@ export function Login({ setPage }: any) {
 			if (responseJson.statusCode === 401) {
 				return setPage('erreur401');
 			}
-			setPage('compte');
 			const token = responseJson.access_token;
 			localStorage.setItem('token', token);
+
+			setPage('compte');
 		}
 		fetchData();
 		return (e.target[0] = true);

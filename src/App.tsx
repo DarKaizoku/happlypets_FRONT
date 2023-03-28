@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import { CompteAnimal } from './components/compteAnimal/compteAnimal';
+import Soin from './components/compteAnimal/soin';
 import CompteUsers from './components/compteUser/compteUser';
 import { DataUsertoUpdate } from './components/compteUser/dataUsertoUpdate';
-import { CompteAnimal } from './components/compte_animal/compteAnimal';
-import { Soin } from './components/compte_animal/soin';
 import { UpdateAnimal } from './components/formulaireAnimal/animalUpdate';
 import CarnetSante from './components/formulaireAnimal/carnetSante';
 import { FormulaireAnimal } from './components/formulaireAnimal/formulaire';
@@ -15,14 +15,18 @@ import { UserInit, UserContext } from './Context/userContext';
 import { TUser } from './types/user.type';
 
 const baseUrl = 'http://localhost:8000/users/profil';
-const token = localStorage.getItem('token');
 
 function App() {
+	const token = localStorage.getItem('token');
+	console.log(token);
+
 	const [user, setUser] = useState<TUser>({} as TUser);
 	//const [dataUser, setDataUser]: any = useState();
 	const [page, setPage] = useState('');
 	const [idAnimal, setIdAnimal] = useState('');
+
 	const TOKEN: string = token!;
+
 	const options = {
 		method: 'POST',
 		headers: {
@@ -30,18 +34,21 @@ function App() {
 			Authorization: `Bearer ${TOKEN}`,
 		},
 	};
+
 	useEffect(() => {
 		fetch(baseUrl, options)
 			.then((response) => response.json())
 			.then((donnee) => setUser(donnee))
 			.catch((erreur) => `${erreur}`);
-	}, [TOKEN]);
+	}, [page]);
+	console.log(user);
 
 	const logout = () => {
 		localStorage.clear();
 		setUser(UserInit);
 		window.location.reload();
 	};
+
 	return (
 		<div>
 			<UserContext.Provider value={{ user, setUser }}>

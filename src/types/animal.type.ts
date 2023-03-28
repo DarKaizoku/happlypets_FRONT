@@ -1,3 +1,5 @@
+import { Soin } from './soin.type';
+
 export type Animal = {
     id: number;
     nom: string;
@@ -8,5 +10,5 @@ export type Animal = {
     lof: boolean;
     habitat: string;
     carnetDeSante: string;
-    soin: string;
+    soin: Soin[];
 };

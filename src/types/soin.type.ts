@@ -1,4 +1,7 @@
+import { Animal } from './animal.type';
+
 export type Soin = {
-    soin: string;
-    date: Date;
+    activite: string;
+    date: string;
+    animalId: number;
 };
