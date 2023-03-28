@@ -8,13 +8,12 @@ import Soin from './soin';
 
 export function CompteAnimal(props: {
 	page: string;
-	setPage: any;
+	setPage: (value: string) => void;
 	TOKEN: string;
 }) {
 	const [preview_animal] = useState<string>('./animal.jpg');
 	const { user } = useContext(UserContext);
 	const { idAnimal } = useContext(UpdateAnimalContext);
-	console.log(user);
 
 	const updateAnimal = (e: React.SyntheticEvent) => {
 		props.setPage('animalUpdate');
@@ -70,15 +69,6 @@ export function CompteAnimal(props: {
 						/>
 						<div className='col mt-2 mx-auto'>
 							<div>
-								<button
-									onClick={() =>
-										setInputHabitat(
-											true
-										)
-									}
-								>
-									<i className='bi bi-pencil'></i>
-								</button>
 								<strong className='me-2 fs-4'>
 									Habitat:
 								</strong>
@@ -115,14 +105,14 @@ export function CompteAnimal(props: {
 					<div>
 						<div className='d-flex justify-content-center mt-4'>
 							<button
-								className='btn couleur rounded-pill btn-sm  me-3  mb-5 border border-primary  text-light
+								className='btn btn-primary couleur rounded-pill btn-sm  me-3  mb-5 border border-primary  text-light
 '
 							>
 								{'           '}
 								<i className='bi bi-x-lg'>
 									<p>
-										Retirez
-										cette
+										Retirer
+										cet
 										animal
 										de
 										ma
@@ -131,7 +121,7 @@ export function CompteAnimal(props: {
 								</i>
 							</button>
 							<button
-								className='btn couleur rounded-pill btn-sm  me-3  mb-5 border border-primary  text-light
+								className='btn btn-primary couleur rounded-pill btn-sm  me-3  mb-5 border border-primary  text-light
 '
 								onClick={() =>
 									props.setPage(
@@ -149,7 +139,7 @@ export function CompteAnimal(props: {
 								</i>
 							</button>
 							<button
-								className='btn couleur rounded-pill btn-sm  me-3 mb-5 border border-primary text-light
+								className='btn btn-primary couleur rounded-pill btn-sm  me-3 mb-5 border border-primary text-light
                        '
 								onClick={(e) =>
 									updateAnimal(

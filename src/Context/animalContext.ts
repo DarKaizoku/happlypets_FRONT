@@ -1,17 +1,17 @@
-import React from 'react';
-import { Animal } from '../types/animal.type';
+import React from "react";
+import { Animal } from "../types/animal.type";
 
 export const AnimalContext = React.createContext({
-    animal: {
-        nom: '',
-        date_de_naissance: new Date(),
-        espece: '',
-        race: '',
-        genre: '',
-        lof: true,
-        habitat: '',
-    } as Animal,
-    setUser: (value: Animal) => {},
+  animal: {
+    nom: "",
+    date_de_naissance: "",
+    espece: "",
+    race: "",
+    genre: "",
+    lof: true,
+    habitat: "",
+  } as Animal,
+  setUser: (value: Animal) => {},
 });
 /* const animalUpdateContext = {
     animal: {

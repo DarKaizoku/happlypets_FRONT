@@ -19,7 +19,7 @@ export default function GetSoin() {
 		affichageSoin = idSoin.map((data, i: number) => (
 			<tbody>
 				<td>{data.activite}</td>
-				<td>{data.date}</td>
+				<td> {data.date}</td>
 			</tbody>
 		));
 	}

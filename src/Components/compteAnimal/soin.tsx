@@ -1,10 +1,11 @@
+import { read } from 'fs';
 import { useContext, useState } from 'react';
 import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 
 const urlAddSoin = 'http://localhost:8000/soin';
 
 export default function Soin(props: {
-	setPage: React.Dispatch<React.SetStateAction<string>>;
+	setPage: (value: string) => void;
 	TOKEN: string;
 }) {
 	const { idAnimal } = useContext(UpdateAnimalContext);
@@ -12,7 +13,6 @@ export default function Soin(props: {
 
 	const [activite, setActivite] = useState('');
 	const [date, setDate] = useState<Date>();
-	const [envoi, setEnvoi] = useState();
 
 	const inputSoin = (e: React.BaseSyntheticEvent) => {
 		const { value } = e.currentTarget;
@@ -37,12 +37,6 @@ export default function Soin(props: {
 		e.preventDefault();
 		fetch(urlAddSoin, options)
 			.then((response) => response.json())
-
-			.then((response) => {
-				console.log(response);
-				setEnvoi(response);
-			})
-
 			.catch((err) => console.error(err));
 	};
 

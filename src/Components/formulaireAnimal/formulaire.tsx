@@ -18,13 +18,13 @@ export function FormulaireAnimal(props: {
 	const newAnimal: Animal = {
 		id: 0,
 		nom: '',
-		date_de_naissance: new Date(),
+		date_de_naissance: '',
 		espece: '',
 		race: '',
 		genre: '',
 		lof: true,
 		habitat: '',
-		carnetDeSante: [],
+		carnetdesante: [],
 		soin: [],
 		photo: [],
 	};
@@ -48,7 +48,6 @@ export function FormulaireAnimal(props: {
 			});
 			const responseJson = await response.json();
 			user.animal?.push(responseJson.data);
-			console.log(responseJson.data);
 
 			setIdAnimal(responseJson.data.id);
 			setIdOK('ok');
@@ -68,7 +67,7 @@ export function FormulaireAnimal(props: {
 		e.preventDefault();
 
 		async function fetchData() {
-			const response = await fetch(urlAddHabitat, {
+			await fetch(urlAddHabitat, {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
@@ -77,7 +76,6 @@ export function FormulaireAnimal(props: {
 
 				body: JSON.stringify(habitat),
 			});
-			const responseJson = await response.json();
 		}
 
 		fetchData();
@@ -90,7 +88,7 @@ export function FormulaireAnimal(props: {
 		poids: 0,
 		steriliser: '',
 		vaccin: '',
-		date_vaccin: new Date(),
+		date_vaccin: '',
 	};
 
 	const [carnetSante, setCarnetSante] =
@@ -102,7 +100,7 @@ export function FormulaireAnimal(props: {
 		async function fetchData() {
 			carnetSante.animalId = +idAnimal;
 
-			const response = await fetch(urlAddSante, {
+			await fetch(urlAddSante, {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
@@ -110,9 +108,6 @@ export function FormulaireAnimal(props: {
 				},
 				body: JSON.stringify(carnetSante),
 			});
-
-			const responseJson = await response.json();
-
 			setIdOK('No');
 			alert('Votre Animal a bien été créé !!');
 			props.setPage('compteanimal');

@@ -8,6 +8,7 @@ import { UpdateAnimal } from './components/formulaireAnimal/animalUpdate';
 import CarnetSante from './components/formulaireAnimal/carnetSante';
 import { FormulaireAnimal } from './components/formulaireAnimal/formulaire';
 import { FormulaireUser } from './components/formulaireUser/formulaireUser';
+import { ImageAccueil } from './components/imageAccueil';
 import Navbar from './components/navbar/navbar';
 
 import { UpdateAnimalContext } from './Context/updateAnimalContext';
@@ -57,6 +58,7 @@ function App() {
 						setPage={setPage}
 						logout={logout}
 					/>
+					{page === '' && <ImageAccueil />}
 					{page === 'compte' && (
 						<CompteUsers
 							setPage={setPage}
