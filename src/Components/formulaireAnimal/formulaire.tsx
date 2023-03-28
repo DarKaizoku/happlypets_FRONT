@@ -7,7 +7,7 @@ import { Animal } from '../../types/animal.type';
 import { TokenContext } from '../../Context/tokenContext';
 import { UserContext } from '../../Context/userContext';
 import { Habitats } from '../../types/habitat.type';
-import { CarnetDeSante } from '../../types/carnetDeSsante.type';
+import { TCarnetDeSante } from '../../types/carnetDeSsante.type';
 export function FormulaireAnimal() {
     const { user } = useContext(UserContext);
     const { token } = useContext(TokenContext);
@@ -22,8 +22,9 @@ export function FormulaireAnimal() {
         genre: '',
         lof: true,
         habitat: '',
-        carnetDeSante: '',
+        carnetDeSante: [],
         soin: [],
+        photo: [],
     };
 
     const [animal, setAnimal] = useState(newAnimal);
@@ -80,11 +81,12 @@ export function FormulaireAnimal() {
 
     //Enregistrement des données santé
 
-    const newSante: CarnetDeSante = {
+    const newSante: TCarnetDeSante = {
+        vaccin: '',
+        date_vaccin: '',
         poids: 0,
         steriliser: '',
-        vaccin: '',
-        date_vaccin: new Date(),
+        animalId: 0,
     };
 
     const [carnetSante, setCarnetSante] = useState(newSante);
