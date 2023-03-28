@@ -7,8 +7,9 @@ import { Animal } from "../../types/animal.type";
 import { TokenContext } from "../../Context/tokenContext";
 import { UserContext } from "../../Context/userContext";
 import { Habitats } from "../../types/habitat.type";
-import { CarnetDeSante } from "../../types/carnetDeSsante.type";
+import { TCarnetDeSante } from "../../types/carnetDeSsante.type";
 import { UpdateAnimalContext } from "../../Context/updateAnimalContext";
+import CarnetSante from "./carnetSante";
 export function FormulaireAnimal(props: { TOKEN: string }) {
   const { user } = useContext(UserContext);
 
@@ -22,8 +23,9 @@ export function FormulaireAnimal(props: { TOKEN: string }) {
     genre: "",
     lof: true,
     habitat: "",
-    carnetDeSante: "",
+    carnetDeSante: [],
     soin: [],
+    photo: [],
   };
   const [animal, setAnimal] = useState(newAnimal);
 
@@ -83,7 +85,7 @@ export function FormulaireAnimal(props: { TOKEN: string }) {
   //Enregistrement des données santé
   console.log(idAnimal);
 
-  const newSante: CarnetDeSante = {
+  const newSante: TCarnetDeSante = {
     animalId: +idAnimal,
     poids: 0,
     steriliser: "",
@@ -182,7 +184,7 @@ export function FormulaireAnimal(props: { TOKEN: string }) {
             setCarnetSante={setCarnetSante}
           />
         )}
-        {fiche === "carnetDeSante" && <CarnetId></CarnetId>}
+        {fiche === "carnetDeSante" && <CarnetSante />}
         {fiche === "habitat" && <Habitat></Habitat>}
         <div className="col-12 mt-3">
           <div className="form-check">

@@ -21,7 +21,6 @@ export default function CompteUsers(props: {
     const inputChange = (e: React.BaseSyntheticEvent) => {
         const { title } = e.currentTarget;
         const values = { title };
-        console.log(values.title);
 
         setIdAnimal(values.title);
     };
@@ -56,7 +55,7 @@ export default function CompteUsers(props: {
                                 Ville : {data.ville}
                             </div>
                             <div>Département : {data.departement}</div>
-                            <div className="mt-3  p-2 row">
+                            <div className="mt-3  p-3 row">
                                 <div className=" col text-light me-2">
                                     <DeleteUser TOKEN={TOKEN} />
                                 </div>
