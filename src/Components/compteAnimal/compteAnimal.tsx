@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 import { UserContext } from '../../Context/userContext';
 import { Animal } from '../../types/animal.type';
+import DeleteAnimal from './deleteAnimal';
 
 import GetSoin from './getSoin';
 import Soin from './soin';
@@ -62,18 +63,7 @@ export function CompteAnimal(props: {
                         />
                         <div className="col mt-2 mx-auto">
                             <div>
-                                {/*    <button onClick={() => setInputHabitat(true)}>
-                                    <i className="bi bi-pencil"></i>
-                                </button> */}
                                 <strong className="me-2 fs-4">Habitat:</strong>
-                                {/*  {inputHabitat === false ? (
-                                    <div> {data.habitat}</div>
-                                ) : (
-                                    <>
-                                        <input type="text" />
-                                        <i className="bi bi-check-square"></i>
-                                    </>
-                                )} */}
                             </div>
 
                             <div>
@@ -88,15 +78,10 @@ export function CompteAnimal(props: {
                     </div>
                     <div>
                         <div className="d-flex justify-content-center mt-4">
-                            <button
-                                className="btn btn-primary couleur rounded-pill btn-sm  me-3  mb-5 border border-primary  text-light
-"
-                            >
-                                {'           '}
-                                <i className="bi bi-x-lg">
-                                    <p>Retirez cette animal de ma liste</p>
-                                </i>
-                            </button>
+                            <DeleteAnimal
+                                TOKEN={props.TOKEN}
+                                setPage={props.setPage}
+                            />
                             <button
                                 className="btn btn-primary couleur rounded-pill btn-sm  me-3  mb-5 border border-primary  text-light
 "

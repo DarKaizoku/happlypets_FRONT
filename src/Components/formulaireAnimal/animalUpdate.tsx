@@ -2,31 +2,42 @@ import { useState, useEffect, useContext } from 'react';
 import { AnimalContext } from '../../Context/animalContext';
 import { TokenContext } from '../../Context/tokenContext';
 import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
+import { UserContext } from '../../Context/userContext';
 import { Animal } from '../../types/animal.type';
+import { animalUpdate } from '../../types/animalUpdate.type';
 
-const animalUrl = 'http://localhost:8000/animal/';
-export function UpdateAnimal({ setPage }: any) {
+export function UpdateAnimal(props: {
+    TOKEN: string;
+    setPage: (value: string) => void;
+}) {
     const { idAnimal } = useContext(UpdateAnimalContext);
+    const { user } = useContext(UserContext);
+    const id = parseInt(idAnimal);
+    const dataAnimal = user.animal.find(
+        (elm: Animal) => elm.id === (+idAnimal as number),
+    );
+    const [animal, setAnimal] = useState<animalUpdate>();
 
-    const { animal, setAnimal }: any = useContext(AnimalContext);
-
-    const [animalData, setAnimalData] = useState(animal);
-
-    const { token } = useContext(TokenContext);
-
-    const dataAnimal = animal as Animal;
+    const [animalData, setAnimalData] = useState(dataAnimal);
+    const animalUrl = `http://localhost:8000/animal/${id}`;
 
     const updateChange = (e: React.BaseSyntheticEvent) => {
         let { name, value } = e.target;
 
         if (name === 'lof') {
-            if (value === 'on' && animal.lof === true) {
-                return setAnimal({ ...animal, [name]: (value = false) });
+            if (value === 'on' && dataAnimal?.lof === true) {
+                return setAnimal({
+                    ...animal!,
+                    [name]: (value = false),
+                });
             }
-            return setAnimal({ ...animal, [name]: (value = true) });
+            return setAnimal({
+                ...animal!,
+                [name]: (value = true),
+            });
         }
 
-        setAnimal({ ...animal, [name]: value });
+        setAnimal({ ...animal!, [name]: value });
     };
 
     const [selectedFile, setSelectedFile] = useState();
@@ -53,24 +64,30 @@ export function UpdateAnimal({ setPage }: any) {
     };
 
     const update = (e: React.BaseSyntheticEvent) => {
-        const jsonAnimal = JSON.stringify(animalData);
+        const jsonAnimal = JSON.stringify(animal);
+
+        console.log(jsonAnimal);
 
         const options = {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${props.TOKEN}`,
             },
             body: jsonAnimal,
         };
+        console.log(options);
 
         fetch(animalUrl, options)
             .then((response) => response.json())
-            .then((donnee) => setAnimalData(donnee.data.userUpdate))
+            .then((donnee) => {
+                setAnimal(donnee.data);
+                props.setPage('compteanimal');
+            })
             .catch((erreur) => `${erreur}`);
     };
     const buttonRetour = (e: React.BaseSyntheticEvent) => {
-        setPage('compteanimal');
+        props.setPage('compteanimal');
     };
     return (
         <div className="container card bg-warning mx-auto">
@@ -134,7 +151,7 @@ export function UpdateAnimal({ setPage }: any) {
                         <input
                             onChange={(e) => updateChange(e)}
                             type="text"
-                            defaultValue={dataAnimal.nom}
+                            defaultValue={dataAnimal?.nom}
                             className="form-control"
                             id="validationCustomNom"
                             name="nom"
@@ -152,7 +169,7 @@ export function UpdateAnimal({ setPage }: any) {
                         <input
                             onChange={(e) => updateChange(e)}
                             type="text"
-                            defaultValue={dataAnimal.espece}
+                            defaultValue={dataAnimal?.espece}
                             className="form-control"
                             id="validationCustomEspece"
                             name="espece"
@@ -171,7 +188,7 @@ export function UpdateAnimal({ setPage }: any) {
                             <input
                                 onChange={(e) => updateChange(e)}
                                 type="text"
-                                defaultValue={dataAnimal.race}
+                                defaultValue={dataAnimal?.race}
                                 className="form-control"
                                 id="validationCustomRace"
                                 aria-describedby="inputGroupPrepend"
@@ -194,7 +211,7 @@ export function UpdateAnimal({ setPage }: any) {
                             onChange={(e) => updateChange(e)}
                             placeholder="jj/mm/aaaa"
                             type="date"
-                            defaultValue={dataAnimal.date_de_naissance.toString()}
+                            defaultValue={dataAnimal?.date_de_naissance}
                             className="form-control"
                             id="validationCustomAnniversaire"
                             name="date_de_naissance"
@@ -214,7 +231,7 @@ export function UpdateAnimal({ setPage }: any) {
                         <select
                             onChange={(e) => updateChange(e)}
                             className="form-select"
-                            defaultValue={dataAnimal.genre}
+                            defaultValue={dataAnimal?.genre}
                             id="validationCustomGenre"
                             name="genre"
                             required
@@ -247,9 +264,12 @@ export function UpdateAnimal({ setPage }: any) {
                     </div>
                     <div className="container text-center mt-3">
                         <button
-                            onClick={(e) => update(e)}
+                            onClick={(e) => {
+                                update(e);
+                                props.setPage('compteanimal');
+                            }}
                             className="btn bleu text-light btn-outline-primary"
-                            type="submit"
+                            type="button"
                         >
                             Enregistrer
                         </button>
