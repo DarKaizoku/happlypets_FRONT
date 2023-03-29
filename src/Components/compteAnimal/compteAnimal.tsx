@@ -9,13 +9,12 @@ import Soin from './soin';
 
 export function CompteAnimal(props: {
     page: string;
-    setPage: any;
+    setPage: (value: string) => void;
     TOKEN: string;
 }) {
     const [preview_animal] = useState<string>('./animal.jpg');
     const { user } = useContext(UserContext);
     const { idAnimal } = useContext(UpdateAnimalContext);
-    console.log(user);
 
     const updateAnimal = (e: React.SyntheticEvent) => {
         props.setPage('animalUpdate');

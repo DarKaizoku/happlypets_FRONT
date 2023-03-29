@@ -1,80 +1,46 @@
 import { useContext } from 'react';
-
 import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 import { UserContext } from '../../Context/userContext';
 import { Animal } from '../../types/animal.type';
-import { TCarnetDeSante } from '../../types/carnetDeSsante.type';
 
 export default function GetSoin() {
-    const { user } = useContext(UserContext);
-    const { idAnimal } = useContext(UpdateAnimalContext);
-    const animalId = +idAnimal;
-    const idSoin = user.animal
-        .find((elm: Animal) => elm.id === animalId)
-        ?.soin.map((data, i: number) => (
-            <tbody>
-                <td> </td>
-                <td> </td>
-                <td> </td>
-                <td>{data.activite}</td>
-                <td>{data.date}</td>
-            </tbody>
-        ));
-    const idCarnet = user.animal
-        .find((elm: Animal) => elm.id === animalId)
-        ?.carnetdesante.map((data: TCarnetDeSante, i: number) => (
-            <tbody>
-                <td>{data.vaccin}</td>
-                <td>{data.date_vaccin}</td>
-                <td>{data.poids}</td>
-                <td>{data.steriliser}</td>
-                {/*  <td>{data.url}</td> */}
-            </tbody>
-        ));
+	const { idAnimal } = useContext(UpdateAnimalContext);
+	const animalId = parseInt(idAnimal);
+	const { user } = useContext(UserContext);
+	const idSoin = user.animal.find(
+		(elm: Animal) => elm.id === animalId
+	)?.soin;
 
-    return (
-        <div>
-            <div className="container table-responsive ">
-                <caption className="text-black">Soins</caption>
-                <table className="table bg-warning rounded">
-                    <thead>
-                        <tr>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td>
-                                <strong>Activité</strong>
-                            </td>
-                            <td>
-                                <strong>Date</strong>
-                            </td>
-                        </tr>
-                    </thead>
-                    {idSoin}
-                </table>
-            </div>
-            <div className="container table-responsive ">
-                <caption className="text-black">Carnet de Santé</caption>
-                <table className="table bg-warning rounded">
-                    <thead>
-                        <tr>
-                            <td>
-                                <strong>Vaccin</strong>
-                            </td>
-                            <td>
-                                <strong>Date de vaccination</strong>
-                            </td>
-                            <td>
-                                <strong>Poids</strong>
-                            </td>
-                            <td>
-                                <strong>Stériliser</strong>
-                            </td>
-                        </tr>
-                    </thead>
-                    {idCarnet}
-                </table>
-            </div>
-        </div>
-    );
+	let affichageSoin: JSX.Element[];
+
+	if (!idSoin) {
+		affichageSoin = [<></>];
+	} else {
+		affichageSoin = idSoin.map((data, i: number) => (
+			<tbody>
+				<td>{data.activite}</td>
+				<td> {data.date}</td>
+			</tbody>
+		));
+	}
+	return (
+		<div className='container table-responsive'>
+			<caption className='text-black'>Soins</caption>
+			<table className='table bg-warning rounded'>
+				<thead>
+					<tr>
+						<td>
+							<strong>
+								Activité
+							</strong>
+						</td>
+						<td>
+							<strong>Date</strong>
+						</td>
+					</tr>
+				</thead>
+				{affichageSoin}
+			</table>
+		</div>
+	);
 }

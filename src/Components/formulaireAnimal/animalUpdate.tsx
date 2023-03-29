@@ -1,6 +1,4 @@
 import { useState, useEffect, useContext } from 'react';
-import { AnimalContext } from '../../Context/animalContext';
-import { TokenContext } from '../../Context/tokenContext';
 import { UpdateAnimalContext } from '../../Context/updateAnimalContext';
 import { UserContext } from '../../Context/userContext';
 import { Animal } from '../../types/animal.type';
@@ -17,8 +15,6 @@ export function UpdateAnimal(props: {
         (elm: Animal) => elm.id === (+idAnimal as number),
     );
     const [animal, setAnimal] = useState<animalUpdate>();
-
-    const [animalData, setAnimalData] = useState(dataAnimal);
     const animalUrl = `http://localhost:8000/animal/${id}`;
 
     const updateChange = (e: React.BaseSyntheticEvent) => {
